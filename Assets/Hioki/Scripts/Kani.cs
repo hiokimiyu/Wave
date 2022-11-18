@@ -8,7 +8,7 @@ public class Kani : MonoBehaviour
     [Tooltip("移動スピード")]
     [SerializeField]float _speed = 5;
     [Tooltip("壁のオブジェクトのタグ名")]
-    [SerializeField, TagName] string _wallName;
+    [SerializeField, TagName] string _wallTag;
     [Tooltip("かにの状態")]
     [SerializeField] bool _isStop;
     [Tooltip("かにが消える時間")]
@@ -38,7 +38,7 @@ public class Kani : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == _wallName)
+        if(collision.gameObject.tag == _wallTag)
         {
             _speed *= -1f;
         }//方向転換
