@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 355385391}
   - component: {fileID: 355385390}
   - component: {fileID: 355385394}
+  - component: {fileID: 355385395}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -509,7 +510,29 @@ MonoBehaviour:
   _playerHp: 100
   _playerMaxHp: 100
   _vitalCapacity: 100
+  _godModeTime: 0.5
   _hpBar: {fileID: 132446786}
+  _damageAnimation: {fileID: 355385395}
+--- !u!95 &355385395
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355385389}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1a6821dbe0805042ae4975ba1cc4976, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &810271992
 GameObject:
   m_ObjectHideFlags: 0

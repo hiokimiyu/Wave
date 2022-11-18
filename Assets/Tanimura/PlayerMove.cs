@@ -24,9 +24,17 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] int _playerMaxHp;
     [Tooltip("プレイヤーの肺活量")]
     [SerializeField] float _vitalCapacity;//プレイヤーの肺活量
+    [Tooltip("プレイヤーがダメージを受けた時の無敵時間")]
+    [SerializeField] float _godModeTime;
+    [Tooltip("プレイヤーのHPバー")]
     [SerializeField] Slider _hpBar;
+    [Tooltip("プレイヤーのアニメーション")]
+    [SerializeField] Animator _damageAnimation;
+    
     /// <summary>地面の接触判定</summary>
     bool _isGround = true;//地面の接触判定の変数
+    /// <summary>無敵時間判定の変数</summary>
+    bool _isGodMode = false;
 
     /// <summary>プレイヤーのHP</summary>
     public int PlayerHp { get => _playerHp; set => _playerHp = value; }
@@ -69,8 +77,12 @@ public class PlayerMove : MonoBehaviour
     //ダメージを受ける処理
     public void Damage(int damage)
     {
-        _playerHp -= damage;
-        _hpBar.value = _playerHp;
+        if (_isGodMode == false)
+        {
+            _playerHp -= damage;
+            _hpBar.value = _playerHp;
+            StartCoroutine(GodMode());
+        }
     }
 
     //アイテムで回復するときの処理
@@ -80,6 +92,15 @@ public class PlayerMove : MonoBehaviour
         _hpBar.value = _playerHp;
     }
 
+    //無敵時間の間アニメーションを動かしてダメージを受けない処理
+    IEnumerator GodMode()
+    {
+        _isGodMode = true;
+        _damageAnimation.SetBool("IsDamage", true);
+        yield return new WaitForSeconds(_godModeTime);
+        _damageAnimation.SetBool("IsDamage", false);
+        _isGodMode = false;
+    }
 
 
 }
