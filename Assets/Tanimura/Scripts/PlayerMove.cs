@@ -63,7 +63,16 @@ public class PlayerMove : MonoBehaviour
             //UŒ‚Ø‚è‘Ö‚¦‚Ìˆ—‚ðŒã‚Å‘‚­
             Debug.Log("LeftClick");
         }
+        if(h > 0)
+        {
+            gameObject.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
+        }
+        else if(h < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-1*Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
+        }
     }
+        
 
     //’n–Ê‚Æ‚ÌÚG”»’è‚Ìˆ—
     private void OnCollisionEnter2D(Collision2D collision)
