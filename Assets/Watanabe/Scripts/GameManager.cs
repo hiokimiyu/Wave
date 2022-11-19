@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     /// <summary> シーン実行中の時間 </summary>
     float _time = 0f;
     /// <summary> シーン上にいる敵 </summary>
-    readonly List<GameObject> _sceneEnemies = new List<GameObject>();
+    [SerializeField] List<GameObject> _sceneEnemies = new List<GameObject>();
     /// <summary> シーン上のスポナー </summary>
     List<GameObject> _spawner = new List<GameObject>();
 
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         {
             _sceneEnemies.Add(child.gameObject);
         }
+        Type = WaveMode.Warm;
     }
 
     // Update is called once per frame
@@ -45,6 +46,11 @@ public class GameManager : MonoBehaviour
         {
             WaveTemp();
             _time = 0f;
+            if (_sceneEnemies.Count != 0)
+            {
+                Destroy(_sceneEnemies[0]);
+                _sceneEnemies.Remove(_sceneEnemies[0]);
+            }
         }
 
         if (_sceneEnemies.Count == 0 && _spawner.Count == 0)
