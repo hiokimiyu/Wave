@@ -11,6 +11,13 @@ public class Yuki : MonoBehaviour
     [SerializeField] float _ySpeed = 0;
     [Tooltip("•Ç‚ÌƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒO–¼")]
     [SerializeField, TagName] string _wallTag;
+    [Tooltip("UŒ‚ŠÔŠu")]
+    [SerializeField] float _attackTime = 3;
+    [Tooltip("UŒ‚ƒ^ƒCƒ€")] float _attack = 0;
+    [Tooltip("muzzle")]
+    [SerializeField] Transform _muzzle;
+    [Tooltip("’e")]
+    [SerializeField] GameObject _bullet;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -18,7 +25,19 @@ public class Yuki : MonoBehaviour
 
     void Update()
     {
+        _attack += Time.deltaTime;
+        if (_attackTime < _attack)
+        {
+            Instantiate(_bullet, _muzzle.position, transform.rotation);
+            _attack = 0;
+        }//UŒ‚
+
+        //ˆÚ“®
         _rb.velocity = new Vector2(_xSpeed, Mathf.Sin(Time.time * _ySpeed));
+
+        //•ûŒü“]Š·
+        transform.eulerAngles = _xSpeed < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,6 +45,6 @@ public class Yuki : MonoBehaviour
         if (collision.gameObject.tag == _wallTag)
         {
             _xSpeed *= -1f;
-        }//•ûŒü“]Š·
+        }//ˆÚ“®•ûŒü
     }
 }
