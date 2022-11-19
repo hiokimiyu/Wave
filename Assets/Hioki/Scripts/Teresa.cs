@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Yuki : MonoBehaviour
+public class Teresa : MonoBehaviour
 {
     Rigidbody2D _rb;
     [Tooltip("横移動スピード")]
@@ -13,7 +13,8 @@ public class Yuki : MonoBehaviour
     [SerializeField, TagName] string _wallTag;
     [Tooltip("攻撃間隔")]
     [SerializeField] float _attackTime = 3;
-    [Tooltip("攻撃タイム")] float _attack = 0;
+    /// <summary>攻撃間隔はかるタイマー</summary>
+    float _attack = 0;
     [Tooltip("muzzle")]
     [SerializeField] Transform _muzzle;
     [Tooltip("弾")]
@@ -26,6 +27,7 @@ public class Yuki : MonoBehaviour
     void Update()
     {
         _attack += Time.deltaTime;
+
         if (_attackTime < _attack)
         {
             Instantiate(_bullet, _muzzle.position, transform.rotation);

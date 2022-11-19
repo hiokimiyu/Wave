@@ -6,10 +6,13 @@ public class Bullet : MonoBehaviour
 {
     [Tooltip("弾の速さ")]
     [SerializeField] float _speed = 1f;
+    [Tooltip("Playerのタグ")]
+    [SerializeField, TagName] string _playerTag;
+    /// <summary>Playerのオブジェクト</summary>
     GameObject _player;
     void Start()
     {
-        _player = GameObject.Find("Player");
+        _player = GameObject.FindGameObjectWithTag(_playerTag);
     }
 
     void Update()
