@@ -29,11 +29,15 @@ public class Kani : MonoBehaviour
         {
             _rb.velocity = new Vector2(0, _rb.velocity.y);
             _deleteTime -= Time.deltaTime;
+
             if(_deleteTime < 0)
             {
                 Destroy(gameObject);
             }
         }//“®‚¯‚È‚¢ó‘Ô
+
+         //•ûŒü“]Š·
+        transform.eulerAngles = _speed < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
