@@ -23,6 +23,7 @@ public class MovementTest : MonoBehaviour
         _rb2D.velocity = new Vector2(_moveSpeed, _rb2D.velocity.y);
         _time += Time.deltaTime;
 
+        //ˆê’èŽžŠÔŒo‚Á‚½‚çA”½“]
         if (_time > 1f)
         {
             _time = 0f;
