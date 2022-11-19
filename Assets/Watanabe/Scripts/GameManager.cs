@@ -11,18 +11,22 @@ public class GameManager : MonoBehaviour
     [SerializeField, SceneName] string _sceneName;
     [Tooltip("敵をまとめておく親オブジェクト")]
     [SerializeField] GameObject _enemyParent;
+    [Tooltip("スポナーをまとめておく親オブジェクト")]
+    [SerializeField] GameObject _spawnerParent;
 
     /// <summary> シーン実行中の時間 </summary>
     float _time = 0f;
-    /// <summary> シーン上にいる敵 </summary>
-    [SerializeField] List<GameObject> _sceneEnemies = new List<GameObject>();
-    /// <summary> シーン上のスポナー </summary>
-    List<GameObject> _spawner = new List<GameObject>();
 
     /// <summary> シーン上の敵をまとめた親オブジェクト </summary>
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
-    /// <summary> 寒波か、熱波かの切り替え </summary>
-    public WaveMode Type { get; set; }
+    /// <summary> シーン上のスポナーをまとめた親オブジェクト </summary>
+    public GameObject SpawnerParent { get => _spawnerParent; set => _spawnerParent = value; }
+    /// <summary> シーン上にいる敵 </summary>
+    public List<GameObject> SceneEnemies { get; set; }
+    /// <summary> シーン上のスポナー </summary>
+    public List<GameObject> Spawner { get; set; }
+    /// <summary> 寒波か、熱波か(false...寒波, true...熱波) </summary>
+    public bool IsWarm { get; set; }
     /// <summary> ウェーブ数 </summary>
     public int WaveCount { get; set; }
 
@@ -30,11 +34,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //各Listにシーン上の該当要素を追加する
+        //↓敵
         foreach (Transform child in EnemyParent.transform)
         {
-            _sceneEnemies.Add(child.gameObject);
+            SceneEnemies.Add(child.gameObject);
         }
-        Type = WaveMode.Warm;
+        //↓スポナー
+        foreach (Transform child in SpawnerParent.transform)
+        {
+            Spawner.Add(child.gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -44,34 +53,16 @@ public class GameManager : MonoBehaviour
         _time += Time.deltaTime;
         if (_time > _switchTime)
         {
-            WaveTemp();
+            //寒波、熱波の切り替え(false...寒波, true...熱波)
+            IsWarm = IsWarm == true ? false : true;
             _time = 0f;
-            if (_sceneEnemies.Count != 0)
-            {
-                Destroy(_sceneEnemies[0]);
-                _sceneEnemies.Remove(_sceneEnemies[0]);
-            }
         }
 
-        if (_sceneEnemies.Count == 0 && _spawner.Count == 0)
+        if (SceneEnemies.Count == 0 && Spawner.Count == 0)
         {
             WaveCount++;
             Debug.Log(WaveCount);
             SceneManager.LoadScene(_sceneName);
         }
-    }
-
-    /// <summary>
-    /// 寒波、熱波の切り替え
-    /// </summary>
-    public void WaveTemp()
-    {
-        Type = Type == WaveMode.Warm ? WaveMode.Cold : WaveMode.Warm;
-    }
-
-    public enum WaveMode
-    {
-        Warm,
-        Cold,
     }
 }
