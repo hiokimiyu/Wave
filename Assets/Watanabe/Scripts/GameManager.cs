@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,11 +16,13 @@ public class GameManager : MonoBehaviour
 
     /// <summary> シーン実行中の時間 </summary>
     float _time = 0f;
+    AttackType _type = AttackType.Normal;
 
     /// <summary> シーン上の敵をまとめた親オブジェクト </summary>
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
     /// <summary> シーン上のスポナーをまとめた親オブジェクト </summary>
     public GameObject SpawnerParent { get => _spawnerParent; set => _spawnerParent = value; }
+    public AttackType Type { get => _type; set => _type = value; }
     /// <summary> シーン上にいる敵 </summary>
     public List<GameObject> SceneEnemies { get; set; }
     /// <summary> シーン上のスポナー </summary>
@@ -62,7 +64,37 @@ public class GameManager : MonoBehaviour
         {
             WaveCount++;
             Debug.Log(WaveCount);
-            SceneManager.LoadScene(_sceneName);
+            //SceneManager.LoadScene(_sceneName);
         }
+    }
+
+    /// <summary>
+    /// Playerの攻撃
+    /// </summary>
+    public void PlayerAttack()
+    {
+
+    }
+
+    /// <summary>
+    /// 攻撃の切り替え
+    /// </summary>
+    public void AttackSwitch()
+    {
+        if (Type == AttackType.Warm)
+        {
+            Type = AttackType.Cold;
+        }
+        else if (Type == AttackType.Cold)
+        {
+            Type = AttackType.Warm;
+        }
+    }
+
+    public enum AttackType
+    {
+        Normal,
+        Warm,
+        Cold
     }
 }
