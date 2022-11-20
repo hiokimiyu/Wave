@@ -13,10 +13,21 @@ public class Kani : MonoBehaviour
     [SerializeField] bool _isStop;
     [Tooltip("かにが消える時間")]
     [SerializeField] float _deleteTime = 3;
+    /// <summary>ひっくり返るときの回転数値</summary>
+    float _z = 0;
+
+    //テストしやすいように見えるようにしておくもの↓
+    [Tooltip("かにの体力")]
+    [SerializeField] float _crabHp = 1;
+    [Tooltip("かにの攻撃力")]
+    [SerializeField] float _crabPower = 2;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        //自分がどっち向いてるか確認して、進む方向を決めてる
+        _speed *= transform.eulerAngles.y == 180 ? 1 : -1;
     }
 
     void Update()
@@ -28,6 +39,7 @@ public class Kani : MonoBehaviour
         else if (_isStop)
         {
             _rb.velocity = new Vector2(0, _rb.velocity.y);
+            _z = 180;
             _deleteTime -= Time.deltaTime;
 
             if (_deleteTime < 0)
@@ -37,7 +49,7 @@ public class Kani : MonoBehaviour
         }//動けない状態
 
         //方向転換
-        transform.eulerAngles = _speed < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
+        transform.eulerAngles = _speed < 0 ? new Vector3(0, 180, _z) : new Vector3(0, 0, _z);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

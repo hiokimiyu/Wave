@@ -14,8 +14,13 @@ public class SpawnController : MonoBehaviour
     [SerializeField] float _time = 3f;
     [Tooltip("下からスポーンさせたい敵のタグ")]
     [SerializeField, TagName] string _kaniTag;
+    [Tooltip("エネミーを格納する親オブジェクト")]
+    [SerializeField] GameObject _enemyBox;
     /// <summary>敵を出す間隔はかるタイマー</summary>
     float _enemytime;
+
+    //テストしやすいように見えるようにしておくもの↓
+    
 
     void Update()
     {
@@ -23,10 +28,11 @@ public class SpawnController : MonoBehaviour
         //出す敵をランダムで決める
         int type = Random.Range(0, _enemy.Count);
         //敵の向きをランダムで決める
-        int y = Random.Range(0, 1) == 0 ? 0 : 180;
+        int y = Random.Range(0, 2) == 0 ? 0 : 180;
         if (_time < _enemytime)
         {
-            Instantiate(_enemy[type], SpwanPos(_enemy[type]).position, Quaternion.Euler(0, y, 0));
+            //ランダムで敵を出して、EnemyBoxの子オブジェクトにする
+            Instantiate(_enemy[type], SpwanPos(_enemy[type]).position, Quaternion.Euler(0, y, 0), _enemyBox.transform);
             _enemytime = 0;
         }
     }

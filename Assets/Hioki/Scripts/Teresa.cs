@@ -22,6 +22,9 @@ public class Teresa : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        //自分がどっち向いてるか確認して、進む方向を決めてる
+        _xSpeed *= transform.eulerAngles.y == 180 ? 1 : -1;
     }
 
     void Update()
@@ -30,7 +33,7 @@ public class Teresa : MonoBehaviour
 
         if (_attackTime < _attack)
         {
-            Instantiate(_bullet, _muzzle.position, transform.rotation);
+            Instantiate(_bullet, _muzzle.position, transform.rotation, transform);
             _attack = 0;
         }//攻撃
 
