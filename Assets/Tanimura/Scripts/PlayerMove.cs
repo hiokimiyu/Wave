@@ -30,6 +30,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] Slider _hpBar;
     [Tooltip("プレイヤーのアニメーション")]
     [SerializeField] Animator _damageAnimation;
+    [Tooltip("Groundタグ")]
+    [SerializeField, TagName] string _groundTag;
     
     /// <summary>地面の接触判定</summary>
     bool _isGround = true;//地面の接触判定の変数
@@ -50,34 +52,23 @@ public class PlayerMove : MonoBehaviour
     {
         //移動の処理
         float h = Input.GetAxisRaw("Horizontal");
-        _rb.AddForce(Vector2.right * h * _speed, ForceMode2D.Force);
+        _rb.velocity = new Vector2(h, _rb.velocity.y);
         //地面にいるときだけジャンプする
-        if(Input.GetButtonDown("Jump")&&_isGround)
+        if (Input.GetButtonDown("Jump")　&& _isGround)
         {
             _rb.AddForce(Vector2.up  * _jumpPower, ForceMode2D.Impulse);
             _isGround = false;
         }
-        //攻撃切り替えの入力受付
-        if(Input.GetButtonDown("Fire2"))
-        {
-            //攻撃切り替えの処理を後で書く
-            Debug.Log("LeftClick");
-        }
-        if(h > 0)
-        {
-            gameObject.transform.localScale = new Vector3(Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
-        }
-        else if(h < 0)
-        {
-            gameObject.transform.localScale = new Vector3(-1*Mathf.Abs(this.transform.localScale.x), this.transform.localScale.y, this.transform.localScale.z);
-        }
+        
+        //進行方向にプレイヤーの向きを変える処理
+        transform.eulerAngles = h < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
     }
         
 
     //地面との接触判定の処理
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag =="Ground")
+        if(collision.gameObject.tag == _groundTag)
         {
             _isGround = true;
         }
