@@ -156,9 +156,10 @@ MonoBehaviour:
   _moveTime: 1
   _circleSpeed: 1
   _circleradius: 5
-  _isLeft: 0
+  _isLeft: 1
   _timer: 0
   rad: 0
+  _attackPattern: 0
 --- !u!212 &218383816
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -864,6 +865,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8712652375089412042, guid: 25150ddcac150bb46838fa297159c380, type: 3}
+      propertyPath: _kaniTag
+      value: Crab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712652375089412042, guid: 25150ddcac150bb46838fa297159c380, type: 3}
       propertyPath: _enemyBox
       value: 
       objectReference: {fileID: 529911411}
@@ -889,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8712652375089412043, guid: 25150ddcac150bb46838fa297159c380, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25150ddcac150bb46838fa297159c380, type: 3}

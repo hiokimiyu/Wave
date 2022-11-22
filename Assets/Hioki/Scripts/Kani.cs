@@ -17,8 +17,6 @@ public class Kani : MonoBehaviour
     float _z = 0;
 
     //ƒeƒXƒg‚µ‚â‚·‚¢‚æ‚¤‚ÉŒ©‚¦‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­‚à‚Ì«
-    [Tooltip("‚©‚É‚Ì‘Ì—Í")]
-    [SerializeField] float _crabHp = 1;
     [Tooltip("‚©‚É‚ÌUŒ‚—Í")]
     [SerializeField] float _crabPower = 2;
 
@@ -54,7 +52,7 @@ public class Kani : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == _wallTag)
+        if (collision.gameObject.tag == _wallTag || collision.gameObject.tag == gameObject.tag)
         {
             _speed *= -1f;
         }//•ûŒü“]Š·

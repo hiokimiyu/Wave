@@ -25,6 +25,11 @@ public class SpawnController : MonoBehaviour
     void Update()
     {
         _enemytime += Time.deltaTime;
+        SpawnSystem();
+    }
+
+    private void SpawnSystem()
+    {
         //o‚·“G‚ğƒ‰ƒ“ƒ_ƒ€‚ÅŒˆ‚ß‚é
         int type = Random.Range(0, _enemy.Count);
         //“G‚ÌŒü‚«‚ğƒ‰ƒ“ƒ_ƒ€‚ÅŒˆ‚ß‚é

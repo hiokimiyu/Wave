@@ -14,13 +14,16 @@ public class BossMove : MonoBehaviour
     [SerializeField] bool _isLeft;
 
     //デバックするため見えるようにしておく↓
+
     /// <summary>モード切替や移動間隔はかるタイマー</summary>
     [SerializeField] float _timer = 0;
     /// <summary>横移動させるためのタイマー</summary>
     float _time = 0;
     [Tooltip("Θ")]
-    [SerializeField]float rad;
+    [SerializeField] float rad;
     Vector2 _startPos;
+    [Tooltip("出す敵")]
+    [SerializeField] AttackPattern _attackPattern;
 
     private void Start()
     {
@@ -30,7 +33,7 @@ public class BossMove : MonoBehaviour
     private void Update()
     {
         _timer += Time.deltaTime;
-        if (_timer > _moveTime)
+        if(_timer > _moveTime)
         {
             Circle();
         }
@@ -42,14 +45,27 @@ public class BossMove : MonoBehaviour
         Vector2 pos = transform.localPosition;
 
         //Θを求めてる
-        rad = _circleSpeed * _time * Mathf.PI ;
+        rad = _circleSpeed * _time * Mathf.PI;
 
         //cosΘ * 半径 でｘを求めてる,
         //自分の最初の位置から動かすためマイナスする
         pos.x = Mathf.Cos(rad) * _circleradius - _circleradius;
 
-        transform.localPosition = pos;
+        transform.position = pos;
 
         _time += Time.deltaTime;
+    }
+
+    //かには常時出しておく
+    //炎、雪の時は自分は反対の属性を持っておく
+    /// <summary>自分の</summary>
+    enum AttackPattern
+    {
+        /// <summary>移動だけ、何もしないとき</summary>
+        Normal,
+        ///<summary>炎を出すとき</summary>
+        Flame,
+        /// <summary>雪を出すとき</summary>
+        Snow,
     }
 }
