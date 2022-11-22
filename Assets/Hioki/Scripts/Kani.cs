@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kani : MonoBehaviour
+public class Kani : MonoBehaviour, IDamage
 {
     Rigidbody2D _rb;
     [Tooltip("移動スピード")]
@@ -48,6 +48,10 @@ public class Kani : MonoBehaviour
 
         //方向転換
         transform.eulerAngles = _speed < 0 ? new Vector3(0, 180, _z) : new Vector3(0, 0, _z);
+    }
+    void IDamage.Dmage()
+    {
+        _isStop = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
