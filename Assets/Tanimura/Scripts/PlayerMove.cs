@@ -52,16 +52,23 @@ public class PlayerMove : MonoBehaviour
     {
         //移動の処理
         float h = Input.GetAxisRaw("Horizontal");
-        _rb.velocity = new Vector2(h, _rb.velocity.y);
+        _rb.velocity = new Vector2(h*_speed, _rb.velocity.y);
         //地面にいるときだけジャンプする
         if (Input.GetButtonDown("Jump")　&& _isGround)
         {
             _rb.AddForce(Vector2.up  * _jumpPower, ForceMode2D.Impulse);
             _isGround = false;
         }
-        
+
         //進行方向にプレイヤーの向きを変える処理
-        transform.eulerAngles = h < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
+        if (h < 0)
+        {
+            transform.eulerAngles = new Vector3(0, -180, 0);
+        }
+        else if (h > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
         
 
@@ -86,6 +93,10 @@ public class PlayerMove : MonoBehaviour
     }
 
     //アイテムで回復するときの処理
+    /// <summary>
+    /// 回復アイテムをとったときに呼ぶ処理
+    /// </summary>
+    /// <param name="heal"></param>
     public void Heal(int heal)
     {
         _playerHp += heal;

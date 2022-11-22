@@ -21,6 +21,7 @@ public class SnowWave : MonoBehaviour
 
     }
 
+    //当たったオブジェクトのタグを取得して、それが雪だった時にダメージを与える
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
