@@ -14,7 +14,10 @@ public class SoundWave : MonoBehaviour
     [SerializeField] int _damage;
     Kani _colKaniScript;
     /// <summary>飛ぶ方向の変数</summary>
-    public float _dir = 1;
+    float _dir = 1;  //プロパティ化
+    public float Dir { get => _dir; set => _dir = value; }
+
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();

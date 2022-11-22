@@ -8,29 +8,31 @@ public class SnowWave : MonoBehaviour
     [SerializeField, TagName] string _flameTag;
     [Tooltip("衝撃波が与えるダメージ")]
     [SerializeField] int _damage;
-    TestEnemyHp _colObjScript;
+    float _lifeTime = 0.5f;
+    TestEnemyHp _colObjHp;
     
-    void Start()
-    {
 
-    }
-
+        void Update()
+        {
+            //熱波が一定時間たったら消える処理
+            _lifeTime -= Time.deltaTime;
+            if (_lifeTime < 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     
-    void Update()
-    {
-
-    }
 
     //当たったオブジェクトのタグを取得して、それが雪だった時にダメージを与える
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
-        string colObj = collision.gameObject.tag;
+        string colObj = collision.gameObject.tag;//変数じゃなくていい
         if (collision.tag == _flameTag)
         {
             Debug.Log(colObj);
-            _colObjScript = collision.gameObject.GetComponent<TestEnemyHp>();
-            _colObjScript.Damage(_damage);
+            _colObjHp = collision.gameObject.GetComponent<TestEnemyHp>();
+            _colObjHp.Damage(_damage);
         }
     }
 }

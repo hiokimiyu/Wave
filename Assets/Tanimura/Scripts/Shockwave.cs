@@ -12,8 +12,10 @@ public class Shockwave : MonoBehaviour
     [SerializeField, TagName] string _clabTag;
     [Tooltip("衝撃波が与えるダメージ")]
     [SerializeField] int _damage;
-    TestEnemyHp _colObjScript;
+    TestEnemyHp _colObjHp;
     Kani _colKaniScript;
+
+
     void Start()
     {
         
@@ -33,8 +35,8 @@ public class Shockwave : MonoBehaviour
         if (collision.tag == _flameTag || collision.tag == _snowTag)
         {
             Debug.Log(colObj);
-            _colObjScript = collision.gameObject.GetComponent<TestEnemyHp>();
-            _colObjScript.Damage(_damage);
+            _colObjHp = collision.gameObject.GetComponent<TestEnemyHp>();
+            _colObjHp.Damage(_damage);
         }
         //カニの場合はダメージではなく一発で状態を変える
         if(collision.tag == _clabTag)
