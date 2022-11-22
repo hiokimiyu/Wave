@@ -18,7 +18,7 @@ public class SoundManager : MonoBehaviour
     /// <summary>
     /// w’è‚µ‚½‰¹‚ğÄ¶‚·‚é
     /// </summary>
-    /// <param name="audio"> —¬‚ê‚é‰¹ </param>
+    /// <param name="audio"> Ä¶‚·‚é‰¹ </param>
     public void AudioPlay(AudioClip audio)
     {
         _source.clip = audio;

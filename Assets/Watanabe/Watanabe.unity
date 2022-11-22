@@ -673,6 +673,17 @@ MonoBehaviour:
   _sceneName: SampleScene
   _enemyParent: {fileID: 1419532253}
   _spawnerParent: {fileID: 0}
+  _attackAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1692945803
 Transform:
   m_ObjectHideFlags: 0
