@@ -534,15 +534,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundWave:
-  - {fileID: 8365215298886682761, guid: b9e48713de7c1ff4897dc742f721067b, type: 3}
-  _soundWaveCost: 0
+  - {fileID: 8562632635102230399, guid: 53605384c1fc4244bb1337a913bac64d, type: 3}
+  _soundWaveCost: 5
   _flameWave:
-  - {fileID: 8947428259958683255, guid: d856df6cd87e5334586e5e4c84103139, type: 3}
-  _snowWave: []
-  _temperatureWaveCost: 30
+  - {fileID: 8413625515364264683, guid: d856df6cd87e5334586e5e4c84103139, type: 3}
+  - {fileID: 4726434312019464931, guid: de12bb7e2540bcb4583107069a947349, type: 3}
+  - {fileID: 4454309782713920697, guid: 4cb3f84bc4cb2d7449c570d92ed368a3, type: 3}
+  _snowWave:
+  - {fileID: 869744195808522825, guid: 983c82747b3107b4eae3c2a477939d0f, type: 3}
+  - {fileID: 544531157967652765, guid: aba51bee38c78e54396979e86c287dcf, type: 3}
+  - {fileID: 6363422843633875708, guid: 4831a31a8f13e9646962c376dcec70c8, type: 3}
+  _temperatureWaveCost: 10
   _shockWave:
-  - {fileID: 5310029900163996369, guid: 95765f3ecfb81344da5f3efc3a6291ea, type: 3}
-  _shockWaveCost: 0
+  - {fileID: 5829750233517401984, guid: 5733a0aa9d5425d4a97ad4417bca150f, type: 3}
+  - {fileID: 768849492334595265, guid: 44ac1f62a43d8c549994d9c2867fdc4b, type: 3}
+  - {fileID: 7212489704241223905, guid: f096fc188ba1fc54c9415481ad1e0aca, type: 3}
+  _shockWaveCost: 30
   _gameManager: {fileID: 0}
 --- !u!114 &355385398
 MonoBehaviour:
@@ -594,8 +601,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.000015259, y: 0}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0}
+  m_SizeDelta: {x: -0.000061035, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &513677505
 GameObject:
@@ -1086,8 +1093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_SizeDelta: {x: -0.000061035, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1048055661
 GameObject:
