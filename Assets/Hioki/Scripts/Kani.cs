@@ -19,8 +19,6 @@ public class Kani : MonoBehaviour, IDamage
     float _z = 0;
 
     //ƒeƒXƒg‚µ‚â‚·‚¢‚æ‚¤‚ÉŒ©‚¦‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­‚à‚Ì«
-    [Tooltip("‚©‚É‚ÌUŒ‚—Í")]
-    [SerializeField] float _crabPower = 2;
 
     void Start()
     {

@@ -50,6 +50,11 @@ public class Teresa : MonoBehaviour, IDamage
         //•ûŒü“]Š·
         transform.eulerAngles = _xSpeed < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
 
+        if(_hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     void IDamage.Damage()

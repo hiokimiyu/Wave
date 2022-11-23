@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2822385421455536067}
   - component: {fileID: 2822385421455536070}
   - component: {fileID: 2822385421455536071}
+  - component: {fileID: 7343513366205210273}
   m_Layer: 0
   m_Name: Kani
   m_TagString: Crab
@@ -148,6 +149,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _wallTag: Wall
+  _spawnerTag: Spawner
   _isStop: 0
   _deleteTime: 3
-  _crabPower: 2
+--- !u!114 &7343513366205210273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2822385421455536066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2608076e0662404d8957a0e4b55bace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attack: 5
+  _playerTag: Player
