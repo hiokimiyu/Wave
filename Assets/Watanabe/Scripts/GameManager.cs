@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     /// <summary> シーン上の敵をまとめた親オブジェクト </summary>
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
-
     /// <summary> シーン上のスポナーをまとめた親オブジェクト </summary>
     public GameObject SpawnerParent { get => _spawnerParent; set => _spawnerParent = value; }
     public AttackType Type { get => _type; set => _type = value; }
@@ -59,11 +58,11 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// Playerの攻撃
-    /// PlayerShot -> Update -> if(.....("Fire1")) の部分で呼び出す
+    /// PlayerShot -> Update -> if(.....("Fire1")) の部分にある程度書いてあるため、
+    /// +αでやりそうなことを書いておく
     /// </summary>
-    public void PlayerAttack()
+    void PlayerAttack()
     {
-        //Animation再生?
         //SE再生(現在は適当に設定しているため、後で調整)
         _sound.AudioPlay(_attackAudios[0]);
     }
@@ -74,16 +73,23 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void AttackSwitch()
     {
-        if (Type == AttackType.Warm)
+        //現在の状態によって切り替える(順番に)
+        if (Type == AttackType.Normal)
+        {
+            Type = AttackType.Warm;
+        }
+        else if (Type == AttackType.Warm)
         {
             Type = AttackType.Cold;
         }
         else if (Type == AttackType.Cold)
         {
-            Type = AttackType.Warm;
+            Type = AttackType.PowerAttack;
         }
-        //(再生する音があれば)SE再生
-        //_sound.AudioPlay(_attackAudios[i]);
+        else if (Type == AttackType.PowerAttack)
+        {
+            Type = AttackType.Normal;
+        }
     }
 
     /// <summary> 攻撃の種類 </summary>
@@ -95,5 +101,7 @@ public class GameManager : MonoBehaviour
         Cold,
         /// <summary> 熱波 </summary>
         Warm,
+        /// <summary> 衝撃波 </summary>
+        PowerAttack,
     }
 }
