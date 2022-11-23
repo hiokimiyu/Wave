@@ -5,7 +5,7 @@ public class BossMove : MonoBehaviour, IDamage
     [Tooltip("GameManager")]
     [SerializeField] GameManager _gameManager;
     [Tooltip("エネミー")]
-    [SerializeField] GameObject[] _enemy = new GameObject[2];
+    [SerializeField] GameObject[] _enemy = new GameObject[3];
     [Tooltip("エネミーを出すところ")]
     [SerializeField] Transform _spawnPos;
     [Tooltip("HP")]
@@ -31,7 +31,10 @@ public class BossMove : MonoBehaviour, IDamage
     /// <summary>最初の自分の位置を入れておく</summary>
     Vector2 _startPos;
     bool _isAtack;
+    /// <summary>モード切り替えに対応する敵を出すための数字</summary>
     int _mode = 0;
+    /// <summary>出したエネミーをカウントする</summary>
+    int _enemyCount = 0;
 
     //デバックするため見えるようにしておく↓
 
@@ -41,6 +44,8 @@ public class BossMove : MonoBehaviour, IDamage
     [SerializeField] bool _isPowerUp = false;
     /// <summary>モード切替や移動間隔はかるタイマー</summary>
     [SerializeField] float _timer = 0;
+    [Tooltip("何体出すか")]
+    [SerializeField] int _enemyNum;
     [Tooltip("自分の行動")]
     [SerializeField] AttackPattern _attackPattern;
 
@@ -82,6 +87,10 @@ public class BossMove : MonoBehaviour, IDamage
                 pos.y = Mathf.Sin(rad) * _circleRadius;
                 transform.position = pos;
                 _time += Time.deltaTime;
+                if (_enemyCount <= _enemyNum)
+                {
+                    Spawan();
+                }
                 break;
 
             /// <summary>炎君出す時の行動</summary>
@@ -89,8 +98,7 @@ public class BossMove : MonoBehaviour, IDamage
                 if (!_isAtack)
                 {
                     _isAtack = true;
-                    int y = Random.Range(0, 2) == 0 ? 0 : 180;
-                    Instantiate(_enemy[_mode], _spawnPos.position, Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
+                    Spawan();
                 }
                 if (_timer > _moveTime + _stopTime)
                 {
@@ -98,6 +106,7 @@ public class BossMove : MonoBehaviour, IDamage
                     _isMode = false;
                     _isAtack = false;
                     _timer = 0;
+                    _enemyCount = 0;
                 }//一定時間たったら移動させる
                 break;
 
@@ -106,8 +115,7 @@ public class BossMove : MonoBehaviour, IDamage
                 if (!_isAtack)
                 {
                     _isAtack = true;
-                    int y = Random.Range(0, 2) == 0 ? 0 : 180;
-                    Instantiate(_enemy[_mode], _spawnPos.position, Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
+                    Spawan();
                 }
                 if (_timer > _moveTime + _stopTime)
                 {
@@ -115,6 +123,7 @@ public class BossMove : MonoBehaviour, IDamage
                     _attackPattern = AttackPattern.Normal;
                     _isMode = false;
                     _timer = 0;
+                    _enemyCount = 0;
                 }//一定時間たったら移動させる
                 break;
         }
@@ -125,7 +134,6 @@ public class BossMove : MonoBehaviour, IDamage
         _hp -= _dmage;
     }
 
-    //炎、雪の時は自分は反対の属性を持っておく
     /// <summary>自分の行動</summary>
     enum AttackPattern
     {
@@ -135,5 +143,12 @@ public class BossMove : MonoBehaviour, IDamage
         Flame,
         /// <summary>雪を出すとき</summary>
         Snow,
+    }
+
+    void Spawan()
+    {
+        _enemyCount++;
+        int y = Random.Range(0, 2) == 0 ? 0 : 180;
+        Instantiate(_enemy[_mode], _spawnPos.position, Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
     }
 }
