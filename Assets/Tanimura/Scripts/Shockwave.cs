@@ -15,7 +15,7 @@ public class Shockwave : MonoBehaviour
     TestEnemyHp _colObjHp;
     Kani _colKaniScript;
 
-
+Å@Å@
     void Start()
     {
         

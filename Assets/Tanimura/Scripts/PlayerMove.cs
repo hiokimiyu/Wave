@@ -89,6 +89,7 @@ public class PlayerMove : MonoBehaviour
             _playerHp -= damage;
             _hpBar.value = _playerHp;
             StartCoroutine(GodMode());
+            Debug.Log(_playerHp);
         }
     }
 

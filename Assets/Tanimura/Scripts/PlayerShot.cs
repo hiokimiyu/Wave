@@ -21,12 +21,14 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] GameObject _gameManager;
     /// <summary>ゲームマネージャーから攻撃の判定を受け取るための変数 </summary>
     GameManager _attackTypeJudge;
-
+    VitalCapacity _healJudge;
 
     void Start()
     {
         //あとでゲームマネージャーから何の攻撃を出すか受け取る
         //_attackTypeJudge = _gameManager.GetComponent<GameManager>();
+
+        _healJudge = gameObject.GetComponent<VitalCapacity>();
     }
 
     void Update()
@@ -44,11 +46,17 @@ public class PlayerShot : MonoBehaviour
             //    Debug.Log(shot.GetComponent<SoundWave>()._dir);
             //}
 
-            //自分の位置からマウスの位置に向かって温度波を出す
-            GameObject shot = Instantiate(_flameWave[0],gameObject.transform.position,Quaternion.identity);
-            var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
-            var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
-            shot.transform.localRotation = rotation;
+            //肺活量が足りているなら攻撃を出す
+            if (_healJudge.VitalCapacityUse(_temperatureWaveCost))
+            {
+                //自分の位置からマウスの位置に向かって温度波を出す
+                GameObject shot = Instantiate(_flameWave[0], gameObject.transform.position, Quaternion.identity);
+                var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
+                var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
+                shot.transform.localRotation = rotation;
+                StartCoroutine(IsRecovery(0.5f));
+                
+            }
 
 
         }
@@ -58,5 +66,16 @@ public class PlayerShot : MonoBehaviour
             //攻撃切り替えの処理を後で書く
             Debug.Log("RightClick");
         }
+    }
+    
+    /// <summary> 攻撃後少しだけ肺活量の回復を止めて、また再開する処理 </summary>
+    /// <param name="RearGap"></param>
+    /// <returns></returns>
+    IEnumerator IsRecovery(float RearGap)
+    {
+        _healJudge.IsRecovery = false;
+        yield return new WaitForSeconds(RearGap);
+        _healJudge.IsRecovery = true;
+        Debug.Log(_healJudge.IsRecovery);
     }
 }
