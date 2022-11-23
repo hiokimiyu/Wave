@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _spawnerParent;
     [Tooltip("UŒ‚ŠÖŒW‚Ì‰¹")]
     [SerializeField] AudioClip[] _attackAudios = new AudioClip[10];
+    [Tooltip("Œ»İ‚ÌUŒ‚‚Ìó‘Ô‚ğ•\¦‚·‚éUI")]
+    [SerializeField] Text _attackTypeText;
 
     /// <summary> UŒ‚‚Ìí—Ş </summary>
     AttackType _type = AttackType.Normal;
     /// <summary> ‰¹‚ğÄ¶‚·‚éManager </summary>
     SoundManager _sound;
+    string _attackType = "‰¹”g";
 
     /// <summary> ƒV[ƒ“ã‚Ì“G‚ğ‚Ü‚Æ‚ß‚½eƒIƒuƒWƒFƒNƒg </summary>
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
@@ -49,6 +53,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _attackTypeText.text = _attackType;
+
         if (SceneEnemies.Count == 0 && Spawner.Count == 0)
         {
             WaveCount++;
@@ -70,25 +76,31 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// UŒ‚‚ÌØ‚è‘Ö‚¦
     /// PlayerShot -> Update -> if(.....("Fire2")) ‚Ì•”•ª‚ÅŒÄ‚Ño‚·
+    /// UI‚Ì•\¦(Œ»İ‚Ìó‘Ô‚ğ‰Â‹‰»‚·‚é‚½‚ß)
     /// </summary>
     public void AttackSwitch()
     {
         //Œ»İ‚Ìó‘Ô‚É‚æ‚Á‚ÄØ‚è‘Ö‚¦‚é(‡”Ô‚É)
+        //UI•\¦‚Ìˆ—‚ğ‘‚­
         if (Type == AttackType.Normal)
         {
             Type = AttackType.Warm;
+            _attackType = "”M”g";
         }
         else if (Type == AttackType.Warm)
         {
             Type = AttackType.Cold;
+            _attackType = "Š¦”g";
         }
         else if (Type == AttackType.Cold)
         {
             Type = AttackType.PowerAttack;
+            _attackType = "ÕŒ‚”g";
         }
         else if (Type == AttackType.PowerAttack)
         {
             Type = AttackType.Normal;
+            _attackType = "‰¹”g";
         }
     }
 
