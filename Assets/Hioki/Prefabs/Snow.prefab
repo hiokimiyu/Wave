@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5826121052892610274}
   - component: {fileID: 5826121052892610275}
   - component: {fileID: 5826121052892610276}
+  - component: {fileID: 412370741424984316}
   m_Layer: 0
   m_Name: Snow
   m_TagString: Snow
@@ -180,7 +181,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xSpeed: 5
   _ySpeed: 3
-  _wallTag: Wall
   _attackTime: 3
+  _wallTag: Wall
   _muzzle: {fileID: 7684984680559751486}
   _bullet: {fileID: 8617539441833070919, guid: 93b1c3acbf4aaac41bd9278b7b1be815, type: 3}
+  _hp: 5
+  _damage: 5
+--- !u!114 &412370741424984316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826121052892610277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2608076e0662404d8957a0e4b55bace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attack: 1
+  _playerTag: Player

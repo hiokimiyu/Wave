@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8617539441833070936}
   - component: {fileID: 5244889454274426203}
   - component: {fileID: 3745677322228929033}
+  - component: {fileID: -4618679365736800474}
   m_Layer: 0
   m_Name: SnowBullet
   m_TagString: Snow
@@ -115,4 +116,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _playerTag: Player
+--- !u!114 &-4618679365736800474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617539441833070919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2608076e0662404d8957a0e4b55bace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attack: 3
   _playerTag: Player

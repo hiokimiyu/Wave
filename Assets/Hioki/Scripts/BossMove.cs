@@ -15,7 +15,7 @@ public class BossMove : MonoBehaviour, IDamage
     [Tooltip("強くなるときにマイナスする止まる時間")]
     [SerializeField] float _reduceTime = 2f;
     [Tooltip("あたえるダメージ")]
-    [SerializeField] float _dmage = 1;
+    [SerializeField] float _damage = 1;
     [Tooltip("止まった所から移動するまでの時間")]
     [SerializeField, Range(1, 10)] float _moveTime = 3f;
     [Tooltip("敵を出すときに止まる時間")]
@@ -30,7 +30,8 @@ public class BossMove : MonoBehaviour, IDamage
     [SerializeField] bool _isLeft;
     /// <summary>最初の自分の位置を入れておく</summary>
     Vector2 _startPos;
-    bool _isAtack;
+    /// <summary>攻撃したかどうか</summary>
+    bool _isAttack;
     /// <summary>モード切り替えに対応する敵を出すための数字</summary>
     int _mode = 0;
     /// <summary>出したエネミーをカウントする</summary>
@@ -89,49 +90,42 @@ public class BossMove : MonoBehaviour, IDamage
                 _time += Time.deltaTime;
                 if (_enemyCount <= _enemyNum)
                 {
-                    Spawan();
+                    Spawn();
                 }
                 break;
 
             /// <summary>炎君出す時の行動</summary>
             case AttackPattern.Flame: // == 1
-                if (!_isAtack)
-                {
-                    _isAtack = true;
-                    Spawan();
-                }
-                if (_timer > _moveTime + _stopTime)
-                {
-                    _attackPattern = AttackPattern.Normal;
-                    _isMode = false;
-                    _isAtack = false;
-                    _timer = 0;
-                    _enemyCount = 0;
-                }//一定時間たったら移動させる
+                Attack();
                 break;
 
             ///<summary>雪君出す時の行動</summary>
             case AttackPattern.Snow: // == 2
-                if (!_isAtack)
-                {
-                    _isAtack = true;
-                    Spawan();
-                }
-                if (_timer > _moveTime + _stopTime)
-                {
-                    _isAtack = false;
-                    _attackPattern = AttackPattern.Normal;
-                    _isMode = false;
-                    _timer = 0;
-                    _enemyCount = 0;
-                }//一定時間たったら移動させる
+                Attack();
                 break;
         }
     }
 
+    private void Attack()
+    {
+        if (!_isAttack)
+        {
+            _isAttack = true;
+            Spawn();
+        }
+        if (_timer > _moveTime + _stopTime)
+        {
+            _isAttack = false;
+            _attackPattern = AttackPattern.Normal;
+            _isMode = false;
+            _timer = 0;
+            _enemyCount = 0;
+        }//一定時間たったら移動させる
+    }
+
     void IDamage.Damage()
     {
-        _hp -= _dmage;
+        _hp -= _damage;
     }
 
     /// <summary>自分の行動</summary>
@@ -145,7 +139,7 @@ public class BossMove : MonoBehaviour, IDamage
         Snow,
     }
 
-    void Spawan()
+    void Spawn()
     {
         _enemyCount++;
         int y = Random.Range(0, 2) == 0 ? 0 : 180;

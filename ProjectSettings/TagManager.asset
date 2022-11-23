@@ -9,6 +9,7 @@ TagManager:
   - Crab
   - Snow
   - Flame
+  - Spawner
   layers:
   - Default
   - TransparentFX
