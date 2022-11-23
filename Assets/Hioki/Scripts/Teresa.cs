@@ -2,23 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teresa : MonoBehaviour
+public class Teresa : MonoBehaviour, IDamage
 {
     Rigidbody2D _rb;
     [Tooltip("横移動スピード")]
     [SerializeField] float _xSpeed = 5;
     [Tooltip("縦移動")]
     [SerializeField] float _ySpeed = 0;
-    [Tooltip("壁のオブジェクトのタグ名")]
-    [SerializeField, TagName] string _wallTag;
     [Tooltip("攻撃間隔")]
     [SerializeField] float _attackTime = 3;
-    /// <summary>攻撃間隔はかるタイマー</summary>
-    float _attack = 0;
+    [Tooltip("壁のオブジェクトのタグ名")]
+    [SerializeField, TagName] string _wallTag;
     [Tooltip("muzzle")]
     [SerializeField] Transform _muzzle;
     [Tooltip("弾")]
     [SerializeField] GameObject _bullet;
+    /// <summary>攻撃間隔はかるタイマー</summary>
+    float _attackTimer = 0;
+
+    //テストしやすいように見えるようにしておくもの↓
+    [Tooltip("HP")]
+    [SerializeField] int _hp = 5;
+    [Tooltip("ダメージ量")]
+    [SerializeField] int _damage = 5;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -29,12 +36,12 @@ public class Teresa : MonoBehaviour
 
     void Update()
     {
-        _attack += Time.deltaTime;
+        _attackTimer += Time.deltaTime;
 
-        if (_attackTime < _attack)
+        if (_attackTime < _attackTimer)
         {
             Instantiate(_bullet, _muzzle.position, transform.rotation, transform);
-            _attack = 0;
+            _attackTimer = 0;
         }//攻撃
 
         //移動
@@ -43,6 +50,11 @@ public class Teresa : MonoBehaviour
         //方向転換
         transform.eulerAngles = _xSpeed < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
 
+    }
+
+    void IDamage.Damage()
+    {
+        _hp -= _damage;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

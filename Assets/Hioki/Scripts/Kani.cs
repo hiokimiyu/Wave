@@ -9,6 +9,8 @@ public class Kani : MonoBehaviour, IDamage
     [SerializeField] float _speed = 5;
     [Tooltip("壁のオブジェクトのタグ名")]
     [SerializeField, TagName] string _wallTag;
+    [Tooltip("スポナーのタグ")]
+    [SerializeField, TagName] string _spawnerTag;
     [Tooltip("かにの状態")]
     [SerializeField] bool _isStop;
     [Tooltip("かにが消える時間")]
@@ -49,16 +51,25 @@ public class Kani : MonoBehaviour, IDamage
         //方向転換
         transform.eulerAngles = _speed < 0 ? new Vector3(0, 180, _z) : new Vector3(0, 0, _z);
     }
-    void IDamage.Dmage()
+
+    void IDamage.Damage()
     {
+        //かにがストップする
         _isStop = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //かべ、自分と同じタグに当たったら
         if (collision.gameObject.tag == _wallTag || collision.gameObject.tag == gameObject.tag)
         {
             _speed *= -1f;
         }//方向転換
+
+        if (collision.gameObject.tag == _spawnerTag)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }//スポナーに当たったら消す
     }
 }

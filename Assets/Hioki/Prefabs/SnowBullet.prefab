@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5244889454274426203}
   - component: {fileID: 3745677322228929033}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Untagged
+  m_Name: SnowBullet
+  m_TagString: Snow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

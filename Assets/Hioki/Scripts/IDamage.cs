@@ -3,6 +3,6 @@
 /// </summary>
 interface IDamage
 {
-    /// <summary>ダメージ受けるときの処理(HP-)を実装する</summary>
-    void Dmage();
+    /// <summary>ダメージ受けるときの処理(HP-など)を実装する</summary>
+    void Damage();
 }

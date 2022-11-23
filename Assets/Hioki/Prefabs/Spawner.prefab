@@ -165,3 +165,5 @@ MonoBehaviour:
   _spawnKaniPos: {fileID: 8712652374158181277}
   _spawnTeresaPos: {fileID: 8712652373455695292}
   _time: 3
+  _kaniTag: Crab
+  _gameManager: {fileID: 0}

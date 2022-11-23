@@ -180,7 +180,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _xSpeed: 5
   _ySpeed: 3
-  _wallTag: Wall
   _attackTime: 3
+  _wallTag: Wall
   _muzzle: {fileID: 7684984680559751486}
-  _bullet: {fileID: 8617539441833070919, guid: 93b1c3acbf4aaac41bd9278b7b1be815, type: 3}
+  _bullet: {fileID: 8617539441833070919, guid: 164fa7984728fd542b287c40e4fae291, type: 3}
+  _hp: 5
+  _damage: 5
