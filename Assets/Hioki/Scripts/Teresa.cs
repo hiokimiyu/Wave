@@ -40,7 +40,7 @@ public class Teresa : MonoBehaviour, IDamage
 
         if (_attackTime < _attackTimer)
         {
-            Instantiate(_bullet, _muzzle.position, transform.rotation, transform);
+            Instantiate(_bullet, _muzzle.position, transform.rotation);
             _attackTimer = 0;
         }//UŒ‚
 
