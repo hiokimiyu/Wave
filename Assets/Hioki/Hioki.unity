@@ -162,19 +162,8 @@ MonoBehaviour:
   _spawnPos: {fileID: 1768944588}
   _hp: 10
   _powerUpHp: 4
-  _reduceTime: 2
-  _damage: 1
   _moveTime: 5
-  _stopTime: 5
-  _circleSpeed: 1
-  _circleRadius: 3
-  _isLeft: 0
-  _isMode: 0
-  _isPowerUp: 0
-  _timer: 0
   _enemyNum: 2
-  _attackPattern: 0
-  _layerNum: 0
 --- !u!212 &218383816
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -343,7 +332,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342062612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.68, y: 0.56, z: 0}
+  m_LocalPosition: {x: 3.65, y: 2.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -704,17 +693,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyParent: {fileID: 529911411}
   _spawnerParent: {fileID: 529911411}
-  _attackAudios:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _attackTypeText: {fileID: 0}
 --- !u!4 &1544243733
 Transform:
