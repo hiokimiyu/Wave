@@ -8,9 +8,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] float _speed = 1f;
     [Tooltip("Playerのタグ")]
     [SerializeField, TagName] string _playerTag;
-    /// <summary>Playerのオブジェクト</summary>
+    /// <summary> Playerのオブジェクト </summary>
     GameObject _player;
-    float timer;
+    /// <summary> オブジェクト出現後からのタイマー </summary>
+    float _timer;
+
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag(_playerTag);
@@ -21,17 +23,17 @@ public class Bullet : MonoBehaviour
         //自機狙い
         transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, _speed * Time.deltaTime);
 
-         timer += Time.deltaTime;
+         _timer += Time.deltaTime;
 
-        if(timer >= 3)
+        if(_timer >= 3)
         {
             Destroy(gameObject);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == _playerTag)
+        if (collision.gameObject.tag == _playerTag)
         {
             Destroy(gameObject);
         }
