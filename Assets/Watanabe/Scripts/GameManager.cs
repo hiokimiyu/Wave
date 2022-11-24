@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// Player‚ÌUŒ‚
-    /// PlayerShot -> Update -> if(.....("Fire1")) ‚Ì•”•ª‚É‚ ‚é’ö“x‘‚¢‚Ä‚ ‚é‚½‚ßA
+    /// PlayerShot -> Update -> if(.....("Fire1")) ‚Ì•”•ª‚É‚ ‚é’ö“x‘‚¢‚Ä‚ ‚é‚½‚ß
     /// +ƒ¿‚Å‚â‚è‚»‚¤‚È‚±‚Æ‚ğ‘‚¢‚Ä‚¨‚­
     /// </summary>
     void PlayerAttack()
