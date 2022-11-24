@@ -45,6 +45,21 @@ public class KaniCatch : MonoBehaviour
             return false;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == _crabTag)
+        {
+            _isCanKaniCatch = true;
+        }
+    }
 
-    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(_isCanKaniCatch)
+        {
+            _isCanKaniCatch = false;
+        }
+    }
+
+
 }
