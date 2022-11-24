@@ -53,6 +53,14 @@ public class PlayerMove : MonoBehaviour
         //移動の処理
         float h = Input.GetAxisRaw("Horizontal");
         _rb.velocity = new Vector2(h*_speed, _rb.velocity.y);
+        if(h != 0)
+        {
+            _damageAnimation.SetBool("IsWalking", true);
+        }
+        else
+        {
+            _damageAnimation.SetBool("IsWalking", false);
+        }
         //地面にいるときだけジャンプする
         if (Input.GetButtonDown("Jump")　&& _isGround)
         {
