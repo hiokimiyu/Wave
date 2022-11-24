@@ -51,7 +51,7 @@ public class PlayerShot : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             //ƒJƒj‚ğ‚Á‚Ä‚¢‚½‚ç‚»‚Ì‚Ü‚Ü”ò‚Î‚·
-            if (_isKaniCatch)
+            if (IsKaniCatch)
             {
                 //“Š‚°‚éˆ—
                 KaniShot();

@@ -13,14 +13,6 @@ public class Attack : MonoBehaviour
     {
         
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if(collision.gameObject.tag == _playerTag)
-    //    {
-    //        var player = collision.gameObject.GetComponent<PlayerMove>();
-    //        player.Damage(_attack);
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

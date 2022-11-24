@@ -16,7 +16,6 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag(_playerTag);
-        Debug.Log(_player.name);
     }
 
     void Update()
