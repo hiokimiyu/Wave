@@ -58,6 +58,7 @@ public class PlayerShot : MonoBehaviour
                 //カニを投げた後にカニの表示を消す
                 _kaniCatchJudge.KaniLost();
                 _crabBullet.SetActive(false);
+                IsKaniCatch = false;
 
             }
             //攻撃種類の判定,音波
@@ -140,6 +141,6 @@ public class PlayerShot : MonoBehaviour
     public void KaniShot()
     {
         KaniBullet.Instantiate(_crabBullet, gameObject.transform.position, Quaternion.identity, gameObject.transform);
-        _isKaniCatch = false;
+        
     }
 }
