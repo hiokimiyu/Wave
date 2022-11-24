@@ -14,6 +14,19 @@ public class Fade : MonoBehaviour
     [Tooltip("遷移先のシーン名")]
     [SerializeField, SceneName] string _sceneName;
 
+    private void Start()
+    {
+        StartCoroutine(FadeIn(0, 1.5f));
+    }
+
+    /// <summary>
+    /// Inspectorで指定するフェード開始処理
+    /// </summary>
+    public void FadeStart()
+    {
+        StartCoroutine(FadeOut(0, 1.5f));
+    }
+
     /// <summary>
     /// フェードインの処理
     /// (真っ黒なパネルのα値[透明度]を徐々に下げる)
