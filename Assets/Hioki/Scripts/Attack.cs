@@ -8,6 +8,7 @@ public class Attack : MonoBehaviour
     [SerializeField] int _attack;
     [Tooltip("プレイヤータグ")]
     [SerializeField, TagName] string _playerTag;
+
     private void Start()
     {
         
