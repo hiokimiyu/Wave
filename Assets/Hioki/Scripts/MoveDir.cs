@@ -23,10 +23,10 @@ public class MoveDir : MonoBehaviour
         if (_isMoveType)
         {
             transform.position = new Vector2(_startPos.x, Mathf.Sin((Time.time) * _speed) * _length + _startPos.y);
-        }
+        }//¶‰E‚É“®‚­‚Æ‚«
         else
         {
             transform.position = new Vector2((Mathf.Sin((Time.time) * _speed) * _length + _startPos.x), _startPos.y);
-        }
+        }//c‚É“®‚­‚Æ‚«
     }
 }

@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class RideOnOff : MonoBehaviour
 {
-    /// <summary>乗っているかいないか判定</summary>
-    bool _isRide;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isRide = true;
-        GameObject _empty = new GameObject();
-        _empty.transform.parent = transform;
-        collision.transform.parent = _empty.transform;
-        _empty.name = "empty";
+        //上にのる時に一緒に動くゲームオブジェクト追加
+        GameObject empty = new GameObject();
+        //動く床と同じところに場所を合わせる
+        empty.transform.parent = transform;
+        //乗ってきたオブジェクトを作ったオブジェクトに入れる
+        collision.transform.parent = empty.transform;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        _isRide = false;
+        //親子関係をなくす
         collision.transform.parent = null;
-        GameObject _empty = gameObject.transform.GetChild(0).gameObject;
-        Destroy(_empty);
+        //作ったゲームオブジェクトを取得して消す
+        GameObject empty = gameObject.transform.GetChild(0).gameObject;
+        Destroy(empty);
     }
 }
