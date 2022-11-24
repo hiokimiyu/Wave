@@ -12,6 +12,7 @@ public class SoundWave : MonoBehaviour
     [SerializeField, TagName] string _clabTag;
     [Tooltip("音波が与えるダメージ")]
     [SerializeField] int _damage;
+    [SerializeField] float _lifeTime;
     Kani _colKaniScript;
     /// <summary>飛ぶ方向の変数</summary>
     float _dir = 1;  //プロパティ化
@@ -25,7 +26,11 @@ public class SoundWave : MonoBehaviour
     }
     void Update()
     {
-        
+        _lifeTime -= Time.deltaTime;
+        if(_lifeTime < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

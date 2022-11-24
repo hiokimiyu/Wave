@@ -27,7 +27,7 @@ public class FlameWave : MonoBehaviour
     {
         Debug.Log("Collision");
         string colObj = collision.gameObject.tag;
-        if (collision.tag == _SnowTag)//
+        if (collision.tag == _SnowTag)
         {
             Debug.Log(colObj);
             _colObjHp = collision.gameObject.GetComponent<TestEnemyHp>();
