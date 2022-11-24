@@ -51,7 +51,7 @@ public class PlayerShot : MonoBehaviour
                 _crabBullet.SetActive(false);
 
             }
-            else if (_attackTypeJudge.Type == GameManager.AttackType.Normal)
+            else if (_attackTypeJudge.Type == GameManager.AttackStrength.Normal)
             {
                 //攻撃を飛ばす処理を書く(とりあえず音波を飛ばす処理だけ。ローテーションの値で左右を判定してどっちに飛ばすか決めている)
                 Debug.Log("LeftClick");

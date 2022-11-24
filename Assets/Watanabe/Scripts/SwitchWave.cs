@@ -18,7 +18,7 @@ public class SwitchWave : MonoBehaviour
         //Ø‚è‘Ö‚¦ƒIƒuƒWƒFƒNƒg‚ÉG‚ê‚½‚ÉŠ¦”gA”M”g‚ğØ‚è‘Ö‚¦‚é
         //Š¦”gA”M”g‚ÌØ‚è‘Ö‚¦(false...Š¦”g, true...”M”g)
         IsWarm = IsWarm == true ? false : true;
-        Debug.Log(IsWarm);
+        Debug.Log($"{IsWarm}");
         //player‚ÉAŒ»İ‚ÌUŒ‚‚Ìó‘Ô‚ğ•Û‘¶‚µ‚Ä‚¨‚­•Ï”‚ğ—pˆÓ‚µ‚Ä‚à‚ç‚¤
     }
 

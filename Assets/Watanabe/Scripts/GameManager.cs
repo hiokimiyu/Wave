@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     [Tooltip("Œ»İ‚ÌUŒ‚‚Ìó‘Ô‚ğ•\¦‚·‚éUI")]
     [SerializeField] Text _attackTypeText;
 
+    /// <summary> UŒ‚‚Ì‹­‚³ </summary>
+    AttackStrength _strength = AttackStrength.Normal;
     /// <summary> UŒ‚‚Ìí—Ş </summary>
-    AttackType _type = AttackType.Normal;
+    AttackType _type = AttackType.Cold;
     /// <summary> ‰¹‚ğÄ¶‚·‚éManager </summary>
     SoundManager _sound;
     /// <summary> ƒtƒF[ƒhƒCƒ“AƒAƒEƒg‚ÌƒNƒ‰ƒX </summary>
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
     /// <summary> ƒXƒ|ƒi[‚ğ‚Ü‚Æ‚ß‚½eƒIƒuƒWƒFƒNƒg </summary>
     public GameObject SpawnerParent { get => _spawnerParent; set => _spawnerParent = value; }
+    /// <summary> UŒ‚‚Ì‹­‚³ </summary>
+    public AttackStrength Strength { get => _strength; set => _strength = value; }
     public AttackType Type { get => _type; set => _type = value; }
     /// <summary> “G‚ğ‚Ü‚Æ‚ß‚éList </summary>
     public List<GameObject> SceneEnemies { get; set; }
@@ -100,38 +104,45 @@ public class GameManager : MonoBehaviour
     {
         //Œ»İ‚Ìó‘Ô‚É‚æ‚Á‚ÄØ‚è‘Ö‚¦‚é(‡”Ô‚É)
         //UI•\¦‚Ìˆ—‚ğ‘‚­
-        if (Type == AttackType.Normal)
+        if (Strength == AttackStrength.Normal)
         {
-            Type = AttackType.Warm;
-            _attackType = "”M”g";
+            Strength = AttackStrength.Middle;
+            _attackType = "‚¿‚å‚Á‚Æ‹­‚¢";
         }
-        else if (Type == AttackType.Warm)
+        else if (Strength == AttackStrength.Middle)
         {
-            Type = AttackType.Cold;
-            _attackType = "Š¦”g";
-        }
-        else if (Type == AttackType.Cold)
-        {
-            Type = AttackType.PowerAttack;
+            if (Type == AttackType.Cold)
+                Type = AttackType.Warm;
+            else
+                Type = AttackType.Cold;
+
+            Strength = AttackStrength.PowerAttack;
             _attackType = "ÕŒ‚”g";
         }
-        else if (Type == AttackType.PowerAttack)
+        else if (Strength == AttackStrength.PowerAttack)
         {
-            Type = AttackType.Normal;
-            _attackType = "‰¹”g";
+            Strength = AttackStrength.Normal;
+            _attackType = "‰¹”g(•’Ê)";
         }
+    }
+
+    /// <summary> UŒ‚‚Ì‹­‚³ </summary>
+    public enum AttackStrength
+    {
+        /// <summary> ‰¹”g(’Êí) </summary>
+        Normal,
+        /// <summary> ‚¿‚å‚Á‚Æ‹­‚¢‚â‚Â </summary>
+        Middle,
+        /// <summary> ÕŒ‚”g </summary>
+        PowerAttack,
     }
 
     /// <summary> UŒ‚‚Ìí—Ş </summary>
     public enum AttackType
     {
-        /// <summary> ‰¹”g(’Êí) </summary>
-        Normal,
         /// <summary> Š¦”g </summary>
         Cold,
         /// <summary> ”M”g </summary>
         Warm,
-        /// <summary> ÕŒ‚”g </summary>
-        PowerAttack,
     }
 }
