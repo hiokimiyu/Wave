@@ -56,10 +56,11 @@ public class KaniCatch : MonoBehaviour
     }
 
     /// <summary>ƒJƒj‚ğ“Š‚°‚½‚É•\¦‚ğÁ‚·</summary>
-    public void KaniLost()
+    public void KaniLost(GameObject check)
     {
         Debug.Log("a");
         //_crabIllust.SetActive(false);
-        _crabIllust.GetComponent<SpriteRenderer>().enabled = false;
+        _crabIllust = check;
+        check.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

@@ -56,7 +56,7 @@ public class PlayerShot : MonoBehaviour
                 //投げる処理
                 KaniShot();
                 //カニを投げた後にカニの表示を消す
-                _kaniCatchJudge.KaniLost();
+                _kaniCatchJudge.KaniLost(transform.GetChild(0).gameObject);
                 _crabBullet.SetActive(false);
                 IsKaniCatch = false;
 
