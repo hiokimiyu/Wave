@@ -24,6 +24,7 @@ public class Fade : MonoBehaviour
     /// </summary>
     public void FadeStart()
     {
+        _fadePanel.raycastTarget = true;
         StartCoroutine(FadeOut(0, 1.5f));
     }
 
@@ -56,6 +57,7 @@ public class Fade : MonoBehaviour
         }
         //while...ã‹L‚Ìˆ—‚ğÀs‚µ‘±‚¯‚éğŒ(true‚ÌŠÔÀs‚³‚ê‚é)
         while (fadeTime <= interval);
+        _fadePanel.raycastTarget = false;
     }
 
     /// <summary>
