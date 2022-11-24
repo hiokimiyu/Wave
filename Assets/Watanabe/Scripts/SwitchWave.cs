@@ -9,17 +9,20 @@ public class SwitchWave : MonoBehaviour
 {
     [Tooltip("Ø‚è‘Ö‚¦ƒIƒuƒWƒFƒNƒg‚É“ü‚Á‚Ä‚«‚½‚Ì‚ªPlayer‚©‚Ç‚¤‚©")]
     [SerializeField, TagName] string _enterTag;
-
-    /// <summary> Š¦”g‚©A”M”g‚©(false...Š¦”g, true...”M”g) </summary>
-    public bool IsWarm { get; set; }
+    [Tooltip("GameManager(Ø‚è‘Ö‚¦—p)")]
+    [SerializeField] GameManager _manager;
 
     void Switch()
     {
         //Ø‚è‘Ö‚¦ƒIƒuƒWƒFƒNƒg‚ÉG‚ê‚½‚ÉŠ¦”gA”M”g‚ğØ‚è‘Ö‚¦‚é
-        //Š¦”gA”M”g‚ÌØ‚è‘Ö‚¦(false...Š¦”g, true...”M”g)
-        IsWarm = IsWarm == true ? false : true;
-        Debug.Log($"{IsWarm}");
-        //player‚ÉAŒ»İ‚ÌUŒ‚‚Ìó‘Ô‚ğ•Û‘¶‚µ‚Ä‚¨‚­•Ï”‚ğ—pˆÓ‚µ‚Ä‚à‚ç‚¤
+        if (_manager.Type == GameManager.AttackType.Cold)
+        {
+            _manager.Type = GameManager.AttackType.Warm;
+        }
+        else
+        {
+            _manager.Type = GameManager.AttackType.Cold;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
