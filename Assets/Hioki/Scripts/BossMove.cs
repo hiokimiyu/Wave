@@ -8,54 +8,55 @@ public class BossMove : MonoBehaviour, IDamage
     [SerializeField] GameObject[] _enemy = new GameObject[3];
     [Tooltip("エネミーを出すところ")]
     [SerializeField] Transform _spawnPos;
+    //ここから上はSerializeする必要がある
+
     [Tooltip("HP")]
     [SerializeField, Range(0, 100)] float _hp = 10f;
     [Tooltip("強くなる時の残りHP")]
-    [SerializeField] float _powerUpHp = 4f;
-    [Tooltip("強くなるときにマイナスする止まる時間")]
-    [SerializeField] float _reduceTime = 2f;
-    [Tooltip("あたえるダメージ")]
-    [SerializeField] float _damage = 1;
+    [SerializeField] int _powerUpHp = 4;
     [Tooltip("止まった所から移動するまでの時間")]
     [SerializeField, Range(1, 10)] float _moveTime = 3f;
-    [Tooltip("敵を出すときに止まる時間")]
-    [SerializeField] float _stopTime = 3f;
-    [Tooltip("円移動スピード")]
-    [SerializeField] float _circleSpeed = 1f;
-    [Tooltip("円の半径")]
-    [SerializeField] float _circleRadius = 5f;
+
+    /// <summary> 強くなるときにマイナスする止まる時間 </summary>
+    readonly float _reduceTime = 2f;
+    /// <summary> あたえるダメージ </summary>
+    readonly float _damage = 1;
+    /// <summary> 円移動スピード </summary>
+    readonly float _circleSpeed = 1f;
+    /// <summary> 敵を出すときに止まる時間 </summary>
+    float _stopTime = 3f;
+    /// <summary> 円の半径 </summary>
+    float _circleRadius = 5f;
     /// <summary>横移動させるためのタイマー</summary>
     float _time = 0;
-    [Tooltip("左に行くか")]
-    [SerializeField] bool _isLeft;
-    /// <summary>最初の自分の位置を入れておく</summary>
-    Vector2 _startPos;
-    /// <summary>攻撃したかどうか</summary>
-    bool _isAttack;
     /// <summary>モード切り替えに対応する敵を出すための数字</summary>
     int _mode = 0;
     /// <summary>出したエネミーをカウントする</summary>
     int _enemyCount = 0;
+    /// <summary>攻撃したかどうか</summary>
+    bool _isAttack;
+    /// <summary>最初の自分の位置を入れておく</summary>
+    Vector2 _startPos;
 
     //デバックするため見えるようにしておく↓
 
-    [Tooltip("行動したかどうか")]
-    [SerializeField] bool _isMode = false;
-    [Tooltip("パワーアップしたか")]
-    [SerializeField] bool _isPowerUp = false;
-    /// <summary>モード切替や移動間隔はかるタイマー</summary>
-    [SerializeField] float _timer = 0;
     [Tooltip("何体出すか")]
     [SerializeField] int _enemyNum;
-    [Tooltip("自分の行動")]
-    [SerializeField] AttackPattern _attackPattern;
-    [Tooltip("レイヤーの番号")]
-    [SerializeField] int _layerNum = 0;
+    /// <summary> 自分の行動 </summary>
+    AttackPattern _attackPattern = AttackPattern.Normal;
+    /// <summary>モード切替や移動間隔はかるタイマー</summary>
+    float _timer = 0;
+    /// <summary> レイヤーの番号 </summary>
+    int _layerNum = 0;
+    /// <summary> 行動したかどうか </summary>
+    bool _isMode = false;
+    /// <summary> パワーアップしたか </summary>
+    bool _isPowerUp = false;
 
     private void Start()
     {
         _startPos = transform.position;
-        _circleRadius *= _isLeft ? 1 : -1;
+        //_circleRadius *= _isLeft ? 1 : -1;
     }
     private void Update()
     {

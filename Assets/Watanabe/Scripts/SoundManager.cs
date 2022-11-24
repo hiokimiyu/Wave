@@ -7,6 +7,9 @@ using UnityEngine;
 /// </summary>
 public class SoundManager : MonoBehaviour
 {
+    [Tooltip("UŒ‚ŠÖŒW‚Ì‰¹")]
+    [SerializeField] AudioClip[] _attackAudios = new AudioClip[10];
+
     /// <summary> Ä¶—p‚ÌAudioSource </summary>
     AudioSource _source;
 

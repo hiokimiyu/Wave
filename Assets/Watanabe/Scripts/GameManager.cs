@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _enemyParent;
     [Tooltip("スポナーをまとめておく親オブジェクト")]
     [SerializeField] GameObject _spawnerParent;
-    [Tooltip("攻撃関係の音")]
-    [SerializeField] AudioClip[] _attackAudios = new AudioClip[10];
     [Tooltip("現在の攻撃の状態を表示するUI")]
     [SerializeField] Text _attackTypeText;
 
@@ -20,8 +18,6 @@ public class GameManager : MonoBehaviour
     AttackStrength _strength = AttackStrength.Normal;
     /// <summary> 攻撃の種類 </summary>
     AttackType _type = AttackType.Cold;
-    /// <summary> 音を再生するManager </summary>
-    SoundManager _sound;
     /// <summary> フェードイン、アウトのクラス </summary>
     Fade _fade;
     /// <summary> 現在の攻撃状態 </summary>
@@ -44,7 +40,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _sound = GetComponent<SoundManager>();
         _fade = GetComponent<Fade>();
 
         //各Listにシーン上の該当要素を追加する(最初に既に敵が存在している場合)
@@ -81,18 +76,6 @@ public class GameManager : MonoBehaviour
                 _fade.FadeStart();
             }
         }
-    }
-
-    /// <summary>
-    /// Playerの攻撃
-    /// PlayerShot -> Update -> if(.....("Fire1")) の部分にある程度書いてあるため
-    /// +αでやりそうなことを書いておく
-    /// 使わないかも?
-    /// </summary>
-    void PlayerAttack()
-    {
-        //SE再生(現在は適当に設定しているため、後で調整)
-        _sound.AudioPlay(_attackAudios[0]);
     }
 
     /// <summary>
