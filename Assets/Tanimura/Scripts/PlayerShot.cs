@@ -20,23 +20,20 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] int _shockWaveCost;
     [Tooltip("カニの弾の子オブジェクト")]
     [SerializeField] GameObject _crabBullet;
-    [SerializeField] GameObject _gameManager;
+    [Tooltip("攻撃の判定を受け取るための変数")]
+    [SerializeField] GameManager _gameManager;
     
    
     bool _isKaniCatch;
 
     int _rangeLV = 0;
     public int RangeLV { get => _rangeLV; set => _rangeLV = value; }
-    /// <summary>ゲームマネージャーから攻撃の判定を受け取るための変数 </summary>
-    GameManager _attackTypeJudge;
     VitalCapacity _healJudge;
     KaniCatch _kaniCatchJudge;
     
 
     void Start()
     {
-        //あとでゲームマネージャーから何の攻撃を出すか受け取る
-        _attackTypeJudge = _gameManager.GetComponent<GameManager>();
         _healJudge = gameObject.GetComponent<VitalCapacity>();
         _kaniCatchJudge = gameObject.GetComponent<KaniCatch>();
     }
@@ -51,7 +48,7 @@ public class PlayerShot : MonoBehaviour
                 _crabBullet.SetActive(false);
 
             }
-            else if (_attackTypeJudge.Type == GameManager.AttackStrength.Normal)
+            else if (_gameManager.Strength == GameManager.AttackStrength.Normal)
             {
                 //攻撃を飛ばす処理を書く(とりあえず音波を飛ばす処理だけ。ローテーションの値で左右を判定してどっちに飛ばすか決めている)
                 Debug.Log("LeftClick");
@@ -90,7 +87,7 @@ public class PlayerShot : MonoBehaviour
         {
             //攻撃切り替えの処理を後で書く
             Debug.Log("RightClick");
-            _attackTypeJudge.AttackSwitch();
+            _gameManager.AttackSwitch();
         }
 
 
