@@ -118,6 +118,7 @@ public class BossMove : MonoBehaviour, IDamage
             _isAttack = false;
             _attackPattern = AttackPattern.Normal;
             _isMode = false;
+            _mode = 0;
             _timer = 0;
             _enemyCount = 0;
         }//ˆê’èŽžŠÔ‚½‚Á‚½‚çˆÚ“®‚³‚¹‚é
