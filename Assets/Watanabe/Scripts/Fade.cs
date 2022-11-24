@@ -57,6 +57,8 @@ public class Fade : MonoBehaviour
         }
         //while...上記の処理を実行し続ける条件(trueの間実行される)
         while (fadeTime <= interval);
+        //上記の処理の後に実行したい処理がある場合、以下に記述する
+        //PanelのRaycastTargetをfalseにする(奥のButtonをクリックできるように)
         _fadePanel.raycastTarget = false;
     }
 
