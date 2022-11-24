@@ -6,7 +6,10 @@ public class KaniCatch : MonoBehaviour
 {
     [Tooltip("カニのタグ")]
     [SerializeField, TagName] string _crabTag;
-    [SerializeField] float _maxCatchDistance = 2f;
+    [Tooltip("カニのイラストのオブジェクト")]
+    [SerializeField] GameObject _crabIllust;
+    GameObject _hitCrabObj;
+    PlayerShot _playerShot;
     /// <summary>カニがキャッチ可能かどうか判定する</summary>
     bool _isCanKaniCatch;
     /// <summary>カニがキャッチ可能かどうか判定するプロパティ</summary>
@@ -15,34 +18,22 @@ public class KaniCatch : MonoBehaviour
 
     void Start()
     {
-
+        _playerShot = gameObject.transform.parent.gameObject.GetComponent<PlayerShot>();
     }
 
 
     void Update()
     {
-        
-    }
-
-    public bool IsKaniCatch()
-    {
-        Ray ray = new Ray(gameObject.transform.position, this.transform.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, _maxCatchDistance))
+        //カニがキャッチ可能かつ、カニを持っていないときにカニをキャッチする
+        if(Input.GetKeyDown(KeyCode.LeftShift) && _playerShot.IsKaniCatch == false)
         {
-           if(hit.collider.gameObject.tag == _crabTag)
+            if(IsCanKaniCatch)
             {
-                Destroy(hit.collider.gameObject);
-                return true;
+                //一番近いカニを消して自分のカニのイラストを表示させる
+                Destroy(_hitCrabObj);
+                _crabIllust.SetActive(true);
+                _playerShot.IsKaniCatch = true;
             }
-           else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,6 +41,7 @@ public class KaniCatch : MonoBehaviour
         if(collision.gameObject.tag == _crabTag)
         {
             _isCanKaniCatch = true;
+            _hitCrabObj = collision.gameObject;
         }
     }
 
@@ -60,6 +52,13 @@ public class KaniCatch : MonoBehaviour
             _isCanKaniCatch = false;
         }
     }
+
+    /// <summary>カニを投げた時に表示を消す</summary>
+    public void KaniLost()
+    {
+        _crabIllust.SetActive(false);
+    }
+    
 
 
 }

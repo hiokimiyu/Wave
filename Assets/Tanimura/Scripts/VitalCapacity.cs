@@ -14,7 +14,7 @@ public class VitalCapacity : MonoBehaviour
     [Tooltip("肺活量バー")]
     [SerializeField] Slider _vitalCapacityBar;
     /// <summary>回復できるかどうかの判定</summary>
-    bool _isRecovery;
+    bool _isRecovery = true;
     /// <summary>回復できるかどうかの判定のプロパティ</summary>
     public bool IsRecovery{ get => _isRecovery; set => _isRecovery = value; }
 

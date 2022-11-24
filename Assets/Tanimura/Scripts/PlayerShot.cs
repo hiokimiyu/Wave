@@ -21,19 +21,27 @@ public class PlayerShot : MonoBehaviour
     [Tooltip("カニの弾の子オブジェクト")]
     [SerializeField] GameObject _crabBullet;
     [Tooltip("攻撃の判定を受け取るための変数")]
-    [SerializeField] GameManager _gameManager;
+    [SerializeField] GameObject _gameManager;
     
-   
+   /// <summary>カニを追っているかどうかの判定</summary>
     bool _isKaniCatch;
-
+    /// <summary>カニを追っているかどうかの判定のプロパティ</summary>
+    public bool IsKaniCatch { get => _isKaniCatch; set => _isKaniCatch = value; }
+    /// <summary>射程距離のレベル</summary>
     int _rangeLV = 0;
+    /// <summary>射程距離のレベルのプロパティ</summary>
     public int RangeLV { get => _rangeLV; set => _rangeLV = value; }
+    /// <summary>肺活量の判定のスクリプト</summary>
     VitalCapacity _healJudge;
+    /// <summary>カニの接触判定のスクリプト</summary>
     KaniCatch _kaniCatchJudge;
+    /// <summary>攻撃種類の判定のスクリプト</summary>
+    GameManager _attackJudge;
     
 
     void Start()
     {
+        _attackJudge = _gameManager.GetComponent<GameManager>();
         _healJudge = gameObject.GetComponent<VitalCapacity>();
         _kaniCatchJudge = gameObject.GetComponent<KaniCatch>();
     }
@@ -42,42 +50,68 @@ public class PlayerShot : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            //カニを持っていたらそのまま飛ばす
             if (_isKaniCatch)
             {
-                //投げる処理を書く
+                //投げる処理
+                KaniShot();
+                //カニを投げた後にカニの表示を消す
+                _kaniCatchJudge.KaniLost();
                 _crabBullet.SetActive(false);
 
             }
-            else if (_gameManager.Strength == GameManager.AttackStrength.Normal)
+            //攻撃種類の判定,音波
+            else if (_attackJudge.Strength == GameManager.AttackStrength.Normal)
             {
-                //攻撃を飛ばす処理を書く(とりあえず音波を飛ばす処理だけ。ローテーションの値で左右を判定してどっちに飛ばすか決めている)
-                Debug.Log("LeftClick");
-                //音波の飛ばす処理、後でif文で切り替えれるようにする
-                GameObject shot = Instantiate(_soundWave[_rangeLV]);
-                shot.transform.position = this.gameObject.transform.position;
-                if (this.gameObject.transform.localEulerAngles.y == 180)
+                //肺活量が足りているかの判定
+                if (_healJudge.VitalCapacityUse(_soundWaveCost))
                 {
-                    shot.GetComponent<SoundWave>().Dir = -1;
-                    Debug.Log(shot.GetComponent<SoundWave>().Dir);
+                    //攻撃を飛ばす処理を書く(とりあえず音波を飛ばす処理だけ。ローテーションの値で左右を判定してどっちに飛ばすか決めている)
+                    Debug.Log("LeftClick");
+                    //音波の飛ばす処理
+                    GameObject shot = Instantiate(_soundWave[_rangeLV]);
+                    shot.transform.position = this.gameObject.transform.position;
+                    StartCoroutine(IsRecovery(0.5f));
+                    if (this.gameObject.transform.localEulerAngles.y == 180)
+                    {
+                        shot.GetComponent<SoundWave>().Dir = -1;
+                        Debug.Log(shot.GetComponent<SoundWave>().Dir);
+                    }
                 }
             }
-
-            //肺活量が足りているなら攻撃を出す
-            if (_healJudge.VitalCapacityUse(_temperatureWaveCost))
+            //攻撃種類の判定,温度波
+            else if(_attackJudge.Strength == GameManager.AttackStrength.Middle)
             {
-                //if(Flame)
-                //自分の位置からマウスの位置に向かって温度波を出す
-                GameObject shot = Instantiate(_flameWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
+                //肺活量が足りているかの判定
+                if (_healJudge.VitalCapacityUse(_temperatureWaveCost))
+                {
+                    GameObject shot;
+                    if (_attackJudge.Type == GameManager.AttackType.Warm)
+                    {
+                        //自分の位置からマウスの位置に向かって熱波を出す
+                        shot = Instantiate(_flameWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
+                    }
 
-                //if(Snow)
-                //{
-                //GameObject shot = Instantiate(_snowWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
-                //}
-                var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
-                var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
-                shot.transform.localRotation = rotation;
-                StartCoroutine(IsRecovery(0.5f));
+                    else
+                    {
+                        //自分の位置からマウスの位置に向かって寒波を出す
+                        shot = Instantiate(_snowWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
+                    }
+                    var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
+                    var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
+                    shot.transform.localRotation = rotation;
+                    StartCoroutine(IsRecovery(0.5f));
+                }
 
+            }
+            //攻撃種類の判定,衝撃波
+            else if(_attackJudge.Strength == GameManager.AttackStrength.PowerAttack)
+            {
+                if(_healJudge.VitalCapacityUse(_shockWaveCost))
+                {
+                    GameObject shot = Instantiate(_shockWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
+                    StartCoroutine(IsRecovery(0.5f));
+                }
             }
 
 
@@ -87,19 +121,7 @@ public class PlayerShot : MonoBehaviour
         {
             //攻撃切り替えの処理を後で書く
             Debug.Log("RightClick");
-            _gameManager.AttackSwitch();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            if (_isKaniCatch ==false)
-            {
-                if(_kaniCatchJudge.IsKaniCatch())
-                {
-                    _crabBullet.SetActive(true);
-                }
-            }
+            _attackJudge.AttackSwitch();
         }
     }
 
@@ -112,5 +134,12 @@ public class PlayerShot : MonoBehaviour
         yield return new WaitForSeconds(RearGap);
         _healJudge.IsRecovery = true;
         Debug.Log(_healJudge.IsRecovery);
+    }
+
+    /// <summary>カニを飛ばして、持っていないことにする</summary>
+    public void KaniShot()
+    {
+        KaniBullet.Instantiate(_crabBullet, gameObject.transform.position, Quaternion.identity, gameObject.transform);
+        _isKaniCatch = false;
     }
 }

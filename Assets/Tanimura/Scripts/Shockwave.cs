@@ -12,13 +12,14 @@ public class Shockwave : MonoBehaviour
     [SerializeField, TagName] string _clabTag;
     [Tooltip("衝撃波が与えるダメージ")]
     [SerializeField] int _damage;
+    [SerializeField] GameObject _player;
     TestEnemyHp _colObjHp;
     Kani _colKaniScript;
 
 　　
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -44,5 +45,9 @@ public class Shockwave : MonoBehaviour
             _colKaniScript = collision.gameObject.GetComponent<Kani>();
             //後でカニの状態変化の処理を追加する
         }
+    }
+    private void Destroy()
+    {
+        Destroy(gameObject);
     }
 }
