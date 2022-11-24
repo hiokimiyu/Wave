@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    //オブジェクトが破壊される時、シーンから消し、Listからも削除する
+    //→List.Countのズレを防ぐ
     [Tooltip("敵をまとめておく親オブジェクト")]
     [SerializeField] GameObject _enemyParent;
     [Tooltip("スポナーをまとめておく親オブジェクト")]
@@ -18,35 +20,45 @@ public class GameManager : MonoBehaviour
     AttackType _type = AttackType.Normal;
     /// <summary> 音を再生するManager </summary>
     SoundManager _sound;
+    /// <summary> フェードイン、アウトのクラス </summary>
+    Fade _fade;
+    /// <summary> 現在の攻撃状態 </summary>
     string _attackType = "音波";
 
-    /// <summary> シーン上の敵をまとめた親オブジェクト </summary>
+    /// <summary> 敵をまとめた親オブジェクト </summary>
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
-    /// <summary> シーン上のスポナーをまとめた親オブジェクト </summary>
+    /// <summary> スポナーをまとめた親オブジェクト </summary>
     public GameObject SpawnerParent { get => _spawnerParent; set => _spawnerParent = value; }
     public AttackType Type { get => _type; set => _type = value; }
-    /// <summary> シーン上にいる敵 </summary>
+    /// <summary> 敵をまとめるList </summary>
     public List<GameObject> SceneEnemies { get; set; }
-    /// <summary> シーン上のスポナー </summary>
+    /// <summary> スポナーをまとめるList </summary>
     public List<GameObject> Spawner { get; set; }
-    /// <summary> ウェーブ数 </summary>
+    /// <summary> クリアウェーブ数 </summary>
     public int WaveCount { get; set; }
 
     // Start is called before the first frame update
     void Start()
     {
         _sound = GetComponent<SoundManager>();
+        _fade = GetComponent<Fade>();
 
         //各Listにシーン上の該当要素を追加する(最初に既に敵が存在している場合)
         //↓敵
-        foreach (Transform child in EnemyParent.transform)
+        if (EnemyParent.transform.childCount > 0)
         {
-            SceneEnemies.Add(child.gameObject);
+            foreach (Transform child in EnemyParent.transform)
+            {
+                SceneEnemies.Add(child.gameObject);
+            }
         }
         //↓スポナー
-        foreach (Transform child in SpawnerParent.transform)
+        if (SpawnerParent.transform.childCount > 0)
         {
-            Spawner.Add(child.gameObject);
+            foreach (Transform child in SpawnerParent.transform)
+            {
+                Spawner.Add(child.gameObject);
+            }
         }
     }
 
@@ -59,6 +71,11 @@ public class GameManager : MonoBehaviour
         {
             WaveCount++;
             Debug.Log(WaveCount);
+            //全てのWaveをクリアしたら、リザルト画面へ遷移
+            if (WaveCount == 5)
+            {
+                _fade.FadeStart();
+            }
         }
     }
 
@@ -66,6 +83,7 @@ public class GameManager : MonoBehaviour
     /// Playerの攻撃
     /// PlayerShot -> Update -> if(.....("Fire1")) の部分にある程度書いてあるため
     /// +αでやりそうなことを書いておく
+    /// 使わないかも?
     /// </summary>
     void PlayerAttack()
     {

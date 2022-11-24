@@ -41,11 +41,11 @@ public class Fade : MonoBehaviour
         color.a = 1f;
         _fadePanel.color = color;
 
-        //do...下記の処理を必ず1回は実行する
+        //do...下記の処理を(条件の真偽に関わらず)必ず1回は実行する
         do
         {
             yield return null;
-            fadeTime += Time.unscaledDeltaTime;
+            fadeTime += Time.deltaTime;
             color.a = 1f - (fadeTime / interval);
             _fadePanel.color = color;
 
@@ -78,7 +78,7 @@ public class Fade : MonoBehaviour
         do
         {
             yield return null;
-            fadeTime += Time.unscaledDeltaTime;
+            fadeTime += Time.deltaTime;
             color.a = fadeTime / interval;
             _fadePanel.color = color;
 

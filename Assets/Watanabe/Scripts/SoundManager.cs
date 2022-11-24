@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 指定したAudioを再生する
+/// 指定したAudioを再生するクラス
 /// </summary>
 public class SoundManager : MonoBehaviour
 {

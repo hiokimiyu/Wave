@@ -15,7 +15,7 @@ public class SwitchWave : MonoBehaviour
 
     void Switch()
     {
-        //切り替えオブジェクトに触れた時、寒波、熱波を切り替える
+        //切り替えオブジェクトに触れた時に寒波、熱波を切り替える
         //寒波、熱波の切り替え(false...寒波, true...熱波)
         IsWarm = IsWarm == true ? false : true;
         Debug.Log(IsWarm);
