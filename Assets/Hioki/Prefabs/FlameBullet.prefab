@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5244889454274426203}
   - component: {fileID: 3745677322228929033}
   - component: {fileID: 6444345067278723647}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlameBullet
   m_TagString: Flame
   m_Icon: {fileID: 0}

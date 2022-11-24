@@ -49,6 +49,8 @@ public class BossMove : MonoBehaviour, IDamage
     [SerializeField] int _enemyNum;
     [Tooltip("自分の行動")]
     [SerializeField] AttackPattern _attackPattern;
+    [Tooltip("レイヤーの番号")]
+    [SerializeField] int _layerNum = 0;
 
     private void Start()
     {
@@ -110,6 +112,8 @@ public class BossMove : MonoBehaviour, IDamage
     {
         if (!_isAttack)
         {
+            _layerNum = _mode + 5;//デバックしやすいように変数に入れる
+            SetLayer(_layerNum);//レイヤーを6，7にする
             _isAttack = true;
             Spawn();
         }
@@ -121,7 +125,16 @@ public class BossMove : MonoBehaviour, IDamage
             _mode = 0;
             _timer = 0;
             _enemyCount = 0;
-        }//一定時間たったら移動させる
+            _layerNum = _mode;
+            SetLayer(_layerNum);
+        }//一定時間たったら移動させる、レイヤーを0に戻す
+    }
+
+    /// <summary>ボスをレイヤー変更する</summary>
+    /// <param name="num">レイヤーの番号</param>
+    void SetLayer(int num)
+    {
+        gameObject.layer = num;
     }
 
     void IDamage.Damage()

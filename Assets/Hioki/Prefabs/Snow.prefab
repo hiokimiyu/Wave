@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7684984680559751486}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5826121052892610275}
   - component: {fileID: 5826121052892610276}
   - component: {fileID: 412370741424984316}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Snow
   m_TagString: Snow
   m_Icon: {fileID: 0}

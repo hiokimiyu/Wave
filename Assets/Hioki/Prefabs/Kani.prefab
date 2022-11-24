@@ -150,6 +150,7 @@ MonoBehaviour:
   _speed: 5
   _wallTag: Wall
   _spawnerTag: Spawner
+  _bossTag: Boss
   _isStop: 0
   _deleteTime: 3
 --- !u!114 &7343513366205210273

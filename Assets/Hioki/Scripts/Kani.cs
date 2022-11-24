@@ -11,6 +11,8 @@ public class Kani : MonoBehaviour, IDamage
     [SerializeField, TagName] string _wallTag;
     [Tooltip("スポナーのタグ")]
     [SerializeField, TagName] string _spawnerTag;
+    [Tooltip("Bossのタグ")]
+    [SerializeField, TagName] string _bossTag;
     [Tooltip("かにの状態")]
     [SerializeField] bool _isStop;
     [Tooltip("かにが消える時間")]
@@ -73,5 +75,11 @@ public class Kani : MonoBehaviour, IDamage
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }//スポナーに当たったら消す
+
+        if (collision.gameObject.tag == _bossTag)
+        {
+            var damage = collision.gameObject.GetComponent<IDamage>();
+            damage.Damage();
+        }
     }
 }

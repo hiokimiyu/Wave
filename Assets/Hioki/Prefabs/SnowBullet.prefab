@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5244889454274426203}
   - component: {fileID: 3745677322228929033}
   - component: {fileID: -4618679365736800474}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SnowBullet
   m_TagString: Snow
   m_Icon: {fileID: 0}
