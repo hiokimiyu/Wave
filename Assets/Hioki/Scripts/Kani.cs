@@ -17,12 +17,15 @@ public class Kani : MonoBehaviour, IDamage
     [SerializeField] float _deleteTime = 3;
     /// <summary>ひっくり返るときの回転数値</summary>
     float _z = 0;
+    /// <summary>攻撃なくす</summary>
+    Attack _attack;
 
     //テストしやすいように見えるようにしておくもの↓
 
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _attack = GetComponent<Attack>();
 
         //自分がどっち向いてるか確認して、進む方向を決めてる
         _speed *= transform.eulerAngles.y == 180 ? 1 : -1;
@@ -54,6 +57,7 @@ public class Kani : MonoBehaviour, IDamage
     {
         //かにがストップする
         _isStop = true;
+        _attack.enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

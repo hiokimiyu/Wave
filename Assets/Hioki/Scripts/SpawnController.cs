@@ -49,4 +49,11 @@ public class SpawnController : MonoBehaviour
             return _spawnTeresaPos;
         }//かに以外だったら上のスポーン位置を返す
     }
+
+    //public override int Activate()
+    //{
+    //    int a = Random.Range(0, EnemyList.Count);
+    //    return a;
+    //}
+
 }

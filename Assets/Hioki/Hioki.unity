@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &218383815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,11 +163,11 @@ MonoBehaviour:
   _hp: 10
   _powerUpHp: 4
   _reduceTime: 2
-  _dmage: 1
+  _damage: 1
   _moveTime: 5
   _stopTime: 5
   _circleSpeed: 1
-  _circleRadius: 5
+  _circleRadius: 3
   _isLeft: 0
   _isMode: 0
   _isPowerUp: 0
@@ -683,6 +683,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _attackTypeText: {fileID: 0}
 --- !u!4 &1544243733
 Transform:
   m_ObjectHideFlags: 0
@@ -1049,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8712652375089412043, guid: 25150ddcac150bb46838fa297159c380, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25150ddcac150bb46838fa297159c380, type: 3}

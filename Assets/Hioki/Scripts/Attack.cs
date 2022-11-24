@@ -8,7 +8,10 @@ public class Attack : MonoBehaviour
     [SerializeField] int _attack;
     [Tooltip("プレイヤータグ")]
     [SerializeField, TagName] string _playerTag;
-
+    private void Start()
+    {
+        
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == _playerTag)
