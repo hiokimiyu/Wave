@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<GameObject> _sceneEnemies = new();
     [Tooltip("スポナーをまとめるList")]
     [SerializeField] List<GameObject> _spawner = new();
+    [Tooltip("ウェーブのレベル")]
+    [SerializeField] PlayerShot _player;
     [Tooltip("現在の攻撃の状態を表示するUI")]
     [SerializeField] Text _attackTypeText;
     [Tooltip("SpawnerのTag")]
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         _fade = GetComponent<Fade>();
         IsClear = false;
+        _player.RangeLV = 0;
 
         //各Listにシーン上の該当要素を追加する(最初に既に敵が存在している場合)
         //↓敵
@@ -83,6 +86,7 @@ public class GameManager : MonoBehaviour
         if (SceneEnemies.Count == 0 && Spawner.Count == 0)
         {
             WaveCount++;
+            _player.RangeLV++;
             Debug.Log(WaveCount);
             //全てのWaveをクリアしたら、リザルト画面へ遷移
             if (WaveCount == 5)
