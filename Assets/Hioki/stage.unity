@@ -470,6 +470,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1700726880768536279, guid: 30432c24074494841a92a8c396221daf, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8030970618264974014, guid: 30432c24074494841a92a8c396221daf, type: 3}
       propertyPath: _gameManager
       value: 
@@ -491,6 +495,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4257181204610087952, guid: 6b833bfe14232554092245e93c426389, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 4257181205679203864, guid: 6b833bfe14232554092245e93c426389, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -542,6 +550,10 @@ PrefabInstance:
     - target: {fileID: 4257181205679203865, guid: 6b833bfe14232554092245e93c426389, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257181206581023451, guid: 6b833bfe14232554092245e93c426389, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 4899077382513415443, guid: 6b833bfe14232554092245e93c426389, type: 3}
       propertyPath: _gameManager
