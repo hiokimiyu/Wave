@@ -8,7 +8,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [Tooltip("UŒ‚ŠÖŒW‚Ì‰¹")]
-    [SerializeField] AudioClip[] _attackAudios = new AudioClip[10];
+    [SerializeField] AudioClip[] _attackAudios = new AudioClip[6];
 
     public AudioClip[] AttackAudios { get => _attackAudios; set => _attackAudios = value; }
 

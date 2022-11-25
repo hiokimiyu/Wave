@@ -62,7 +62,7 @@ public class Teresa : MonoBehaviour, IDamage
     void IDamage.Damage()
     {
         _hp -= _damage;
-        _soundManager.AudioPlay(_soundManager.AttackAudios[1]);
+        _soundManager.AudioPlay(_soundManager.AttackAudios[3]);
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)
