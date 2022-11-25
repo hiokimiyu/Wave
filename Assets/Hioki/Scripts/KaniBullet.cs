@@ -18,7 +18,7 @@ public class KaniBullet : MonoBehaviour
         _rb.AddForce(gameObject.transform.right * _power, ForceMode2D.Impulse);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == _groundTag)
         {
