@@ -152,7 +152,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &198483795
 GameObject:
@@ -269,7 +269,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyParent: {fileID: 41620420}
   _spawnerParent: {fileID: 0}
+  _sceneEnemies: []
+  _spawner: []
   _attackTypeText: {fileID: 0}
+  _spawnerTag: 
 --- !u!4 &1912269850
 Transform:
   m_ObjectHideFlags: 0
@@ -283,7 +286,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2032323709
 PrefabInstance:
@@ -420,7 +423,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1700726880494305300, guid: 30432c24074494841a92a8c396221daf, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1700726880494305300, guid: 30432c24074494841a92a8c396221daf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -501,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4257181205679203864, guid: 6b833bfe14232554092245e93c426389, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4257181205679203864, guid: 6b833bfe14232554092245e93c426389, type: 3}
       propertyPath: m_LocalPosition.x
