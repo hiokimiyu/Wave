@@ -186,7 +186,8 @@ MonoBehaviour:
   - {fileID: 6065406006487815602, guid: 44ac1f62a43d8c549994d9c2867fdc4b, type: 3}
   - {fileID: 4694118062443510402, guid: f096fc188ba1fc54c9415481ad1e0aca, type: 3}
   _shockWaveCost: 30
-  _crabBullet: {fileID: 0}
+  _crabBullet: {fileID: 2822385421455536066, guid: e49aff8da3fb4fa47ba6c4f00754d5b4, type: 3}
+  _gameManager: {fileID: 0}
 --- !u!114 &3300992034943487473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +220,6 @@ MonoBehaviour:
   _jumpPower: 3
   _playerHp: 100
   _playerMaxHp: 100
-  _vitalCapacity: 100
   _godModeTime: 0.5
   _hpBar: {fileID: 0}
   _damageAnimation: {fileID: 3300992034943487476}
