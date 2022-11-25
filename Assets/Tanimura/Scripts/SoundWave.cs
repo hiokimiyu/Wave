@@ -10,10 +10,12 @@ public class SoundWave : MonoBehaviour
     [SerializeField]float _speed;
     [Tooltip("カニのタグ")]
     [SerializeField, TagName] string _clabTag;
+    [Tooltip("スポナーのタグ")]
+    [SerializeField, TagName] string _spownerTag;
     [Tooltip("音波が与えるダメージ")]
     [SerializeField] int _damage;
     [SerializeField] float _lifeTime;
-    Kani _colKaniScript;
+    IDamage _iDamage;
     /// <summary>飛ぶ方向の変数</summary>
     float _dir = 1;  //プロパティ化
     public float Dir { get => _dir; set => _dir = value; }
@@ -23,6 +25,7 @@ public class SoundWave : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.velocity = Vector2.right * _speed * _dir;
+        _iDamage = GetComponent<IDamage>();
     }
     void Update()
     {
@@ -36,11 +39,12 @@ public class SoundWave : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //カニの場合はダメージではなく一発で状態を変える
-        if (collision.tag == _clabTag)
+        if (collision.tag == _clabTag || collision.tag == _spownerTag)
         {
-            _colKaniScript = collision.gameObject.GetComponent<Kani>();
+            _iDamage.Damage();
             //後でカニの状態変化の処理を追加する
         }
+        
         //スポナーにダメージを与える処理も後で追加する
     }
 }
