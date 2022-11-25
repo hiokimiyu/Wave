@@ -61,7 +61,7 @@ public class PlayerShot : MonoBehaviour
                 IsKaniCatch = false;
                 //カニを投げた後にカニの表示を消す
                 _kaniCatchJudge.KaniLost(transform.GetChild(0).gameObject);
-                _crabBullet.GetComponent<SpriteRenderer>().enabled = false;
+                //_crabBullet.GetComponent<SpriteRenderer>().enabled = false;
                 //_crabBullet.SetActive(false);
 
             }
