@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _power: 5
   _groundTag: Ground
+  _spawnerTag: Spawner
