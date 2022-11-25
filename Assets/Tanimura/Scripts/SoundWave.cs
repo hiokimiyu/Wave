@@ -41,7 +41,8 @@ public class SoundWave : MonoBehaviour
         //カニの場合はダメージではなく一発で状態を変える
         if (collision.tag == _clabTag || collision.tag == _spownerTag)
         {
-            _iDamage.Damage();
+            collision.gameObject.GetComponent<IDamage>().Damage();
+            //_iDamage.Damage();
             //後でカニの状態変化の処理を追加する
         }
         
