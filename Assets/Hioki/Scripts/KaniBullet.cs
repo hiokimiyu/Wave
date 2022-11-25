@@ -9,6 +9,8 @@ public class KaniBullet : MonoBehaviour
     [SerializeField] float _power = 5;
     [Tooltip("床のタグ")]
     [SerializeField, TagName] string _groundTag;
+    [Tooltip("スポナーのタグ")]
+    [SerializeField, TagName] string _spawnerTag;
 
     void Start()
     {
@@ -22,5 +24,10 @@ public class KaniBullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == _spawnerTag)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }//スポナーに当たったら消す
     }
 }

@@ -9,8 +9,6 @@ public class Kani : MonoBehaviour, IDamage
     [SerializeField] float _speed = 5;
     [Tooltip("壁のオブジェクトのタグ名")]
     [SerializeField, TagName] string _wallTag;
-    [Tooltip("スポナーのタグ")]
-    [SerializeField, TagName] string _spawnerTag;
     [Tooltip("Bossのタグ")]
     [SerializeField, TagName] string _bossTag;
     [Tooltip("かにの状態")]
@@ -72,12 +70,6 @@ public class Kani : MonoBehaviour, IDamage
         {
             _speed *= -1f;
         }//方向転換
-
-        if (collision.gameObject.tag == _spawnerTag)
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }//スポナーに当たったら消す
 
         if (collision.gameObject.tag == _bossTag)
         {
