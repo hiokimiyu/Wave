@@ -168,7 +168,6 @@ MonoBehaviour:
   _time: 3
   _kaniTag: Crab
   _gameManager: {fileID: 0}
-  _hp: 20
 --- !u!61 &5322167491146728729
 BoxCollider2D:
   m_ObjectHideFlags: 0

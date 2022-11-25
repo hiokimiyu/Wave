@@ -436,13 +436,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5244889454274426203, guid: 93b1c3acbf4aaac41bd9278b7b1be815, type: 3}
+      propertyPath: m_Radius
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 8617539441833070919, guid: 93b1c3acbf4aaac41bd9278b7b1be815, type: 3}
       propertyPath: m_Name
       value: SnowBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 8617539441833070936, guid: 93b1c3acbf4aaac41bd9278b7b1be815, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1404613010, guid: 9333527fcb782c940ae1fd2f750561f8, type: 3}
     - target: {fileID: 8617539441833070937, guid: 93b1c3acbf4aaac41bd9278b7b1be815, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8617539441833070937, guid: 93b1c3acbf4aaac41bd9278b7b1be815, type: 3}
       propertyPath: m_LocalPosition.x
@@ -722,8 +730,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flame
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5826121052892610274, guid: a9e7787da13d6ae4ca3f1099415529bb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a9e7787da13d6ae4ca3f1099415529bb, type: 3}
+--- !u!1 &483147409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5826121052892610277, guid: a9e7787da13d6ae4ca3f1099415529bb, type: 3}
+  m_PrefabInstance: {fileID: 483147408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &483147410
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483147409}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.09}
+  serializedVersion: 2
+  m_Radius: 0.17
 --- !u!1 &513677505
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5244889454274426203, guid: 164fa7984728fd542b287c40e4fae291, type: 3}
+      propertyPath: m_Radius
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 8617539441833070919, guid: 164fa7984728fd542b287c40e4fae291, type: 3}
       propertyPath: m_Name
       value: FlameBullet
@@ -1995,8 +2029,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snow
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5826121052892610274, guid: 5be645197126f954eb776ce973978f8f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5be645197126f954eb776ce973978f8f, type: 3}
+--- !u!1 &1804614256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5826121052892610277, guid: 5be645197126f954eb776ce973978f8f, type: 3}
+  m_PrefabInstance: {fileID: 1804614255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1804614257
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804614256}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!1001 &1924768573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2048,12 +2104,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8712652375089412041, guid: 25150ddcac150bb46838fa297159c380, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 571b1815d3b996b4ba8e4985e3019891, type: 3}
     - target: {fileID: 8712652375089412043, guid: 25150ddcac150bb46838fa297159c380, type: 3}
       propertyPath: m_Name
       value: Spawner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5322167491146728729, guid: 25150ddcac150bb46838fa297159c380, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 25150ddcac150bb46838fa297159c380, type: 3}
+--- !u!1 &1924768574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8712652375089412043, guid: 25150ddcac150bb46838fa297159c380, type: 3}
+  m_PrefabInstance: {fileID: 1924768573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &1924768575
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924768574}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.85333335
 --- !u!1 &2145537819
 GameObject:
   m_ObjectHideFlags: 0
