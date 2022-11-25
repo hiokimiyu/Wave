@@ -144,6 +144,7 @@ public class PlayerShot : MonoBehaviour
     /// <summary>ƒJƒj‚ğ”ò‚Î‚µ‚ÄA‚Á‚Ä‚¢‚È‚¢‚±‚Æ‚É‚·‚é</summary>
     public void KaniShot()
     {
-        Instantiate(_crabBullet, _muzzle.transform.position, Quaternion.identity, gameObject.transform);
+        var set = Instantiate(_crabBullet, _muzzle.transform.position, Quaternion.identity);
+        set.transform.SetParent(gameObject.transform, false);
     }
 }
