@@ -60,7 +60,7 @@ public class Kani : MonoBehaviour, IDamage
         //かにがストップする
         _isStop = true;
         _attack.enabled = false;
-        _soundManager.AudioPlay(_soundManager.AttackAudios[0]);
+        _soundManager.AudioPlay(_soundManager.AttackAudios[4]);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

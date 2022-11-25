@@ -177,6 +177,34 @@ PrefabInstance:
       propertyPath: _attackTypeText
       value: 
       objectReference: {fileID: 562756802}
+    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackAudios.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackAudios.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: fcae755b6fb0d6b4a8df7f388c7ccd9a, type: 3}
+    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackAudios.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 596e0cdc237bece4daff567e01a07066, type: 3}
+    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackAudios.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e4d2bb450f0297c44a36887792e85406, type: 3}
+    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackAudios.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a2bb29ad866be24daff973ab1106eec, type: 3}
+    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackAudios.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e8ddc0b90dbe134598dc376259c95b7, type: 3}
+    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackAudios.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: 50521f6de35e3ae49acb5913067e92e0, type: 3}
     - target: {fileID: 6687455534527991927, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
       propertyPath: _fadePanel
       value: 
