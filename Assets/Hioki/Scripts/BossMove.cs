@@ -8,6 +8,7 @@ public class BossMove : MonoBehaviour, IDamage
     [SerializeField] GameObject[] _enemy = new GameObject[3];
     [Tooltip("エネミーを出すところ")]
     [SerializeField] Transform _spawnPos;
+    [SerializeField] Sprite[] _sprite = new Sprite[3];
     //ここから上はSerializeする必要がある
 
     [Tooltip("HP")]
@@ -37,6 +38,8 @@ public class BossMove : MonoBehaviour, IDamage
     bool _isAttack;
     /// <summary>最初の自分の位置を入れておく</summary>
     Vector2 _startPos;
+    /// <summary>スプライト</summary>
+    SpriteRenderer _sr;
 
     //デバックするため見えるようにしておく↓
 
@@ -56,6 +59,7 @@ public class BossMove : MonoBehaviour, IDamage
     private void Start()
     {
         _startPos = transform.position;
+        _sr = GetComponent<SpriteRenderer>();
         //_circleRadius *= _isLeft ? 1 : -1;
     }
     private void Update()
@@ -81,6 +85,7 @@ public class BossMove : MonoBehaviour, IDamage
             /// <summary>ノーマルの時の行動</summary>
             case AttackPattern.Normal: // == 0
 
+                _sr.sprite = _sprite[_mode];
                 //自分のいるところ
                 Vector2 pos = transform.position;
                 //Θを求めてるはず
@@ -99,11 +104,13 @@ public class BossMove : MonoBehaviour, IDamage
 
             /// <summary>炎君出す時の行動</summary>
             case AttackPattern.Flame: // == 1
+                _sr.sprite = _sprite[_mode];
                 Attack();
                 break;
 
             ///<summary>雪君出す時の行動</summary>
             case AttackPattern.Snow: // == 2
+                _sr.sprite = _sprite[_mode];
                 Attack();
                 break;
         }

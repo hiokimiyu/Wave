@@ -106,6 +106,10 @@ MonoBehaviour:
   - {fileID: 5826121052892610277, guid: a9e7787da13d6ae4ca3f1099415529bb, type: 3}
   - {fileID: 5826121052892610277, guid: 5be645197126f954eb776ce973978f8f, type: 3}
   _spawnPos: {fileID: 8907680365238317230}
+  _sprite:
+  - {fileID: 21300000, guid: 994766a3e29a8854899a7c40edcf377d, type: 3}
+  - {fileID: 21300000, guid: 7ad394d1c51e6f7469ceb7aa5a7073a5, type: 3}
+  - {fileID: 21300000, guid: ce5d2e60b4afb4a48b7d1ea42d8b3dd5, type: 3}
   _hp: 10
   _powerUpHp: 4
   _moveTime: 5
