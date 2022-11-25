@@ -19,7 +19,7 @@ public class SpawnController : MonoBehaviour, IDamage
     /// <summary>敵を出す間隔はかるタイマー</summary>
     float _enemytime;
     /// <summary> HP</summary>
-    [SerializeField] int _hp = 20;
+    int _hp = 20;
 
     //テストしやすいように見えるようにしておくもの↓
 
