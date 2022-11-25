@@ -15,15 +15,15 @@ public class PlayerMove : MonoBehaviour
     /// <summary>Rigidbodyの変数</summary>
     Rigidbody2D _rb;
     [Tooltip("スピード")]
-    [SerializeField] float _speed;//プレイヤーのスピード
+    [SerializeField] float _speed;
     [Tooltip("ジャンプパワー")]
-    [SerializeField] float _jumpPower;//プレイヤーのジャンプパワー
+    [SerializeField] float _jumpPower;
     [Tooltip("プレイヤーのHP")]
-    [SerializeField] int _playerHp;//プレイヤーのHP
+    [SerializeField] int _playerHp;
     [Tooltip("プレイヤーの最大HP")]
     [SerializeField] int _playerMaxHp;
-    [Tooltip("プレイヤーの肺活量")]
-    [SerializeField] float _vitalCapacity;//プレイヤーの肺活量
+    //[Tooltip("プレイヤーの肺活量")]
+    //[SerializeField] float _vitalCapacity;
     [Tooltip("プレイヤーがダメージを受けた時の無敵時間")]
     [SerializeField] float _godModeTime;
     [Tooltip("プレイヤーのHPバー")]
@@ -34,16 +34,17 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, TagName] string _groundTag;
     
     /// <summary>地面の接触判定</summary>
-    bool _isGround = true;//地面の接触判定の変数
+    bool _isGround = true;
     /// <summary>無敵時間判定の変数</summary>
     bool _isGodMode = false;
 
     /// <summary>プレイヤーのHP</summary>
     public int PlayerHp { get => _playerHp; set => _playerHp = value; }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        //HPバーの設定
+        //HPバー(Slider)の設定
         _hpBar.maxValue = _playerMaxHp;
         _hpBar.value = _playerHp;
     }
@@ -52,7 +53,7 @@ public class PlayerMove : MonoBehaviour
     {
         //移動の処理
         float h = Input.GetAxisRaw("Horizontal");
-        _rb.velocity = new Vector2(h*_speed, _rb.velocity.y);
+        _rb.velocity = new Vector2(h * _speed, _rb.velocity.y);
         if(h != 0)
         {
             _damageAnimation.SetBool("IsWalking", true);
@@ -96,6 +97,11 @@ public class PlayerMove : MonoBehaviour
         {
             _playerHp -= damage;
             _hpBar.value = _playerHp;
+            if (_playerHp <= 0)
+            {
+                GameObject.Find("Managers").GetComponent<GameManager>().GameOver();
+                Debug.Log("GameOverです");
+            }
             StartCoroutine(GodMode());
             Debug.Log(_playerHp);
         }
@@ -105,7 +111,7 @@ public class PlayerMove : MonoBehaviour
     /// <summary>
     /// 回復アイテムをとったときに呼ぶ処理
     /// </summary>
-    /// <param name="heal"></param>
+    /// <param name="heal"> 回復量 </param>
     public void Heal(int heal)
     {
         _playerHp += heal;
@@ -121,6 +127,4 @@ public class PlayerMove : MonoBehaviour
         _damageAnimation.SetBool("IsDamage", false);
         _isGodMode = false;
     }
-
-
 }

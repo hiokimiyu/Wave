@@ -118,6 +118,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary> GameOver‚Ìˆ—(ƒV[ƒ“‘JˆÚ“™) </summary>
+    public void GameOver()
+    {
+        _fade.FadeStart();
+    }
+
     /// <summary> UŒ‚‚Ì‹­‚³ </summary>
     public enum AttackStrength
     {
