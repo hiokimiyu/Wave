@@ -42,7 +42,7 @@ public class Shockwave : MonoBehaviour
         //カニの場合はダメージではなく一発で状態を変える
         if(collision.tag == _clabTag)
         {
-            _colKaniScript = collision.gameObject.GetComponent<Kani>();
+            collision.gameObject.GetComponent<IDamage>().Damage();
             //後でカニの状態変化の処理を追加する
         }
     }

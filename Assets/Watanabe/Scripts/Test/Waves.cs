@@ -26,8 +26,7 @@ public class Waves : MonoBehaviour
     {
         if (collision.tag == _hitTag)
         {
-            _colObjHp = collision.gameObject.GetComponent<TestEnemyHp>();
-            _colObjHp.Damage(_damage);
+            collision.gameObject.GetComponent<IDamage>().Damage();
         }
     }
 }
