@@ -340,8 +340,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kani
       objectReference: {fileID: 0}
-    - target: {fileID: 2822385421455536071, guid: 5baa87395b9026043b47c4c076392b37, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 2822385421455536066, guid: 5baa87395b9026043b47c4c076392b37, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -582,7 +582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5471072252092815228, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5471072252092815235, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
       propertyPath: m_RootOrder

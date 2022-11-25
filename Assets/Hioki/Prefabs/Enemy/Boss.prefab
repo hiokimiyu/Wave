@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2822385421455536066
+--- !u!1 &8907680363559241380
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2822385421455536065}
-  - component: {fileID: 2822385421455536064}
-  - component: {fileID: 2822385421455536067}
-  - component: {fileID: 2822385421455536070}
-  - component: {fileID: 2822385421455536071}
-  - component: {fileID: 7343513366205210273}
+  - component: {fileID: 8907680363559241387}
+  - component: {fileID: 8907680363559241386}
+  - component: {fileID: 8907680363559241381}
+  - component: {fileID: 8907680363559241384}
+  - component: {fileID: -5400079640191441141}
   m_Layer: 0
-  m_Name: Kani
-  m_TagString: Crab
+  m_Name: Boss
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2822385421455536065
+--- !u!4 &8907680363559241387
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822385421455536066}
+  m_GameObject: {fileID: 8907680363559241380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8907680365238317230}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2822385421455536064
+--- !u!212 &8907680363559241386
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822385421455536066}
+  m_GameObject: {fileID: 8907680363559241380}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe74894283efc9048b016c3fed2dac06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 994766a3e29a8854899a7c40edcf377d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -88,14 +88,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &2822385421455536067
+--- !u!114 &8907680363559241381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907680363559241380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03faaf61358f334e952a58d751ca3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
+  _enemy:
+  - {fileID: 2822385421455536066, guid: 5baa87395b9026043b47c4c076392b37, type: 3}
+  - {fileID: 5826121052892610277, guid: a9e7787da13d6ae4ca3f1099415529bb, type: 3}
+  - {fileID: 5826121052892610277, guid: 5be645197126f954eb776ce973978f8f, type: 3}
+  _spawnPos: {fileID: 8907680365238317230}
+  _hp: 10
+  _powerUpHp: 4
+  _moveTime: 5
+  _enemyNum: 2
+--- !u!50 &8907680363559241384
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822385421455536066}
+  m_GameObject: {fileID: 8907680363559241380}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -108,62 +130,51 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &2822385421455536070
-BoxCollider2D:
+  m_Constraints: 2
+--- !u!58 &-5400079640191441141
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822385421455536066}
+  m_GameObject: {fileID: 8907680363559241380}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025812387, y: -0.03740114}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.6, y: 4.8}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 5.439755, y: 3.6180725}
-  m_EdgeRadius: 0
---- !u!114 &2822385421455536071
-MonoBehaviour:
+  m_Radius: 0.5
+--- !u!1 &8907680365238317225
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822385421455536066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adfe7c13b036b2c4d96da5135c2b21b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
-  _wallTag: Wall
-  _spawnerTag: Spawner
-  _bossTag: Boss
-  _isStop: 0
-  _deleteTime: 3
---- !u!114 &7343513366205210273
-MonoBehaviour:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8907680365238317230}
+  m_Layer: 0
+  m_Name: SpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8907680365238317230
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2822385421455536066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2608076e0662404d8957a0e4b55bace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attack: 5
-  _playerTag: Player
+  m_GameObject: {fileID: 8907680365238317225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8907680363559241387}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
