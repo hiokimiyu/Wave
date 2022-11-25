@@ -24,7 +24,7 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] GameObject _gameManager;
     
    /// <summary>カニを追っているかどうかの判定</summary>
-    bool _isKaniCatch;
+    bool _isKaniCatch = false;
     /// <summary>カニを追っているかどうかの判定のプロパティ</summary>
     public bool IsKaniCatch { get => _isKaniCatch; set => _isKaniCatch = value; }
     /// <summary>射程距離のレベル</summary>
