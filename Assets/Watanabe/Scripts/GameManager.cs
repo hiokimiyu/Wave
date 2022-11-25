@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     Fade _fade;
     /// <summary> 現在の攻撃状態 </summary>
     string _attackType = "音波";
+    /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
+    static bool _isClear = false;
 
     /// <summary> 敵をまとめた親オブジェクト </summary>
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
     public List<GameObject> SceneEnemies { get => _sceneEnemies; set => _sceneEnemies = value; }
     /// <summary> スポナーをまとめるList </summary>
     public List<GameObject> Spawner { get => _spawner; set => _spawner = value; }
+    /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
+    public static bool IsClear { get => _isClear; set => _isClear = value; }
     /// <summary> クリアウェーブ数 </summary>
     public int WaveCount { get; set; }
 
@@ -47,6 +51,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _fade = GetComponent<Fade>();
+        IsClear = false;
 
         //各Listにシーン上の該当要素を追加する(最初に既に敵が存在している場合)
         //↓敵
@@ -82,6 +87,7 @@ public class GameManager : MonoBehaviour
             //全てのWaveをクリアしたら、リザルト画面へ遷移
             if (WaveCount == 5)
             {
+                IsClear = true;
                 _fade.FadeStart();
             }
         }
@@ -121,6 +127,7 @@ public class GameManager : MonoBehaviour
     /// <summary> GameOver時の処理(シーン遷移等) </summary>
     public void GameOver()
     {
+        IsClear = false;
         _fade.FadeStart();
     }
 
