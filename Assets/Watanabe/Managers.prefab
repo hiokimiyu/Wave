@@ -49,18 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyParent: {fileID: 0}
   _spawnerParent: {fileID: 0}
-  _attackAudios:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _sceneEnemies: []
+  _spawner: []
+  _player: {fileID: 0}
   _attackTypeText: {fileID: 0}
+  _spawnerTag: Spawner
 --- !u!114 &6687455534527991926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +66,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5859044af01fecf4b9f39587a1fc144b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackAudios:
+  - {fileID: 8300000, guid: fcae755b6fb0d6b4a8df7f388c7ccd9a, type: 3}
+  - {fileID: 8300000, guid: 596e0cdc237bece4daff567e01a07066, type: 3}
+  - {fileID: 8300000, guid: e4d2bb450f0297c44a36887792e85406, type: 3}
+  - {fileID: 8300000, guid: 4a2bb29ad866be24daff973ab1106eec, type: 3}
+  - {fileID: 8300000, guid: 6e8ddc0b90dbe134598dc376259c95b7, type: 3}
+  - {fileID: 8300000, guid: 50521f6de35e3ae49acb5913067e92e0, type: 3}
 --- !u!114 &6687455534527991927
 MonoBehaviour:
   m_ObjectHideFlags: 0
