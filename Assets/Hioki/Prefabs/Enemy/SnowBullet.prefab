@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5244889454274426203}
   - component: {fileID: 3745677322228929033}
   - component: {fileID: -4618679365736800474}
+  - component: {fileID: -8215283119486749683}
   m_Layer: 7
   m_Name: SnowBullet
   m_TagString: Snow
@@ -133,3 +134,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attack: 3
   _playerTag: Player
+--- !u!50 &-8215283119486749683
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617539441833070919}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
