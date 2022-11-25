@@ -51,14 +51,14 @@ public class PlayerShot : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             //カニを持っていたらそのまま飛ばす
-            if (IsKaniCatch)
+            if (_isKaniCatch)
             {
                 //投げる処理
                 KaniShot();
+                IsKaniCatch = false;
                 //カニを投げた後にカニの表示を消す
                 _kaniCatchJudge.KaniLost(transform.GetChild(0).gameObject);
                 _crabBullet.SetActive(false);
-                IsKaniCatch = false;
 
             }
             //攻撃種類の判定,音波
