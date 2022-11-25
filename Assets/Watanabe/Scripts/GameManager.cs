@@ -11,8 +11,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _enemyParent;
     [Tooltip("スポナーをまとめておく親オブジェクト")]
     [SerializeField] GameObject _spawnerParent;
+    [Tooltip("敵をまとめるList")]
+    [SerializeField] List<GameObject> _sceneEnemies = new();
+    [Tooltip("スポナーをまとめるList")]
+    [SerializeField] List<GameObject> _spawner = new();
     [Tooltip("現在の攻撃の状態を表示するUI")]
     [SerializeField] Text _attackTypeText;
+    [Tooltip("SpawnerのTag")]
+    [SerializeField, TagName] string _spawnerTag;
 
     /// <summary> 攻撃の強さ </summary>
     AttackStrength _strength = AttackStrength.Normal;
@@ -31,9 +37,9 @@ public class GameManager : MonoBehaviour
     public AttackStrength Strength { get => _strength; set => _strength = value; }
     public AttackType Type { get => _type; set => _type = value; }
     /// <summary> 敵をまとめるList </summary>
-    public List<GameObject> SceneEnemies { get; set; }
+    public List<GameObject> SceneEnemies { get => _sceneEnemies; set => _sceneEnemies = value; }
     /// <summary> スポナーをまとめるList </summary>
-    public List<GameObject> Spawner { get; set; }
+    public List<GameObject> Spawner { get => _spawner; set => _spawner = value; }
     /// <summary> クリアウェーブ数 </summary>
     public int WaveCount { get; set; }
 
@@ -46,7 +52,7 @@ public class GameManager : MonoBehaviour
         //↓敵
         if (EnemyParent.transform.childCount > 0)
         {
-            foreach (Transform child in EnemyParent.transform)
+            foreach (Transform child in EnemyParent.GetComponentInChildren<Transform>())
             {
                 SceneEnemies.Add(child.gameObject);
             }
@@ -54,9 +60,12 @@ public class GameManager : MonoBehaviour
         //↓スポナー
         if (SpawnerParent.transform.childCount > 0)
         {
-            foreach (Transform child in SpawnerParent.transform)
+            foreach (Transform child in SpawnerParent.GetComponentInChildren<Transform>())
             {
-                Spawner.Add(child.gameObject);
+                if (child.gameObject.CompareTag(_spawnerTag))
+                {
+                    Spawner.Add(child.gameObject);
+                }
             }
         }
     }
