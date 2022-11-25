@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7924808500341636840}
   - component: {fileID: 8853582717387334528}
   - component: {fileID: 5898212823625226397}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LV2FlameWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5236561747523439097}
   - component: {fileID: 787492731615487504}
   - component: {fileID: 734529800835350425}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LV1FlameWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}

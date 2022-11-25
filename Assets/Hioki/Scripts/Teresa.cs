@@ -31,6 +31,7 @@ public class Teresa : MonoBehaviour, IDamage
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
 
         //自分がどっち向いてるか確認して、進む方向を決めてる
         _xSpeed *= transform.eulerAngles.y == 180 ? 1 : -1;

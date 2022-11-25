@@ -28,6 +28,7 @@ public class Kani : MonoBehaviour, IDamage
     {
         _rb = GetComponent<Rigidbody2D>();
         _attack = GetComponent<Attack>();
+        _soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
 
         //自分がどっち向いてるか確認して、進む方向を決めてる
         _speed *= transform.eulerAngles.y == 180 ? 1 : -1;

@@ -30,9 +30,7 @@ public class SnowWave : MonoBehaviour
         string colObj = collision.gameObject.tag;//ïœêîÇ∂Ç·Ç»Ç≠ÇƒÇ¢Ç¢
         if (collision.tag == _flameTag)
         {
-            Debug.Log(colObj);
-            _colObjHp = collision.gameObject.GetComponent<TestEnemyHp>();
-            _colObjHp.Damage(_damage);
+            collision.gameObject.GetComponent<IDamage>().Damage();
         }
     }
 }

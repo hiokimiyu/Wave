@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 525402116109298596}
   - component: {fileID: 7317980408273196226}
   - component: {fileID: 8183795026094383294}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LV2SnowWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
