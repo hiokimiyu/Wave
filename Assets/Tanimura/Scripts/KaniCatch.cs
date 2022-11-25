@@ -27,6 +27,7 @@ public class KaniCatch : MonoBehaviour
         //カニがキャッチ可能かつ、カニを持っていないときにカニをキャッチする
         if(Input.GetKeyDown(KeyCode.LeftShift) && _playerShot.IsKaniCatch == false)
         {
+            Debug.Log("catch");
             if(IsCanKaniCatch)
             {
                 //一番近いカニを消して自分のカニのイラストを表示させる
