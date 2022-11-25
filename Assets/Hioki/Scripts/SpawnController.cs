@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnController : MonoBehaviour
+public class SpawnController : MonoBehaviour, IDamage
 {
     [Tooltip("出したい敵")]
     [SerializeField] List<GameObject> _enemy = new List<GameObject>();
@@ -18,6 +18,8 @@ public class SpawnController : MonoBehaviour
     [SerializeField] GameManager _gameManager;
     /// <summary>敵を出す間隔はかるタイマー</summary>
     float _enemytime;
+    /// <summary> HP</summary>
+    [SerializeField] int _hp = 20;
 
     //テストしやすいように見えるようにしておくもの↓
 
@@ -36,6 +38,10 @@ public class SpawnController : MonoBehaviour
             Instantiate(_enemy[type], SpwanPos(_enemy[type]).position, Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
             _enemytime = 0;
         }//敵を出す時間になったら
+        if (_hp <= 0)
+        {
+            Destroy(gameObject);
+        }//HPがなくなったら
     }
 
     Transform SpwanPos(GameObject go)
@@ -48,6 +54,11 @@ public class SpawnController : MonoBehaviour
         {
             return _spawnTeresaPos;
         }//かに以外だったら上のスポーン位置を返す
+    }
+
+    void IDamage.Damage()
+    {
+        _hp--;
     }
 
     //public override int Activate()
