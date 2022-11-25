@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour,IDamage
 
     void Start()
     {
+        _soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
         _player = GameObject.FindGameObjectWithTag(_playerTag);
     }
 

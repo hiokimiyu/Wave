@@ -261,10 +261,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 115468964}
     - target: {fileID: 6687455534527991925, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _spawnerTag
-      value: Spawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 6687455534527991925, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
       propertyPath: _enemyParent
       value: 
       objectReference: {fileID: 160003521}
@@ -276,34 +272,6 @@ PrefabInstance:
       propertyPath: _attackTypeText
       value: 
       objectReference: {fileID: 562756802}
-    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _attackAudios.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _attackAudios.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: fcae755b6fb0d6b4a8df7f388c7ccd9a, type: 3}
-    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _attackAudios.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 596e0cdc237bece4daff567e01a07066, type: 3}
-    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _attackAudios.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: e4d2bb450f0297c44a36887792e85406, type: 3}
-    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _attackAudios.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4a2bb29ad866be24daff973ab1106eec, type: 3}
-    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _attackAudios.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6e8ddc0b90dbe134598dc376259c95b7, type: 3}
-    - target: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
-      propertyPath: _attackAudios.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: 50521f6de35e3ae49acb5913067e92e0, type: 3}
     - target: {fileID: 6687455534527991927, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
       propertyPath: _fadePanel
       value: 
@@ -560,6 +528,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6687455534527991931, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
   m_PrefabInstance: {fileID: 250965944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &379803859 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6687455534527991926, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+  m_PrefabInstance: {fileID: 250965944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379803856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5859044af01fecf4b9f39587a1fc144b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &445341655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,18 +1561,34 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 250965945}
+    - target: {fileID: 3676248006305120961, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
+      propertyPath: _soundManager
+      value: 
+      objectReference: {fileID: 379803859}
     - target: {fileID: 3676248006545736801, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 250965945}
+    - target: {fileID: 3676248006545736801, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
+      propertyPath: _soundManager
+      value: 
+      objectReference: {fileID: 379803859}
     - target: {fileID: 3676248007697213181, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 250965945}
+    - target: {fileID: 3676248007697213181, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
+      propertyPath: _soundManager
+      value: 
+      objectReference: {fileID: 379803859}
     - target: {fileID: 3676248008000543766, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 250965945}
+    - target: {fileID: 3676248008000543766, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
+      propertyPath: _soundManager
+      value: 
+      objectReference: {fileID: 379803859}
     - target: {fileID: 5471072251390463936, guid: ca10c9c7cdb1ac5418b7f22e84747e4d, type: 3}
       propertyPath: m_Sprite
       value: 
