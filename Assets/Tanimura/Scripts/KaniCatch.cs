@@ -30,10 +30,9 @@ public class KaniCatch : MonoBehaviour
             if(IsCanKaniCatch)
             {
                 //一番近いカニを消して自分のカニのイラストを表示させる
-                //イラストのON, OFFのみを切り替える(実際にGameObjectを消す訳ではない)
                 Destroy(_hitCrabObj);
+                gameObject.SetActive(false);
                 _crabIllust.SetActive(true);
-                //_crabIllust.GetComponent<SpriteRenderer>().enabled = true;
                 _playerShot.IsKaniCatch = true;
             }
         }
