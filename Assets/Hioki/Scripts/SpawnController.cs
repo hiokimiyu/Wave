@@ -61,7 +61,7 @@ public class SpawnController : MonoBehaviour, IDamage
     void IDamage.Damage()
     {
         _hp--;
-        _soundManager.AudioPlay();
+        _soundManager.AudioPlay(_soundManager.AttackAudios[2]);
     }
 
     //public override int Activate()

@@ -13,8 +13,6 @@ public class Shockwave : MonoBehaviour
     [Tooltip("衝撃波が与えるダメージ")]
     [SerializeField] int _damage;
     [SerializeField] GameObject _player;
-    TestEnemyHp _colObjHp;
-    Kani _colKaniScript;
 
 　　
     void Start()
@@ -22,30 +20,17 @@ public class Shockwave : MonoBehaviour
        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //当たったオブジェクトのタグを取得して、それが対応しているタグならその敵の体力のスクリプトにダメージを与える
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
-        string colObj = collision.gameObject.tag;
-        if (collision.tag == _flameTag || collision.tag == _snowTag)
-        {
-            Debug.Log(colObj);
-            _colObjHp = collision.gameObject.GetComponent<TestEnemyHp>();
-            _colObjHp.Damage(_damage);
-        }
-        //カニの場合はダメージではなく一発で状態を変える
-        if(collision.tag == _clabTag)
+        if (collision.tag == _flameTag || collision.tag == _snowTag || collision.tag == _clabTag)
         {
             collision.gameObject.GetComponent<IDamage>().Damage();
             //後でカニの状態変化の処理を追加する
         }
     }
+
     private void Destroy()
     {
         Destroy(gameObject);

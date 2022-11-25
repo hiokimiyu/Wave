@@ -46,6 +46,6 @@ public class Bullet : MonoBehaviour,IDamage
     void IDamage.Damage()
     {
         _hp--;
-        _soundManager.AudioPlay();
+        _soundManager.AudioPlay(_soundManager.AttackAudios[3]);
     }
 }

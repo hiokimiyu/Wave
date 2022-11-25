@@ -59,8 +59,7 @@ public class KaniCatch : MonoBehaviour
     public void KaniLost(GameObject check)
     {
         Debug.Log("a");
-        //_crabIllust.SetActive(false);
+        _crabIllust.SetActive(false);
         _crabIllust = check;
-        check.GetComponent<SpriteRenderer>().enabled = false;
     }
 }

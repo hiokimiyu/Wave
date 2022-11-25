@@ -150,7 +150,7 @@ public class BossMove : MonoBehaviour, IDamage
     void IDamage.Damage()
     {
         _hp -= _damage;
-        _soundManager.AudioPlay();
+        _soundManager.AudioPlay(_soundManager.AttackAudios[4]);
     }
 
     /// <summary>©•ª‚Ìs“®</summary>

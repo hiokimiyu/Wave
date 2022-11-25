@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     [Tooltip("UŒ‚ŠÖŒW‚Ì‰¹")]
     [SerializeField] AudioClip[] _attackAudios = new AudioClip[10];
 
+    public AudioClip[] AttackAudios { get => _attackAudios; set => _attackAudios = value; }
+
     /// <summary> Ä¶—p‚ÌAudioSource </summary>
     AudioSource _source;
 

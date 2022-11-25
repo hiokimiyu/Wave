@@ -43,7 +43,7 @@ public class PlayerShot : MonoBehaviour
     {
         _attackJudge = _gameManager.GetComponent<GameManager>();
         _healJudge = gameObject.GetComponent<VitalCapacity>();
-        _kaniCatchJudge = gameObject.GetComponent<KaniCatch>();
+        _kaniCatchJudge = gameObject.transform.GetChild(0).GetComponent<KaniCatch>();
     }
 
     void Update()
@@ -58,7 +58,8 @@ public class PlayerShot : MonoBehaviour
                 IsKaniCatch = false;
                 //カニを投げた後にカニの表示を消す
                 _kaniCatchJudge.KaniLost(transform.GetChild(0).gameObject);
-                _crabBullet.SetActive(false);
+                _crabBullet.GetComponent<SpriteRenderer>().enabled = false;
+                //_crabBullet.SetActive(false);
 
             }
             //攻撃種類の判定,音波
