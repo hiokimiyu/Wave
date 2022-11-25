@@ -17,6 +17,8 @@ public class Kani : MonoBehaviour, IDamage
     [SerializeField] bool _isStop;
     [Tooltip("かにが消える時間")]
     [SerializeField] float _deleteTime = 3;
+    [Tooltip("SoundManager")]
+    [SerializeField] SoundManager _soundManager;
     /// <summary>ひっくり返るときの回転数値</summary>
     float _z = 0;
     /// <summary>攻撃なくす</summary>
@@ -60,6 +62,7 @@ public class Kani : MonoBehaviour, IDamage
         //かにがストップする
         _isStop = true;
         _attack.enabled = false;
+        _soundManager.AudioPlay();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -82,4 +85,6 @@ public class Kani : MonoBehaviour, IDamage
             damage.Damage();
         }
     }
+
+    
 }

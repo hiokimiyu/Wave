@@ -9,6 +9,8 @@ public class BossMove : MonoBehaviour, IDamage
     [Tooltip("エネミーを出すところ")]
     [SerializeField] Transform _spawnPos;
     [SerializeField] Sprite[] _sprite = new Sprite[3];
+    [Tooltip("SoundManager")]
+    [SerializeField] SoundManager _soundManager;
     //ここから上はSerializeする必要がある
 
     [Tooltip("HP")]
@@ -148,6 +150,7 @@ public class BossMove : MonoBehaviour, IDamage
     void IDamage.Damage()
     {
         _hp -= _damage;
+        _soundManager.AudioPlay();
     }
 
     /// <summary>自分の行動</summary>

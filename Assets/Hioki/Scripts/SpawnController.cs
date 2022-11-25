@@ -16,6 +16,8 @@ public class SpawnController : MonoBehaviour, IDamage
     [SerializeField, TagName] string _kaniTag;
     [Tooltip("GameManager")]
     [SerializeField] GameManager _gameManager;
+    [Tooltip("SoundManager")]
+    [SerializeField] SoundManager _soundManager;
     /// <summary>敵を出す間隔はかるタイマー</summary>
     float _enemytime;
     /// <summary> HP</summary>
@@ -59,6 +61,7 @@ public class SpawnController : MonoBehaviour, IDamage
     void IDamage.Damage()
     {
         _hp--;
+        _soundManager.AudioPlay();
     }
 
     //public override int Activate()

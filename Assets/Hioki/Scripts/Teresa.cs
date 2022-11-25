@@ -17,6 +17,8 @@ public class Teresa : MonoBehaviour, IDamage
     [SerializeField] Transform _muzzle;
     [Tooltip("íe")]
     [SerializeField] GameObject _bullet;
+    [Tooltip("SoundManager")]
+    [SerializeField] SoundManager _soundManager;
     /// <summary>çUåÇä‘äuÇÕÇ©ÇÈÉ^ÉCÉ}Å[</summary>
     float _attackTimer = 0;
 
@@ -60,6 +62,7 @@ public class Teresa : MonoBehaviour, IDamage
     void IDamage.Damage()
     {
         _hp -= _damage;
+        _soundManager.AudioPlay();
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)
