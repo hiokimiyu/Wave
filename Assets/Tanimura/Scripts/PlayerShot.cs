@@ -22,9 +22,11 @@ public class PlayerShot : MonoBehaviour
     [SerializeField] GameObject _crabBullet;
     [Tooltip("攻撃の判定を受け取るための変数")]
     [SerializeField] GameObject _gameManager;
+    [Tooltip("カニ発射位置")]
+    [SerializeField] GameObject _muzzle;
     
-   /// <summary>カニを追っているかどうかの判定</summary>
-    bool _isKaniCatch = false;
+    [Tooltip("カニを追っているかどうかの判定")]
+    [SerializeField] bool _isKaniCatch = false;
     /// <summary>カニを追っているかどうかの判定のプロパティ</summary>
     public bool IsKaniCatch { get => _isKaniCatch; set => _isKaniCatch = value; }
     /// <summary>射程距離のレベル</summary>
@@ -41,6 +43,7 @@ public class PlayerShot : MonoBehaviour
 
     void Start()
     {
+        IsKaniCatch = false;
         _attackJudge = _gameManager.GetComponent<GameManager>();
         _healJudge = gameObject.GetComponent<VitalCapacity>();
         _kaniCatchJudge = gameObject.transform.GetChild(0).GetComponent<KaniCatch>();
@@ -141,7 +144,6 @@ public class PlayerShot : MonoBehaviour
     /// <summary>カニを飛ばして、持っていないことにする</summary>
     public void KaniShot()
     {
-        KaniBullet.Instantiate(_crabBullet, gameObject.transform.position, Quaternion.identity, gameObject.transform);
-        
+        Instantiate(_crabBullet, _muzzle.transform.position, Quaternion.identity, gameObject.transform);
     }
 }

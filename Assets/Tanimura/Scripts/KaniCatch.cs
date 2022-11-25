@@ -11,7 +11,7 @@ public class KaniCatch : MonoBehaviour
     GameObject _hitCrabObj;
     PlayerShot _playerShot;
     /// <summary>カニがキャッチ可能かどうか判定する</summary>
-    bool _isCanKaniCatch = false;
+    bool _isCanKaniCatch;
     /// <summary>カニがキャッチ可能かどうか判定するプロパティ</summary>
     public bool IsCanKaniCatch { get => _isCanKaniCatch; set => _isCanKaniCatch = value; }
 
@@ -32,8 +32,8 @@ public class KaniCatch : MonoBehaviour
             {
                 //一番近いカニを消して自分のカニのイラストを表示させる
                 Destroy(_hitCrabObj);
-                gameObject.SetActive(false);
-                _crabIllust.SetActive(true);
+                _crabIllust.GetComponent<SpriteRenderer>().enabled = true;
+                //_crabIllust.SetActive(true);
                 _playerShot.IsKaniCatch = true;
             }
         }
@@ -49,7 +49,7 @@ public class KaniCatch : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(IsCanKaniCatch)
+        if(IsCanKaniCatch && collision.gameObject.tag == _crabTag)
         {
             IsCanKaniCatch = false;
         }
@@ -59,7 +59,7 @@ public class KaniCatch : MonoBehaviour
     public void KaniLost(GameObject check)
     {
         Debug.Log("a");
-        _crabIllust.SetActive(false);
-        _crabIllust = check;
+        _crabIllust.GetComponent<SpriteRenderer>().enabled = false;
+        //_crabIllust.SetActive(false);
     }
 }
