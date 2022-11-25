@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour,IDamage
     [SerializeField] float _speed = 1f;
     [Tooltip("Player‚Ìƒ^ƒO")]
     [SerializeField, TagName] string _playerTag;
+    [SerializeField, TagName] string _attack;
     [Tooltip("’e‚ÌHP")]
     [SerializeField] int _hp = 1;
     [Tooltip("SoundManager")]
@@ -37,7 +38,7 @@ public class Bullet : MonoBehaviour,IDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _playerTag)
+        if (collision.gameObject.tag == _playerTag || collision.gameObject.tag == _attack)
         {
             Destroy(gameObject);
         }

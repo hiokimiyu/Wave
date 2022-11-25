@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _playerTag: Player
+  _attack: Flame
   _hp: 1
   _soundManager: {fileID: 0}
 --- !u!114 &-4618679365736800474
