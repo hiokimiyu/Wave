@@ -12,8 +12,7 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerMove : MonoBehaviour
 {
-    /// <summary>Rigidbodyの変数</summary>
-    private Rigidbody2D _rb;
+    [Header("Player Status")]
     [Tooltip("スピード")]
     [SerializeField] private float _speed;
     [Tooltip("ジャンプパワー")]
@@ -27,8 +26,10 @@ public class PlayerMove : MonoBehaviour
     [Tooltip("プレイヤーのHPバー")]
     [SerializeField] private Slider _hpBar;
     [Tooltip("プレイヤーのアニメーション")]
-    [SerializeField] private Animator _damageAnimation;
+    [SerializeField] private Animator _anim;
 
+    /// <summary>Rigidbodyの変数</summary>
+    private Rigidbody2D _rb;
     private readonly string _groundTag = "Ground";
     /// <summary>地面の接触判定</summary>
     private bool _isGround = true;
@@ -49,13 +50,13 @@ public class PlayerMove : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         _rb.velocity = new Vector2(h * _speed, _rb.velocity.y);
 
-        if(h != 0)
+        if(h != 0) //移動の入力があれば
         {
-            _damageAnimation.SetBool("IsWalking", true);
+            _anim.SetBool("IsWalking", true);
         }
         else
         {
-            _damageAnimation.SetBool("IsWalking", false);
+            _anim.SetBool("IsWalking", false);
         }
         //地面にいるときだけジャンプする
         if (Input.GetButtonDown("Jump") && _isGround)
@@ -119,9 +120,9 @@ public class PlayerMove : MonoBehaviour
     IEnumerator GodMode()
     {
         _isGodMode = true;
-        _damageAnimation.SetBool("IsDamage", true);
+        _anim.SetBool("IsDamage", true);
         yield return new WaitForSeconds(_godModeTime);
-        _damageAnimation.SetBool("IsDamage", false);
+        _anim.SetBool("IsDamage", false);
         _isGodMode = false;
     }
 }

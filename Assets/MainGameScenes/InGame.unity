@@ -1057,6 +1057,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 454958531294566568, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 454958531294566569, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
+      propertyPath: _anim
+      value: 
+      objectReference: {fileID: 1372758433}
     - target: {fileID: 454958531294566569, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: _hpBar
       value: 
@@ -1308,6 +1316,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219103967}
   m_CullTransparentMesh: 1
+--- !u!95 &1372758433 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 454958531294566568, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
+  m_PrefabInstance: {fileID: 1185966933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1532029756
 GameObject:
   m_ObjectHideFlags: 0
