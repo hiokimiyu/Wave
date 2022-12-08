@@ -1131,7 +1131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 454958531294566570, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 454958531294566573, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: _vitalCapacityBar

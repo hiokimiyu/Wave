@@ -58,20 +58,23 @@ public class PlayerMove : MonoBehaviour
             _damageAnimation.SetBool("IsWalking", false);
         }
         //地面にいるときだけジャンプする
-        if (Input.GetButtonDown("Jump")　&& _isGround)
+        if (Input.GetButtonDown("Jump") && _isGround)
         {
             _rb.AddForce(Vector2.up  * _jumpPower, ForceMode2D.Impulse);
             _isGround = false;
         }
 
-        //進行方向にプレイヤーの向きを変える処理
-        if (h < 0)
+        //進行方向にプレイヤーの向きを変える処理(Transform.scale.x の±で切り替える)
+        var localScale = gameObject.transform.localScale;
+        if (h > 0)
         {
-            transform.eulerAngles = new Vector3(0, -180, 0);
+            localScale.x = Mathf.Abs(localScale.x);
+            gameObject.transform.localScale = localScale;
         }
-        else if (h > 0)
+        else if (h < 0)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            localScale.x = -Mathf.Abs(localScale.x);
+            gameObject.transform.localScale = localScale;
         }
     }
 

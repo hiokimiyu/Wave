@@ -29,7 +29,7 @@ public class KaniCatch : MonoBehaviour
         {
             //一番近いカニを消して自分のカニのイラストを表示させる
             Destroy(_hitCrabObj);
-            _crabIllust.GetComponent<SpriteRenderer>().enabled = true;
+            _crabIllust.SetActive(true);
         }
     }
 

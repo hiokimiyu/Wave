@@ -136,9 +136,7 @@ public class PlayerShot : MonoBehaviour
     private void KaniShot()
     {
         //カニを飛ばす
-        var set = Instantiate(_crabBullet, _muzzle.transform.position, Quaternion.identity);
-        //子オブジェクトに設定する
-        set.transform.SetParent(gameObject.transform, false);
+        Instantiate(_crabBullet, _muzzle.transform.position, Quaternion.identity);
     }
 
     /// <summary> 攻撃後 RearGap秒 肺活量の回復を止めて、また再開する処理 </summary>
