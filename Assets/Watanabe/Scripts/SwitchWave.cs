@@ -7,21 +7,19 @@ using UnityEngine;
 /// </summary>
 public class SwitchWave : MonoBehaviour
 {
-    [Tooltip("切り替えオブジェクトに入ってきたのがPlayerかどうか")]
-    [SerializeField, TagName] string _enterTag;
-    [Tooltip("GameManager(切り替え用)")]
-    [SerializeField] GameManager _manager;
+    private readonly string _enterTag = "Player";
+    private AttackStatus _status;
 
     void Switch()
     {
         //切り替えオブジェクトに触れた時に寒波、熱波を切り替える
-        if (_manager.Type == GameManager.AttackType.Cold)
+        if (_status.Type == AttackStatus.AttackType.Cold)
         {
-            _manager.Type = GameManager.AttackType.Warm;
+            _status.Type = AttackStatus.AttackType.Warm;
         }
         else
         {
-            _manager.Type = GameManager.AttackType.Cold;
+            _status.Type = AttackStatus.AttackType.Cold;
         }
     }
 
@@ -29,7 +27,7 @@ public class SwitchWave : MonoBehaviour
     {
         Debug.Log("切り替えます");
         //切り替えオブジェクトに入ってきたのがPlayerだったら
-        if (col.tag == _enterTag)
+        if (col.CompareTag(_enterTag))
         {
             //寒波、熱波を切り替える
             Switch();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ResultScene : MonoBehaviour
 {
     [Tooltip("ç≈èIåãâ ï\é¶ÇÃText")]
-    [SerializeField] Text _resultText;
+    [SerializeField] private Text _resultText;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +15,7 @@ public class ResultScene : MonoBehaviour
         {
             _resultText.text = "GameClear!!";
         }
-        else if (GameManager.IsClear == false)
+        else
         {
             _resultText.text = "GameOver...";
         }

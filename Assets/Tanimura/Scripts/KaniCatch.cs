@@ -4,62 +4,48 @@ using UnityEngine;
 
 public class KaniCatch : MonoBehaviour
 {
-    [Tooltip("カニのタグ")]
-    [SerializeField, TagName] string _crabTag;
-    [Tooltip("カニのイラストのオブジェクト")]
-    [SerializeField] GameObject _crabIllust;
-    GameObject _hitCrabObj;
-    PlayerShot _playerShot;
-    /// <summary>カニがキャッチ可能かどうか判定する</summary>
-    bool _isCanKaniCatch;
-    /// <summary>カニがキャッチ可能かどうか判定するプロパティ</summary>
-    public bool IsCanKaniCatch { get => _isCanKaniCatch; set => _isCanKaniCatch = value; }
+    private readonly string _crabTag = "Crab";
+    /// <summary> カニのイラストのオブジェクト </summary>
+    private GameObject _crabIllust;
+    /// <summary> つかむことが出来るカニ </summary>
+    private GameObject _hitCrabObj;
 
+    public GameObject CrabIllust { get => _crabIllust; set => _crabIllust = value; }
 
-    void Start()
+    private void Awake()
     {
-        _playerShot = gameObject.transform.parent.gameObject.GetComponent<PlayerShot>();
+        _crabIllust = transform.GetChild(0).gameObject;
     }
 
+    private void Start()
+    {
+        _crabIllust.SetActive(false);
+    }
 
-    void Update()
+    private void Update()
     {
         //カニがキャッチ可能かつ、カニを持っていないときにカニをキャッチする
-        if(Input.GetKeyDown(KeyCode.LeftShift) && _playerShot.IsKaniCatch == false)
+        if(Input.GetKeyDown(KeyCode.LeftShift) && _hitCrabObj != null)
         {
-            Debug.Log("catch");
-            if(IsCanKaniCatch)
-            {
-                //一番近いカニを消して自分のカニのイラストを表示させる
-                Destroy(_hitCrabObj);
-                _crabIllust.GetComponent<SpriteRenderer>().enabled = true;
-                //_crabIllust.SetActive(true);
-                _playerShot.IsKaniCatch = true;
-            }
+            //一番近いカニを消して自分のカニのイラストを表示させる
+            Destroy(_hitCrabObj);
+            _crabIllust.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == _crabTag)
+        if(collision.gameObject.CompareTag(_crabTag) && _hitCrabObj == null)
         {
-            IsCanKaniCatch = true;
             _hitCrabObj = collision.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(IsCanKaniCatch && collision.gameObject.tag == _crabTag)
+        if(_hitCrabObj != null)
         {
-            IsCanKaniCatch = false;
+            _hitCrabObj = null;
         }
-    }
-
-    /// <summary>カニを投げた時に表示を消す</summary>
-    public void KaniLost(GameObject check)
-    {
-        Debug.Log("a");
-        _crabIllust.GetComponent<SpriteRenderer>().enabled = false;
-        //_crabIllust.SetActive(false);
     }
 }

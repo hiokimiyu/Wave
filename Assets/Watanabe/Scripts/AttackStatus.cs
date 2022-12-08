@@ -5,11 +5,10 @@ using UnityEngine;
 public class AttackStatus : MonoBehaviour
 {
     /// <summary> UŒ‚‚Ì‹­‚³ </summary>
-    AttackStrength _strength = AttackStrength.Normal;
+    protected AttackStrength _strength = AttackStrength.Normal;
     /// <summary> UŒ‚‚Ìí—Ş </summary>
-    AttackType _type = AttackType.Cold;
+    private AttackType _type = AttackType.Cold;
 
-    /// <summary> UŒ‚‚Ì‹­‚³ </summary>
     public AttackStrength Strength { get => _strength; set => _strength = value; }
     public AttackType Type { get => _type; set => _type = value; }
 
@@ -21,27 +20,23 @@ public class AttackStatus : MonoBehaviour
     /// </summary>
     public void AttackSwitch()
     {
-        //Œ»İ‚Ìó‘Ô‚É‚æ‚Á‚ÄØ‚è‘Ö‚¦‚é(‡”Ô‚É)
-        //UI•\¦‚Ìˆ—‚ğ‘‚­
-        if (Strength == AttackStrength.Normal)
+        Debug.Log("Attack type switch");
+        switch (_strength)
         {
-            Strength = AttackStrength.Middle;
-            AttackType = "‚¿‚å‚Á‚Æ‹­‚¢";
-        }
-        else if (Strength == AttackStrength.Middle)
-        {
-            if (Type == AttackType.Cold)
-                Type = AttackType.Warm;
-            else
-                Type = AttackType.Cold;
-
-            Strength = AttackStrength.PowerAttack;
-            AttackType = "ÕŒ‚”g";
-        }
-        else if (Strength == AttackStrength.PowerAttack)
-        {
-            Strength = AttackStrength.Normal;
-            AttackType = "‰¹”g(•’Ê)";
+            //Œ»İ‚Ìó‘Ô‚É‚æ‚Á‚ÄØ‚è‘Ö‚¦‚é(‡”Ô‚É)
+            //UI•\¦‚Ìˆ—‚ğ‘‚­
+            case AttackStrength.Normal:
+                _strength = AttackStrength.Middle;
+                //AttackType = "‚¿‚å‚Á‚Æ‹­‚¢";
+                break;
+            case AttackStrength.Middle:
+                _strength = AttackStrength.PowerAttack;
+                //AttackType = "ÕŒ‚”g";
+                break;
+            case AttackStrength.PowerAttack:
+                _strength = AttackStrength.Normal;
+                //AttackType = "‰¹”g(•’Ê)";
+                break;
         }
     }
 
@@ -50,13 +45,13 @@ public class AttackStatus : MonoBehaviour
     {
         /// <summary> ‰¹”g(’Êí) </summary>
         Normal,
-        /// <summary> ‚¿‚å‚Á‚Æ‹­‚¢‚â‚Â </summary>
+        /// <summary> ‚¿‚å‚Á‚Æ‹­‚¢ </summary>
         Middle,
         /// <summary> ÕŒ‚”g </summary>
         PowerAttack,
     }
 
-    /// <summary> UŒ‚‚Ìí—Ş </summary>
+    /// <summary> UŒ‚‚Ìí—Ş(Š¦’g) </summary>
     public enum AttackType
     {
         /// <summary> Š¦”g </summary>

@@ -13,33 +13,27 @@ using UnityEngine.UI;
 public class PlayerMove : MonoBehaviour
 {
     /// <summary>Rigidbodyの変数</summary>
-    Rigidbody2D _rb;
+    private Rigidbody2D _rb;
     [Tooltip("スピード")]
-    [SerializeField] float _speed;
+    [SerializeField] private float _speed;
     [Tooltip("ジャンプパワー")]
-    [SerializeField] float _jumpPower;
+    [SerializeField] private float _jumpPower;
     [Tooltip("プレイヤーのHP")]
-    [SerializeField] int _playerHp;
+    [SerializeField] private int _playerHp;
     [Tooltip("プレイヤーの最大HP")]
-    [SerializeField] int _playerMaxHp;
-    //[Tooltip("プレイヤーの肺活量")]
-    //[SerializeField] float _vitalCapacity;
+    [SerializeField] private int _playerMaxHp;
     [Tooltip("プレイヤーがダメージを受けた時の無敵時間")]
-    [SerializeField] float _godModeTime;
+    [SerializeField] private float _godModeTime;
     [Tooltip("プレイヤーのHPバー")]
-    [SerializeField] Slider _hpBar;
+    [SerializeField] private Slider _hpBar;
     [Tooltip("プレイヤーのアニメーション")]
-    [SerializeField] Animator _damageAnimation;
-    [Tooltip("Groundタグ")]
-    [SerializeField, TagName] string _groundTag;
-    
-    /// <summary>地面の接触判定</summary>
-    bool _isGround = true;
-    /// <summary>無敵時間判定の変数</summary>
-    bool _isGodMode = false;
+    [SerializeField] private Animator _damageAnimation;
 
-    /// <summary>プレイヤーのHP</summary>
-    public int PlayerHp { get => _playerHp; set => _playerHp = value; }
+    private readonly string _groundTag = "Ground";
+    /// <summary>地面の接触判定</summary>
+    private bool _isGround = true;
+    /// <summary>無敵時間判定の変数</summary>
+    private bool _isGodMode = false;
 
     void Start()
     {
@@ -54,6 +48,7 @@ public class PlayerMove : MonoBehaviour
         //移動の処理
         float h = Input.GetAxisRaw("Horizontal");
         _rb.velocity = new Vector2(h * _speed, _rb.velocity.y);
+
         if(h != 0)
         {
             _damageAnimation.SetBool("IsWalking", true);
@@ -79,12 +74,11 @@ public class PlayerMove : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
-        
 
     //地面との接触判定の処理
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == _groundTag)
+        if(collision.gameObject.CompareTag(_groundTag))        
         {
             _isGround = true;
         }
