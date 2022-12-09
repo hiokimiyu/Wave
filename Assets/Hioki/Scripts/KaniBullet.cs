@@ -13,7 +13,7 @@ public class KaniBullet : MonoBehaviour
 
     void Start()
     {
-        var player = GameObject.Find("").GetComponent<Transform>();
+        var player = GameObject.Find("TestPlayer").GetComponent<Transform>();
 
         _rb = GetComponent<Rigidbody2D>();
 

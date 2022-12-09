@@ -48,9 +48,8 @@ public class PlayerMove : MonoBehaviour
     {
         //ˆÚ“®‚Ìˆ—
         float h = Input.GetAxisRaw("Horizontal");
-        _rb.velocity = new Vector2(h * _speed, _rb.velocity.y);
 
-        if(h != 0) //ˆÚ“®‚Ì“ü—Í‚ª‚ ‚ê‚Î
+        if (h != 0) //ˆÚ“®‚Ì“ü—Í‚ª‚ ‚ê‚Î
         {
             _anim.SetBool("IsWalking", true);
         }
@@ -58,6 +57,8 @@ public class PlayerMove : MonoBehaviour
         {
             _anim.SetBool("IsWalking", false);
         }
+        _rb.velocity = new Vector2(h * _speed, _rb.velocity.y);
+
         //’n–Ê‚É‚¢‚é‚Æ‚«‚¾‚¯ƒWƒƒƒ“ƒv‚·‚é
         if (Input.GetButtonDown("Jump") && _isGround)
         {

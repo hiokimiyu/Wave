@@ -1059,7 +1059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 454958531294566568, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 454958531294566569, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: _anim
@@ -1071,7 +1071,7 @@ PrefabInstance:
       objectReference: {fileID: 1888646041}
     - target: {fileID: 454958531294566569, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: _speed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 454958531294566569, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: _manager
@@ -1103,7 +1103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 454958531294566570, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.4
+      value: -7.06
       objectReference: {fileID: 0}
     - target: {fileID: 454958531294566570, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1157,6 +1157,10 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 379803856}
+    - target: {fileID: 454958531294566581, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 454958531294566582, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: m_Name
       value: TestPlayer
