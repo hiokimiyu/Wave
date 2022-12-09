@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6687455534527991926}
   - component: {fileID: 6687455534527991927}
   - component: {fileID: 5496601384793175075}
+  - component: {fileID: 205736020996708552}
   - component: {fileID: 6687455534527991928}
   m_Layer: 0
   m_Name: Managers
@@ -52,7 +53,7 @@ MonoBehaviour:
   _spawnerParent: {fileID: 0}
   _sceneEnemies: []
   _spawner: []
-  _attackRange: {fileID: 0}
+  _attackRange: {fileID: 5496601384793175075}
   _attackTypeText: {fileID: 0}
 --- !u!114 &6687455534527991926
 MonoBehaviour:
@@ -119,6 +120,20 @@ MonoBehaviour:
   _temperatureWaveCost: 10
   _crabBullet: {fileID: 2822385421455536066, guid: e49aff8da3fb4fa47ba6c4f00754d5b4, type: 3}
   _isKaniCatch: 0
+--- !u!114 &205736020996708552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687455534527991931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07608d2e454566641a7b08194400cea9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerHPBar: {fileID: 0}
+  _vitalCapacityBar: {fileID: 0}
 --- !u!82 &6687455534527991928
 AudioSource:
   m_ObjectHideFlags: 0

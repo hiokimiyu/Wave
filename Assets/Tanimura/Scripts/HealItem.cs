@@ -19,13 +19,11 @@ public class HealItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _playerTag)
+        if (collision.gameObject.CompareTag(_playerTag))
         {
-            collision.gameObject.GetComponent<PlayerMove>().Heal(_heal);
+            //collision.gameObject.GetComponent<PlayerMove>().Heal(_heal);
             Debug.Log("hit");
             Destroy(gameObject);
-            
-            
         }
     }
 }

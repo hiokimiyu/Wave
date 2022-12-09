@@ -13,41 +13,35 @@ public class VitalCapacity : MonoBehaviour
     [SerializeField] private float _maxVitalCapacity;
     [Tooltip("回復量")]
     [SerializeField] private float _recoveryAmount;
-    [Tooltip("バー(UI)")]
-    [SerializeField] private Slider _vitalCapacityBar;
 
     /// <summary> 現在の肺活量 </summary>
-    private float _vitalCapacity;
+    private float _currentVital;
     /// <summary>回復できるかどうかの判定</summary>
     private bool _isRecovery;
 
+    /// <summary> 現在の肺活量 </summary>
+    public float CurrentVital { get => _currentVital; set => _currentVital = value; }
     /// <summary>回復できるかどうかの判定のプロパティ</summary>
     public bool IsRecovery { get => _isRecovery; set => _isRecovery = value; }
 
 
-    private void Start()
+    private void Awake()
     {
         //初期値に最大値を設定
-        _vitalCapacity = _maxVitalCapacity;
-
-        //Sliderに値を設定する(初期値は最大値)
-        _vitalCapacityBar.maxValue = _maxVitalCapacity;
-        _vitalCapacityBar.value = _maxVitalCapacity;
+        _currentVital = _maxVitalCapacity;
     }
 
     private void Update()
     {
-        _vitalCapacityBar.value = _vitalCapacity;
-
         //回復状態になったら肺活量を回復する
         if (_isRecovery)
         {
-            _vitalCapacity += _recoveryAmount;
+            _currentVital += _recoveryAmount;
 
             //最大値以上にならないようにする処理
-            if (_vitalCapacity >= _maxVitalCapacity)
+            if (_currentVital >= _maxVitalCapacity)
             {
-                _vitalCapacity = _maxVitalCapacity;
+                _currentVital = _maxVitalCapacity;
             }
         }
     }
@@ -66,9 +60,9 @@ public class VitalCapacity : MonoBehaviour
     ///           足りていなかったらfalseを返す </summary>
     public bool VitalCapacityUse(int use)
     {
-        if (_vitalCapacity >= use)
+        if (_currentVital >= use)
         {
-            _vitalCapacity -= use;
+            _currentVital -= use;
             return true;
         }
         return false;
