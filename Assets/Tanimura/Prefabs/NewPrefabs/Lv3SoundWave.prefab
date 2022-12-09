@@ -126,10 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _clabTag: Crab
-  _spownerTag: Spawner
   _damage: 10
-  _lifeTime: 2
+  _lifeTime: 4
 --- !u!50 &3054183155112634366
 Rigidbody2D:
   serializedVersion: 4

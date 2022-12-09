@@ -96,6 +96,7 @@ public class PlayerMove : MonoBehaviour
         {
             _playerHp -= damage;
             _hpBar.value = _playerHp;
+
             if (_playerHp <= 0)
             {
                 GameObject.Find("Managers").GetComponent<GameManager>().GameOver();

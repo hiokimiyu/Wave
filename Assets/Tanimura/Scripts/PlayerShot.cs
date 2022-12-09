@@ -19,26 +19,29 @@ public class PlayerShot : MonoBehaviour
     [Tooltip("カニを追っているかどうかの判定")]
     [SerializeField] private bool _isKaniCatch = false;
 
-    /// <summary>カニ発射位置</summary>
-    private GameObject _muzzle;
-    /// <summary> 孫オブジェクト(カニのイラスト) </summary>
-    private GameObject _grandChild;
     /// <summary>射程距離のレベル</summary>
     private int _rangeLV = 0;
+    /// <summary> 孫オブジェクト(カニのイラスト) </summary>
+    private GameObject _grandChild;
+    private GameObject _player;
+    private GameObject _muzzle;
+
     private KaniCatch _kaniCatchJudge;
     private VitalCapacity _healJudge;
     private AttackStatus _attackStatus;
 
     /// <summary>射程距離のレベルのプロパティ</summary>
     public int RangeLV { get => _rangeLV; set => _rangeLV = value; }
-    
 
     void Start()
     {
-        _muzzle = transform.GetChild(0).gameObject;
+        _player = GameObject.Find("TestPlayer");
+
+        _muzzle = _player.transform.GetChild(0).gameObject;
         _grandChild = _muzzle.GetComponent<Transform>().transform.GetChild(0).gameObject;
-        _kaniCatchJudge = transform.GetChild(0).GetComponent<KaniCatch>();
-        _healJudge = GetComponent<VitalCapacity>();
+
+        _kaniCatchJudge = _muzzle.GetComponent<KaniCatch>();
+        _healJudge = _player.GetComponent<VitalCapacity>();
         _attackStatus = GameObject.Find("Switch").GetComponent<AttackStatus>();
     }
 
@@ -51,8 +54,8 @@ public class PlayerShot : MonoBehaviour
             {
                 Debug.Log("Throw crab away");
                 //投げる処理
-                KaniShot();
-                //カニを投げた後にカニの表示を消す
+                Instantiate(_crabBullet, _muzzle.transform.position, Quaternion.identity);
+                //カニを投げた後に手元のカニの表示を消す
                 _grandChild.SetActive(false);
             }
             else
@@ -87,14 +90,8 @@ public class PlayerShot : MonoBehaviour
         {
             Debug.Log("LeftClick");
             //音波の飛ばす処理
-            GameObject shot = Instantiate(_soundWave[_rangeLV]);
-            shot.transform.position = gameObject.transform.position;
+            Instantiate(_soundWave[_rangeLV], _player.transform.position, Quaternion.identity);
             StartCoroutine(IsRecovery(0.5f));
-
-            if (gameObject.transform.localEulerAngles.y == 180)
-            {
-                shot.GetComponent<SoundWave>().Dir = -1;
-            }
         }
     }
 
@@ -130,13 +127,6 @@ public class PlayerShot : MonoBehaviour
             Instantiate(_shockWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
             StartCoroutine(IsRecovery(0.5f));
         }
-    }
-
-    /// <summary>カニを飛ばす</summary>
-    private void KaniShot()
-    {
-        //カニを飛ばす
-        Instantiate(_crabBullet, _muzzle.transform.position, Quaternion.identity);
     }
 
     /// <summary> 攻撃後 RearGap秒 肺活量の回復を止めて、また再開する処理 </summary>

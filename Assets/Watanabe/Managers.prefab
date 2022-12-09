@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6687455534527991925}
   - component: {fileID: 6687455534527991926}
   - component: {fileID: 6687455534527991927}
+  - component: {fileID: 5496601384793175075}
   - component: {fileID: 6687455534527991928}
   m_Layer: 0
   m_Name: Managers
@@ -51,9 +52,8 @@ MonoBehaviour:
   _spawnerParent: {fileID: 0}
   _sceneEnemies: []
   _spawner: []
-  _player: {fileID: 0}
+  _attackRange: {fileID: 0}
   _attackTypeText: {fileID: 0}
-  _spawnerTag: Spawner
 --- !u!114 &6687455534527991926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +86,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadePanel: {fileID: 0}
-  _sceneName: Result
+--- !u!114 &5496601384793175075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6687455534527991931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05d3f6597611934aa1789b9b0a6d166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundWave:
+  - {fileID: 8843476356665499144, guid: a13768cbf35bc9a4fbbaaf21bd260625, type: 3}
+  - {fileID: 1632741939436570577, guid: ac8b2be7f61536149aa24b164fb8d671, type: 3}
+  - {fileID: 3054183155112634357, guid: adbdb4fc5aa71f549a5ac6a0eb85118a, type: 3}
+  _flameWave:
+  - {fileID: 4148132539282496514, guid: 4f0ed1a8aafb0a24cb1a5a37f8ecd004, type: 3}
+  - {fileID: 7654186030644145372, guid: a4f0df2e425200745a245c68512ed757, type: 3}
+  - {fileID: 7099350942771219791, guid: 7e7609496ac3cc94d9aaffd6d00275fe, type: 3}
+  _snowWave:
+  - {fileID: 593122917607479617, guid: c8c657418cce4aa45a6692fa72d1d63e, type: 3}
+  - {fileID: 721935813915403690, guid: e84ce5b690f2c9340b2b3001c8fae7e3, type: 3}
+  - {fileID: 5833520470577782712, guid: acc617d735d52d34487c1eaa48e6c554, type: 3}
+  _shockWave:
+  - {fileID: 661607243862064465, guid: f47cafe76aaf4ec448761792001e1405, type: 3}
+  - {fileID: 8451578362126501099, guid: f527b9602a689f746b821c453fe1064b, type: 3}
+  - {fileID: 1387817589241283543, guid: 82c2a715b39761845addfcaff1b446e7, type: 3}
+  _soundWaveCost: 5
+  _shockWaveCost: 30
+  _temperatureWaveCost: 10
+  _crabBullet: {fileID: 2822385421455536066, guid: e49aff8da3fb4fa47ba6c4f00754d5b4, type: 3}
+  _isKaniCatch: 0
 --- !u!82 &6687455534527991928
 AudioSource:
   m_ObjectHideFlags: 0
