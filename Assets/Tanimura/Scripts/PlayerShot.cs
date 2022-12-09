@@ -91,7 +91,7 @@ public class PlayerShot : MonoBehaviour
             Debug.Log("LeftClick");
             //‰¹”g‚Ì”ò‚Î‚·ˆ—
             Instantiate(_soundWave[_rangeLV], _player.transform.position, Quaternion.identity);
-            StartCoroutine(IsRecovery(0.5f));
+            StartCoroutine(IsRecovery(1f));
         }
     }
 
@@ -116,7 +116,7 @@ public class PlayerShot : MonoBehaviour
             var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
             var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
             shot.transform.localRotation = rotation;
-            StartCoroutine(IsRecovery(0.5f));
+            StartCoroutine(IsRecovery(1f));
         }
     }
 
@@ -125,15 +125,15 @@ public class PlayerShot : MonoBehaviour
         if (_healJudge.VitalCapacityUse(_shockWaveCost))
         {
             Instantiate(_shockWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
-            StartCoroutine(IsRecovery(0.5f));
+            StartCoroutine(IsRecovery(1f));
         }
     }
 
-    /// <summary> UŒ‚Œã RearGap•b ”xŠˆ—Ê‚Ì‰ñ•œ‚ğ~‚ß‚ÄA‚Ü‚½ÄŠJ‚·‚éˆ— </summary>
-    IEnumerator IsRecovery(float RearGap)
+    /// <summary> UŒ‚Œã stopHeal•b ”xŠˆ—Ê‚Ì‰ñ•œ‚ğ~‚ß‚ÄA‚Ü‚½ÄŠJ‚·‚éˆ— </summary>
+    IEnumerator IsRecovery(float stopHeal)
     {
         _healJudge.IsRecovery = false;
-        yield return new WaitForSeconds(RearGap);
+        yield return new WaitForSeconds(stopHeal);
         _healJudge.IsRecovery = true;
     }
 }
