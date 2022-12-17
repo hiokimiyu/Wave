@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +8,13 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Slider _playerHPBar;
     [SerializeField] private Slider _vitalCapacityBar;
+    [SerializeField] private Text _attackTypeText;
 
     private GameObject _player;
     private int _playerHP;
     private float _playerVital;
+    /// <summary> åªç›ÇÃçUåÇèÛë‘ </summary>
+    private readonly string _attackType = "âπîg";
 
 
     // Start is called before the first frame update
@@ -35,6 +36,8 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _attackTypeText.text = _attackType;
+
         _playerHPBar.value = _playerHP;
         _vitalCapacityBar.value = _playerVital;
     }

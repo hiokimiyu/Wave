@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -53,13 +51,12 @@ public class PlayerMove : MonoBehaviour
         if (h > 0)
         {
             localScale.x = Mathf.Abs(localScale.x);
-            gameObject.transform.localScale = localScale;
         }
         else if (h < 0)
         {
             localScale.x = -Mathf.Abs(localScale.x);
-            gameObject.transform.localScale = localScale;
         }
+        gameObject.transform.localScale = localScale;
     }
 
     //’n–Ê‚Æ‚ÌÚG”»’è‚Ìˆ—

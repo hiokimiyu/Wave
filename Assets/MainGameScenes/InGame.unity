@@ -250,6 +250,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1888646041}
     - target: {fileID: 205736020996708552, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
+      propertyPath: _attackTypeText
+      value: 
+      objectReference: {fileID: 562756802}
+    - target: {fileID: 205736020996708552, guid: 72469c5cc8a70744bab2d782890daade, type: 3}
       propertyPath: _vitalCapacityBar
       value: 
       objectReference: {fileID: 2000800209}
@@ -1032,6 +1036,14 @@ PrefabInstance:
       propertyPath: _hpBar
       value: 
       objectReference: {fileID: 1888646041}
+    - target: {fileID: 454958531294566569, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
+      propertyPath: _maxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 454958531294566569, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
+      propertyPath: _moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 454958531294566570, guid: 2492a8cac4473f44c9ac95fc7e8f00a9, type: 3}
       propertyPath: m_RootOrder
       value: 3

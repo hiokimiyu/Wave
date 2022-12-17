@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,14 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> _sceneEnemies = new();
     [SerializeField] private List<GameObject> _spawner = new();
     [SerializeField] private PlayerShot _attackRange;
-    [SerializeField] private Text _attackTypeText;
 
     /// <summary> フェードイン、アウトのクラス </summary>
     private Fade _fade;
     /// <summary> クリアウェーブ数 </summary>
     private int _waveCount = 0;
-    /// <summary> 現在の攻撃状態 </summary>
-    private readonly string _attackType = "音波";
     /// <summary> スポナーのタグ </summary>
     private readonly string _spawnerTag = "Spawner";
     /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
@@ -63,8 +58,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _attackTypeText.text = _attackType;
-
         if (_sceneEnemies.Count == 0 && _spawner.Count == 0)
         {
             _waveCount++;
