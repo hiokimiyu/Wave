@@ -90,7 +90,7 @@ public class AttackTypes : MonoBehaviour
         {
             Debug.Log("LeftClick");
             //音波の飛ばす処理
-            Instantiate(_soundWave[_rangeLV], _player.transform.position, Quaternion.identity);
+            Instantiate(_soundWave[_rangeLV], _muzzle.transform.position, Quaternion.identity);
             StartCoroutine(IsRecovery(1f));
         }
     }
@@ -102,16 +102,8 @@ public class AttackTypes : MonoBehaviour
         {
             GameObject shot;
 
-            if (_attackStatus.Type == AttackStatus.AttackType.Warm)
-            {
-                //自分の位置からマウスの位置に向かって熱波を出す
-                shot = Instantiate(_flameWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
-            }
-            else
-            {
-                //自分の位置からマウスの位置に向かって寒波を出す
-                shot = Instantiate(_snowWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
-            }
+            //自分の位置からマウスの位置に向かって寒波(熱波)を出す
+            shot = Instantiate(_flameWave[_rangeLV], _muzzle.transform.position, Quaternion.identity);
 
             var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
             var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
@@ -124,7 +116,7 @@ public class AttackTypes : MonoBehaviour
     {
         if (_healJudge.VitalCapacityUse(_shockWaveCost))
         {
-            Instantiate(_shockWave[_rangeLV], gameObject.transform.position, Quaternion.identity);
+            Instantiate(_shockWave[_rangeLV], _player.transform.position, Quaternion.identity);
             StartCoroutine(IsRecovery(1f));
         }
     }
