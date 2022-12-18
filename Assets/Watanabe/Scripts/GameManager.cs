@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _spawnerParent;
     [SerializeField] private List<GameObject> _sceneEnemies = new();
     [SerializeField] private List<GameObject> _spawner = new();
-    [SerializeField] private PlayerShot _attackRange;
+    [SerializeField] private AttackTypes _attackRange;
 
     /// <summary> フェードイン、アウトのクラス </summary>
     private Fade _fade;

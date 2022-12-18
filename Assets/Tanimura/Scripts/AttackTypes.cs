@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShot : MonoBehaviour
+public class AttackTypes : MonoBehaviour
 {
     [SerializeField] private GameObject[] _soundWave;
     [SerializeField] private GameObject[] _flameWave;
