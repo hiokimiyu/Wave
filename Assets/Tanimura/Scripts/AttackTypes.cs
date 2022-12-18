@@ -102,12 +102,18 @@ public class AttackTypes : MonoBehaviour
         {
             GameObject shot;
 
-            //自分の位置からマウスの位置に向かって寒波(熱波)を出す
-            shot = Instantiate(_flameWave[_rangeLV], _muzzle.transform.position, Quaternion.identity);
-
-            var pos = Camera.main.WorldToScreenPoint(transform.localPosition);
-            var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
-            shot.transform.localRotation = rotation;
+            if (_attackStatus.Type == AttackStatus.AttackType.Warm)
+            {
+                //自分の位置からマウスの位置に向かって熱波を出す
+                shot = Instantiate(_flameWave[_rangeLV], _muzzle.transform.position, Quaternion.identity);
+            }
+            else
+            {
+                //自分の位置からマウスの位置に向かって寒波を出す
+                shot = Instantiate(_snowWave[_rangeLV], _muzzle.transform.position, Quaternion.identity);
+            }
+            RotateSet(shot.transform.position, 
+                Camera.main.ScreenToWorldPoint(Input.mousePosition));
             StartCoroutine(IsRecovery(1f));
         }
     }
@@ -119,6 +125,11 @@ public class AttackTypes : MonoBehaviour
             Instantiate(_shockWave[_rangeLV], _player.transform.position, Quaternion.identity);
             StartCoroutine(IsRecovery(1f));
         }
+    }
+
+    private Vector2 RotateSet(Vector2 start, Vector2 end)
+    {
+        return new Vector2(end.x - start.x, end.y - start.y).normalized;
     }
 
     /// <summary> 攻撃後 stopHeal秒 肺活量の回復を止めて、また再開する処理 </summary>

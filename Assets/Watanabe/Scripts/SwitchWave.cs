@@ -8,6 +8,11 @@ public class SwitchWave : MonoBehaviour
     private readonly string _enterTag = "Player";
     private AttackStatus _status;
 
+    private void Start()
+    {
+        _status = GetComponent<AttackStatus>();
+    }
+
     void Switch()
     {
         //切り替えオブジェクトに触れた時に寒波、熱波を切り替える
@@ -15,7 +20,7 @@ public class SwitchWave : MonoBehaviour
         {
             _status.Type = AttackStatus.AttackType.Warm;
         }
-        else
+        else if (_status.Type == AttackStatus.AttackType.Warm)
         {
             _status.Type = AttackStatus.AttackType.Cold;
         }
