@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class Kani : MonoBehaviour, IDamage
 {
-    Rigidbody2D _rb;
     [Tooltip("移動スピード")]
-    [SerializeField] float _speed = 5;
-    [Tooltip("壁のオブジェクトのタグ名")]
-    [SerializeField, TagName] string _wallTag;
-    [Tooltip("Bossのタグ")]
-    [SerializeField, TagName] string _bossTag;
+    [SerializeField] private float _speed = 5;
     [Tooltip("かにの状態")]
-    [SerializeField] bool _isStop;
+    [SerializeField] private bool _isStop;
     [Tooltip("かにが消える時間")]
-    [SerializeField] float _deleteTime = 3;
-    [Tooltip("SoundManager")]
-    [SerializeField] SoundManager _soundManager;
+    [SerializeField] private float _deleteTime = 3;
+
     /// <summary>ひっくり返るときの回転数値</summary>
-    float _z = 0;
+    private float _rotateZ = 0;
+    private readonly string _wallTag ="Wall";
+    private readonly string _bossTag = "Boss";
+    private Rigidbody2D _rb;
+    private SoundManager _soundManager;
     /// <summary>攻撃なくす</summary>
-    Attack _attack;
+    private Attack _attack;
 
     //テストしやすいように見えるようにしておくもの↓
 
@@ -43,7 +41,7 @@ public class Kani : MonoBehaviour, IDamage
         else if (_isStop)
         {
             _rb.velocity = new Vector2(0, _rb.velocity.y);
-            _z = 180;
+            _rotateZ = 180;
             _deleteTime -= Time.deltaTime;
 
             if (_deleteTime < 0)
@@ -53,7 +51,7 @@ public class Kani : MonoBehaviour, IDamage
         }//動けない状態
 
         //方向転換
-        transform.eulerAngles = _speed < 0 ? new Vector3(0, 180, _z) : new Vector3(0, 0, _z);
+        transform.eulerAngles = _speed < 0 ? new Vector3(0, 180, _rotateZ) : new Vector3(0, 0, _rotateZ);
     }
 
     void IDamage.Damage()
@@ -64,20 +62,17 @@ public class Kani : MonoBehaviour, IDamage
         _soundManager.AudioPlay(_soundManager.AttackAudios[4]);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         //かべ、自分と同じタグに当たったら
-        if (collision.gameObject.tag == _wallTag || collision.gameObject.tag == gameObject.tag)
+        if (col.gameObject.CompareTag(_wallTag) || col.gameObject.CompareTag(gameObject.tag))
         {
             _speed *= -1f;
         }//方向転換
 
-        if (collision.gameObject.tag == _bossTag)
+        if (col.gameObject.CompareTag(_bossTag))
         {
-            var damage = collision.gameObject.GetComponent<IDamage>();
-            damage.Damage();
+            col.gameObject.GetComponent<IDamage>().Damage();
         }
     }
-
-    
 }

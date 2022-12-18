@@ -1,30 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnController : MonoBehaviour, IDamage
 {
     [Tooltip("出したい敵")]
-    [SerializeField] List<GameObject> _enemy = new List<GameObject>();
+    [SerializeField] private List<GameObject> _enemy = new();
     [Tooltip("かにを出す位置")]
-    [SerializeField] Transform _spawnKaniPos;
+    [SerializeField] private Transform _spawnKaniPos;
     [Tooltip("テレサ組を出す位置")]
-    [SerializeField] Transform _spawnTeresaPos;
+    [SerializeField] private Transform _spawnTeresaPos;
     [Tooltip("敵を出す間隔")]
-    [SerializeField] float _time = 3f;
-    [Tooltip("下からスポーンさせたい敵のタグ")]
-    [SerializeField, TagName] string _kaniTag;
-    [Tooltip("GameManager")]
-    [SerializeField] GameManager _gameManager;
-    [Tooltip("SoundManager")]
-    [SerializeField] SoundManager _soundManager;
+    [SerializeField] private float _time = 3f;
+
     /// <summary>敵を出す間隔はかるタイマー</summary>
-    float _enemytime;
-    /// <summary> HP</summary>
-    int _hp = 20;
+    private float _enemytime;
+    private int _hp = 20;
+    private readonly string _kaniTag = "Crab";
+    private GameManager _gameManager;
+    private SoundManager _soundManager;
 
-    //テストしやすいように見えるようにしておくもの↓
-
+    private void Start()
+    {
+        _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
+        _soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
+    }
 
     void Update()
     {
@@ -40,15 +41,16 @@ public class SpawnController : MonoBehaviour, IDamage
             Instantiate(_enemy[type], SpwanPos(_enemy[type]).position, Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
             _enemytime = 0;
         }//敵を出す時間になったら
+
         if (_hp <= 0)
         {
             Destroy(gameObject);
         }//HPがなくなったら
     }
 
-    Transform SpwanPos(GameObject go)
+    private Transform SpwanPos(GameObject go)
     {
-        if (go.tag == _kaniTag)
+        if (go.CompareTag(_kaniTag))
         {
             return _spawnKaniPos;
         }//かにのタグだったら下のスポーン位置を返す
@@ -63,11 +65,4 @@ public class SpawnController : MonoBehaviour, IDamage
         _hp--;
         _soundManager.AudioPlay(_soundManager.AttackAudios[2]);
     }
-
-    //public override int Activate()
-    //{
-    //    int a = Random.Range(0, EnemyList.Count);
-    //    return a;
-    //}
-
 }

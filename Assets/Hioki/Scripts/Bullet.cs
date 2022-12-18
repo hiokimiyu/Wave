@@ -12,8 +12,8 @@ public class Bullet : MonoBehaviour,IDamage
     private float _timer;
     private readonly string _playerTag = "Player";
     private readonly string _attack = "Flame";
-    private SoundManager _soundManager;
     private GameObject _player;
+    private SoundManager _soundManager;
 
     void Start()
     {

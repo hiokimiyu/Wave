@@ -9,11 +9,12 @@ public class FlameWave : MonoBehaviour
 
     private readonly string _snowTag = "Snow";
     private float _lifeTime = 0.5f;
-    
-    void Update()
+
+    private void Update()
     {
         //”M”g‚ªˆê’èŠÔ‚½‚Á‚½‚çÁ‚¦‚éˆ—
         _lifeTime -= Time.deltaTime;
+
         if (_lifeTime < 0)
         {
             Destroy(gameObject);
