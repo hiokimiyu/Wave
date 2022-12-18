@@ -25,6 +25,7 @@ public class AttackTypes : MonoBehaviour
     private GameObject _grandChild;
     private GameObject _player;
     private GameObject _muzzle;
+    private Vector2 _moveDir;
 
     private KaniCatch _kaniCatchJudge;
     private VitalCapacity _healJudge;
@@ -127,9 +128,9 @@ public class AttackTypes : MonoBehaviour
         }
     }
 
-    private Vector2 RotateSet(Vector2 start, Vector2 end)
+    private void RotateSet(Vector2 start, Vector2 end)
     {
-        return new Vector2(end.x - start.x, end.y - start.y).normalized;
+        _moveDir = new Vector2(end.x - start.x, end.y - start.y).normalized;
     }
 
     /// <summary> UŒ‚Œã stopHeal•b ”xŠˆ—Ê‚Ì‰ñ•œ‚ğ~‚ß‚ÄA‚Ü‚½ÄŠJ‚·‚éˆ— </summary>

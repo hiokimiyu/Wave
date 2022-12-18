@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Shockwave : MonoBehaviour
 {
-    [Tooltip("炎のタグ")]
-    [SerializeField, TagName] string _flameTag;
-    [Tooltip("雪のタグ")]
-    [SerializeField, TagName] string _snowTag;
-    [Tooltip("カニのタグ")]
-    [SerializeField, TagName] string _clabTag;
     [Tooltip("衝撃波が与えるダメージ")]
-    [SerializeField] int _damage;
-    [SerializeField] GameObject _player;
+    [SerializeField] private int _damage;
 
-　　
+    private readonly string _flameTag = "Flame";
+    private readonly string _snowTag = "Snow";
+    private readonly string _crabTag = "Crab";
+
     void Start()
     {
        
@@ -24,15 +20,12 @@ public class Shockwave : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
-        if (collision.tag == _flameTag || collision.tag == _snowTag || collision.tag == _clabTag)
+        if (collision.CompareTag(_flameTag) ||
+            collision.CompareTag(_snowTag)  ||
+            collision.CompareTag(_crabTag))
         {
             collision.gameObject.GetComponent<IDamage>().Damage();
             //後でカニの状態変化の処理を追加する
         }
-    }
-
-    private void Destroy()
-    {
-        Destroy(gameObject);
     }
 }

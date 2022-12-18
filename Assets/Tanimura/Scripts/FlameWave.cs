@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class FlameWave : MonoBehaviour
 {
-    [Tooltip("á‚Ìƒ^ƒO")]
-    [SerializeField, TagName] string _SnowTag;
     [Tooltip("ÕŒ‚”g‚ª—^‚¦‚éƒ_ƒ[ƒW")]
-    [SerializeField] int _damage;
-    float _lifeTime = 0.5f;
-    TestEnemyHp _colObjHp;
-    
+    [SerializeField] private int _damage;
+
+    private readonly string _snowTag = "Snow";
+    private float _lifeTime = 0.5f;
     
     void Update()
     {
         //”M”g‚ªˆê’èŠÔ‚½‚Á‚½‚çÁ‚¦‚éˆ—
         _lifeTime -= Time.deltaTime;
-        if(_lifeTime < 0)
+        if (_lifeTime < 0)
         {
             Destroy(gameObject);
         }
@@ -26,8 +24,7 @@ public class FlameWave : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
-        string colObj = collision.gameObject.tag;
-        if (collision.tag == _SnowTag)
+        if (collision.CompareTag(_snowTag))
         {
             collision.gameObject.GetComponent<IDamage>().Damage();
         }
