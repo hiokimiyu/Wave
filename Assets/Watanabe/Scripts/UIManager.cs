@@ -16,7 +16,6 @@ public class UIManager : MonoBehaviour
     /// <summary> Œ»İ‚ÌUŒ‚ó‘Ô </summary>
     private readonly string _attackType = "‰¹”g";
 
-
     // Start is called before the first frame update
     void Start()
     {

@@ -7,9 +7,8 @@ public class KaniBullet : MonoBehaviour
     [Tooltip("飛ばす力")]
     [SerializeField] private float _power = 5;
 
-    private Rigidbody2D _rb;
-    private readonly string _groundTag = "Ground";
     private readonly string _spawnerTag = "Spawner";
+    private Rigidbody2D _rb;
 
     void Start()
     {
@@ -24,14 +23,9 @@ public class KaniBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(_groundTag))
-        {
-            //Destroy(gameObject);
-        }
         if (collision.gameObject.CompareTag(_spawnerTag))
         {
             Destroy(collision.gameObject);
-            //Destroy(gameObject);
         }//スポナーに当たったら消す
     }
 }

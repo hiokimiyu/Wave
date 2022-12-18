@@ -5,9 +5,9 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     [Tooltip("攻撃力")]
-    [SerializeField] int _attack;
-    [Tooltip("プレイヤータグ")]
-    [SerializeField] private readonly string _playerTag = "Player";
+    [SerializeField] private int _attack;
+
+    private readonly string _playerTag = "Player";
 
     private void Start()
     {

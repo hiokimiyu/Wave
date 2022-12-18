@@ -5,18 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour,IDamage
 {
     [Tooltip("弾の速さ")]
-    [SerializeField] float _speed = 1f;
-    [Tooltip("Playerのタグ")]
-    [SerializeField, TagName] string _playerTag;
-    [SerializeField, TagName] string _attack;
+    [SerializeField] private float _speed = 1f;
     [Tooltip("弾のHP")]
-    [SerializeField] int _hp = 1;
-    [Tooltip("SoundManager")]
-    [SerializeField] SoundManager _soundManager;
-    /// <summary> Playerのオブジェクト </summary>
-    GameObject _player;
-    /// <summary> オブジェクト出現後からのタイマー </summary>
-    float _timer;
+    [SerializeField] private int _hp = 1;
+
+    private float _timer;
+    private readonly string _playerTag = "Player";
+    private readonly string _attack = "Flame";
+    private SoundManager _soundManager;
+    private GameObject _player;
 
     void Start()
     {
@@ -39,7 +36,8 @@ public class Bullet : MonoBehaviour,IDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _playerTag || collision.gameObject.tag == _attack)
+        if (collision.gameObject.CompareTag(_playerTag) || 
+            collision.gameObject.CompareTag(_attack))
         {
             Destroy(gameObject);
         }

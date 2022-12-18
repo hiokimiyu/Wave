@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class Teresa : MonoBehaviour, IDamage
 {
-    Rigidbody2D _rb;
+    [SerializeField] private Transform _muzzle;
+    [SerializeField] private GameObject _bullet;
     [Tooltip("横移動スピード")]
-    [SerializeField] float _xSpeed = 5;
+    [SerializeField] private float _xSpeed = 5;
     [Tooltip("縦移動")]
-    [SerializeField] float _ySpeed = 0;
+    [SerializeField] private float _ySpeed = 0;
     [Tooltip("攻撃間隔")]
-    [SerializeField] float _attackTime = 3;
-    [Tooltip("壁のオブジェクトのタグ名")]
-    [SerializeField, TagName] string _wallTag;
-    [Tooltip("muzzle")]
-    [SerializeField] Transform _muzzle;
-    [Tooltip("弾")]
-    [SerializeField] GameObject _bullet;
-    [Tooltip("SoundManager")]
-    [SerializeField] SoundManager _soundManager;
-    /// <summary>攻撃間隔はかるタイマー</summary>
-    float _attackTimer = 0;
+    [SerializeField] private float _attackTime = 3;
+
+    private readonly string _wallTag = "Wall";
+    private float _attackTimer = 0f;
+    private SoundManager _soundManager;
+    private Rigidbody2D _rb;
 
     //テストしやすいように見えるようにしておくもの↓
+    [Header("テスト用")]
     [Tooltip("HP")]
-    [SerializeField] int _hp = 5;
+    [SerializeField] private int _hp = 5;
     [Tooltip("ダメージ量")]
-    [SerializeField] int _damage = 5;
+    [SerializeField] private int _damage = 5;
 
     void Start()
     {
@@ -44,12 +41,10 @@ public class Teresa : MonoBehaviour, IDamage
         if (_attackTime < _attackTimer)
         {
             Instantiate(_bullet, _muzzle.position, transform.rotation);
-            _attackTimer = 0;
         }//攻撃
 
         //移動
         _rb.velocity = new Vector2(_xSpeed, Mathf.Sin(Time.time * _ySpeed));
-
         //方向転換
         transform.eulerAngles = _xSpeed < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
 
@@ -57,7 +52,6 @@ public class Teresa : MonoBehaviour, IDamage
         {
             Destroy(gameObject);
         }
-
     }
 
     void IDamage.Damage()
@@ -66,17 +60,9 @@ public class Teresa : MonoBehaviour, IDamage
         _soundManager.AudioPlay(_soundManager.AttackAudios[3]);
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == _wallTag)
-    //    {
-    //        _xSpeed *= -1f;
-    //    }//移動方向
-    //}
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == _wallTag)
+        if (collision.gameObject.CompareTag(_wallTag))
         {
             _xSpeed *= -1f;
         }//移動方向

@@ -11,12 +11,12 @@ public class Shockwave : MonoBehaviour
     private readonly string _snowTag = "Snow";
     private readonly string _crabTag = "Crab";
 
-    void Start()
+    private void Start()
     {
        
     }
 
-    //当たったオブジェクトのタグを取得して、それが対応しているタグならその敵の体力のスクリプトにダメージを与える
+    //当たったオブジェクトのタグを取得して、それが対応しているタグならその敵にダメージを与える
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision");
