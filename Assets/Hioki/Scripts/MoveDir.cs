@@ -1,17 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveDir : MonoBehaviour
 {
     [Tooltip("動く幅")]
-    [SerializeField] float _length = 4.0f;
+    [SerializeField] private float _length = 4.0f;
     [Tooltip("動くスピード")]
-    [SerializeField] float _speed = 2.0f;
+    [SerializeField] private float _speed = 2.0f;
     [Tooltip("縦に動くか横に動くか")]
-    [SerializeField] bool _isMoveType = false;
+    [SerializeField] private bool _isMoveType = false;
+
     /// <summary>最初の位置</summary>
-    Vector3 _startPos;
+    private Vector3 _startPos;
 
     void Start()
     {

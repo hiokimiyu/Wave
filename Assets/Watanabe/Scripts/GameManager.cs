@@ -10,16 +10,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _spawnerParent;
     [SerializeField] private List<GameObject> _sceneEnemies = new();
     [SerializeField] private List<GameObject> _spawner = new();
+    [Tooltip("攻撃のレベル")]
     [SerializeField] private AttackTypes _attackRange;
 
-    /// <summary> フェードイン、アウトのクラス </summary>
-    private Fade _fade;
     /// <summary> クリアウェーブ数 </summary>
     private int _waveCount = 0;
     /// <summary> スポナーのタグ </summary>
     private readonly string _spawnerTag = "Spawner";
     /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
     private static bool _isClear = false;
+    /// <summary> フェードイン、アウトのクラス </summary>
+    private Fade _fade;
 
     /// <summary> 敵をまとめた親オブジェクト </summary>
     public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }

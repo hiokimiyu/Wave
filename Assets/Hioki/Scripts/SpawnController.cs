@@ -1,11 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnController : MonoBehaviour, IDamage
 {
-    [Tooltip("出したい敵")]
+    [Tooltip("スポーンさせる敵の種類")]
     [SerializeField] private List<GameObject> _enemy = new();
     [Tooltip("かにを出す位置")]
     [SerializeField] private Transform _spawnKaniPos;
@@ -15,16 +13,18 @@ public class SpawnController : MonoBehaviour, IDamage
     [SerializeField] private float _time = 3f;
 
     /// <summary>敵を出す間隔はかるタイマー</summary>
-    private float _enemytime;
+    private float _enemytime = 0f;
     private int _hp = 20;
     private readonly string _kaniTag = "Crab";
+    private GameObject _managers;
     private GameManager _gameManager;
     private SoundManager _soundManager;
 
     private void Start()
     {
-        _gameManager = GameObject.Find("Managers").GetComponent<GameManager>();
-        _soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
+        _managers = GameObject.Find("Managers");
+        _gameManager = _managers.GetComponent<GameManager>();
+        _soundManager = _managers.GetComponent<SoundManager>();
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class SpawnController : MonoBehaviour, IDamage
             int type = Random.Range(0, _enemy.Count);
             //敵の向きをランダムで決める
             int y = Random.Range(0, 2) == 0 ? 0 : 180;
-            //ランダムで敵を出して、EnemyBoxの子オブジェクトにする
+            //ランダムで敵を出して、EnemyParentの子オブジェクトにする
             Instantiate(_enemy[type], SpwanPos(_enemy[type]).position, Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
             _enemytime = 0;
         }//敵を出す時間になったら

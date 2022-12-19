@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Kani : MonoBehaviour, IDamage
@@ -11,7 +9,7 @@ public class Kani : MonoBehaviour, IDamage
     [Tooltip("かにが消える時間")]
     [SerializeField] private float _deleteTime = 3;
 
-    /// <summary>ひっくり返るときの回転数値</summary>
+    /// <summary>ひっくり返るときの回転値</summary>
     private float _rotateZ = 0;
     private readonly string _wallTag ="Wall";
     private readonly string _bossTag = "Boss";
@@ -20,9 +18,7 @@ public class Kani : MonoBehaviour, IDamage
     /// <summary>攻撃なくす</summary>
     private Attack _attack;
 
-    //テストしやすいように見えるようにしておくもの↓
-
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _attack = GetComponent<Attack>();
@@ -32,7 +28,7 @@ public class Kani : MonoBehaviour, IDamage
         _speed *= transform.eulerAngles.y == 180 ? 1 : -1;
     }
 
-    void Update()
+    private void Update()
     {
         if (!_isStop)
         {

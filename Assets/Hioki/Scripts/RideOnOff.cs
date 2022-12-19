@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RideOnOff : MonoBehaviour
@@ -7,7 +5,7 @@ public class RideOnOff : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //上にのる時に一緒に動くゲームオブジェクト追加
-        GameObject empty = new GameObject();
+        GameObject empty = new();
         //動く床と同じところに場所を合わせる
         empty.transform.parent = transform;
         //乗ってきたオブジェクトを作ったオブジェクトに入れる
