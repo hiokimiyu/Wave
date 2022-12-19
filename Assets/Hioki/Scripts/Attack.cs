@@ -1,7 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// “G‚ÌUŒ‚ƒNƒ‰ƒX
+/// </summary>
 public class Attack : MonoBehaviour
 {
     [Tooltip("UŒ‚—Í")]

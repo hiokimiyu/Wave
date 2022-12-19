@@ -20,9 +20,7 @@ public class Teresa : MonoBehaviour, IDamage
 
     //テストしやすいように見えるようにしておくもの↓
     [Header("テスト用")]
-    [Tooltip("HP")]
     [SerializeField] private int _hp = 5;
-    [Tooltip("ダメージ量")]
     [SerializeField] private int _damage = 5;
 
     void Start()
@@ -41,6 +39,7 @@ public class Teresa : MonoBehaviour, IDamage
         if (_attackTime < _attackTimer)
         {
             Instantiate(_bullet, _muzzle.position, transform.rotation);
+            _attackTimer = 0f;
         }//攻撃
 
         //移動
