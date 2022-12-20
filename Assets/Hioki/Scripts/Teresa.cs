@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Teresa : MonoBehaviour, IDamage
@@ -9,11 +7,12 @@ public class Teresa : MonoBehaviour, IDamage
     [Tooltip("‰¡ˆÚ“®ƒXƒs[ƒh")]
     [SerializeField] private float _xSpeed = 5;
     [Tooltip("cˆÚ“®")]
-    [SerializeField] private float _ySpeed = 0;
+    [SerializeField] private float _ySpeed = 1;
     [Tooltip("UŒ‚ŠÔŠu")]
     [SerializeField] private float _attackTime = 3;
 
     private readonly string _wallTag = "Wall";
+    private readonly string _flameTag = "Flame";
     private float _attackTimer = 0f;
     private SoundManager _soundManager;
     private Rigidbody2D _rb;
@@ -59,11 +58,18 @@ public class Teresa : MonoBehaviour, IDamage
         _soundManager.AudioPlay(_soundManager.AttackAudios[3]);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.gameObject.CompareTag(_wallTag))
+        if (col.gameObject.CompareTag(_wallTag))
         {
             _xSpeed *= -1f;
         }//ˆÚ“®•ûŒü
+
+        if (col.gameObject.CompareTag(gameObject.tag) || 
+            col.gameObject.CompareTag(_flameTag))
+        {
+            Destroy(col.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
