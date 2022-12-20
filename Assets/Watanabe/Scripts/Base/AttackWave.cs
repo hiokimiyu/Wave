@@ -1,11 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveBase : MonoBehaviour
+public class AttackWave : MonoBehaviour
 {
     [Tooltip("衝撃波が与えるダメージ")]
     [SerializeField] private int _damage;
     [Tooltip("判定用のTag")]
-    [SerializeField] private string _hitTag;
+    [SerializeField] private List<string> _hitTag = new();
 
     private float _lifeTime = 0.5f;
 
@@ -23,7 +24,7 @@ public class WaveBase : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log($"Hit {col.tag}");
-        if (col.gameObject.CompareTag(_hitTag))
+        if (_hitTag.IndexOf(col.tag) >= 0)
         {
             col.gameObject.GetComponent<IDamage>().Damage();
         }

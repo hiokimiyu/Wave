@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3054183155112634363}
   - component: {fileID: 3054183155112634362}
   - component: {fileID: 3054183155112634360}
-  - component: {fileID: 3054183155112634361}
   - component: {fileID: 3054183155112634366}
+  - component: {fileID: -5947477942384954020}
   m_Layer: 0
   m_Name: Lv3SoundWave
   m_TagString: Untagged
@@ -113,21 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.55, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &3054183155112634361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3054183155112634357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76d309e89011e00498ee2665308635e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
-  _damage: 10
-  _lifeTime: 4
 --- !u!50 &3054183155112634366
 Rigidbody2D:
   serializedVersion: 4
@@ -149,3 +134,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5947477942384954020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054183155112634357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57df7cace1fbfd54ea074849f8169f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
+  _hitTag:
+  - Crab
+  - Spawner

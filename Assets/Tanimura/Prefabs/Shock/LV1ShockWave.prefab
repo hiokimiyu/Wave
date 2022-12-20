@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 661607243862064468}
   - component: {fileID: 661607243862064469}
   - component: {fileID: 661607243862064466}
-  - component: {fileID: 661607243862064467}
   - component: {fileID: 661607243862064464}
+  - component: {fileID: 2364557436681226919}
   m_Layer: 0
   m_Name: LV1ShockWave
   m_TagString: Untagged
@@ -103,23 +103,6 @@ CircleCollider2D:
   m_Offset: {x: -0.4, y: -0.15}
   serializedVersion: 2
   m_Radius: 7.78
---- !u!114 &661607243862064467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661607243862064465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948ebd7f316a642458516ca1b2bb03da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _flameTag: Flame
-  _snowTag: Snow
-  _clabTag: Crab
-  _damage: 10
-  _player: {fileID: 0}
 --- !u!95 &661607243862064464
 Animator:
   serializedVersion: 4
@@ -140,3 +123,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2364557436681226919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 661607243862064465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57df7cace1fbfd54ea074849f8169f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 3
+  _hitTag:
+  - Flame
+  - Snow
+  - Crab
