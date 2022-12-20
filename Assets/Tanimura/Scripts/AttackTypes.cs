@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackTypes : MonoBehaviour
@@ -34,7 +33,7 @@ public class AttackTypes : MonoBehaviour
     /// <summary>射程距離のレベルのプロパティ</summary>
     public int RangeLV { get => _rangeLV; set => _rangeLV = value; }
 
-    void Start()
+    private void Start()
     {
         _player = GameObject.Find("TestPlayer");
 
@@ -46,7 +45,7 @@ public class AttackTypes : MonoBehaviour
         _attackStatus = GameObject.Find("Switch").GetComponent<AttackStatus>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {

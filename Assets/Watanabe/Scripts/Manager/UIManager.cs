@@ -10,21 +10,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Slider _vitalCapacityBar;
     [SerializeField] private Text _attackTypeText;
 
-    private GameObject _player;
-    private int _playerHP;
-    private float _playerVital;
     /// <summary> Œ»İ‚ÌUŒ‚ó‘Ô </summary>
     private readonly string _attackType = "‰¹”g";
+    private int _playerHP;
+    private float _playerVital;
+    private GameObject _player;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _player = GameObject.Find("TestPlayer");
 
         _playerHP = _player.GetComponent<PlayerMove>().PlayerHP;
         _playerVital = _player.GetComponent<VitalCapacity>().CurrentVital;
 
-        //Slider‚Ì‰Šúİ’è(‰Šú’l‚ÍÅ‘å’l)
+        //Slider‚Ì‰Šúİ’è(‰Šú’l‚ÍÅ‘å’l‚Éİ’è)
         _playerHPBar.maxValue = _playerHP;
         _vitalCapacityBar.value = _playerHP;
 
@@ -32,9 +31,9 @@ public class UIManager : MonoBehaviour
         _vitalCapacityBar.value = _playerVital;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        //UI‚Ì”½‰f
         _attackTypeText.text = _attackType;
 
         _playerHPBar.value = _playerHP;

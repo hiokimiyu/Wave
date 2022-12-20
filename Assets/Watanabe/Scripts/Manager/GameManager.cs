@@ -10,16 +10,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _spawnerParent;
     [SerializeField] private List<GameObject> _sceneEnemies = new();
     [SerializeField] private List<GameObject> _spawner = new();
-    [Tooltip("攻撃のレベル")]
-    [SerializeField] private AttackTypes _attackRange;
 
     /// <summary> クリアウェーブ数 </summary>
     private int _waveCount = 0;
-    /// <summary> スポナーのタグ </summary>
-    private readonly string _spawnerTag = "Spawner";
     /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
     private static bool _isClear = false;
-    /// <summary> フェードイン、アウトのクラス </summary>
+    /// <summary> 攻撃のレベル </summary>
+    private AttackTypes _attackRange;
+    /// <summary> フェードイン、アウト </summary>
     private Fade _fade;
 
     /// <summary> 敵をまとめた親オブジェクト </summary>
@@ -27,37 +25,14 @@ public class GameManager : MonoBehaviour
     /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
     public static bool IsClear { get => _isClear; set => _isClear = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        _attackRange = GetComponent<AttackTypes>();
         _fade = GetComponent<Fade>();
-        _isClear = false;
         _attackRange.RangeLV = 0;
-
-        //各Listにシーン上の該当要素を追加する(最初に既に敵が存在している場合)
-        //↓敵
-        if (_enemyParent.transform.childCount > 0)
-        {
-            foreach (Transform child in _enemyParent.GetComponentInChildren<Transform>())
-            {
-                _sceneEnemies.Add(child.gameObject);
-            }
-        }
-        //↓スポナー
-        if (_spawnerParent.transform.childCount > 0)
-        {
-            foreach (Transform child in _spawnerParent.GetComponentInChildren<Transform>())
-            {
-                if (child.gameObject.CompareTag(_spawnerTag))
-                {
-                    _spawner.Add(child.gameObject);
-                }
-            }
-        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (_sceneEnemies.Count == 0 && _spawner.Count == 0)
         {
