@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1353600761715116570}
   - component: {fileID: 7621913877376559553}
-  - component: {fileID: 8643877426564153190}
   - component: {fileID: 7924808500341636840}
   - component: {fileID: 8853582717387334528}
   - component: {fileID: 5898212823625226397}
+  - component: {fileID: 1592645034}
   m_Layer: 7
   m_Name: LV2FlameWave
   m_TagString: Untagged
@@ -88,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8643877426564153190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7654186030644145372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d67318ec24c042e45b9ca1496b645e2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _SnowTag: Snow
-  _damage: 10
 --- !u!50 &7924808500341636840
 Rigidbody2D:
   serializedVersion: 4
@@ -159,3 +145,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592645034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654186030644145372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57df7cace1fbfd54ea074849f8169f0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 0
+  _hitTag: Snow

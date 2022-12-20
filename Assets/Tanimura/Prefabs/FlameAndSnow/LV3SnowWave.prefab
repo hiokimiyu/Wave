@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6400319676297374348}
   - component: {fileID: 5721163426701290019}
   - component: {fileID: 8021274536258124518}
-  - component: {fileID: 7242147585263125345}
+  - component: {fileID: 1765202692}
   m_Layer: 6
   m_Name: LV3SnowWave
   m_TagString: Untagged
@@ -145,7 +145,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7242147585263125345
+--- !u!114 &1765202692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,8 +154,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5833520470577782712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eaca7aa22bb02b64599cba91ab4c166d, type: 3}
+  m_Script: {fileID: 11500000, guid: 57df7cace1fbfd54ea074849f8169f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flameTag: Flame
-  _damage: 10
+  _damage: 0
+  _hitTag: Flame
