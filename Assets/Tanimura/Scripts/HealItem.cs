@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class HealItem : MonoBehaviour
 {
-    [SerializeField, TagName] string _playerTag;
-    [SerializeField] int _heal;
+    [SerializeField] private int _heal;
+
+    private readonly string _playerTag = "Player";
+
     void Start()
     {
         
@@ -17,9 +19,9 @@ public class HealItem : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.gameObject.CompareTag(_playerTag))
+        if (col.gameObject.CompareTag(_playerTag))
         {
             //collision.gameObject.GetComponent<PlayerMove>().Heal(_heal);
             Debug.Log("hit");

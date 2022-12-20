@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Waves : MonoBehaviour
 {
-    [Tooltip("当たったオブジェクトののタグ")]
-    [SerializeField, TagName] string _hitTag;
     [Tooltip("衝撃波が与えるダメージ")]
-    [SerializeField] int _damage;
-    float _lifeTime = 0.5f;
-    TestEnemyHp _colObjHp;
+    [SerializeField] private int _damage;
+
+    private readonly string _hitTag = "Player";
+    private float _lifeTime = 0.5f;
 
     // Update is called once per frame
     void Update()
@@ -22,11 +19,11 @@ public class Waves : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.tag == _hitTag)
+        if (col.CompareTag(_hitTag))
         {
-            collision.gameObject.GetComponent<IDamage>().Damage();
+            col.gameObject.GetComponent<IDamage>().Damage();
         }
     }
 }
