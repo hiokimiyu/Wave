@@ -2,61 +2,59 @@ using UnityEngine;
 
 public class BossMove : MonoBehaviour, IDamage
 {
-    [Tooltip("GameManager")]
-    [SerializeField] GameManager _gameManager;
-    [Tooltip("エネミー")]
-    [SerializeField] GameObject[] _enemy = new GameObject[3];
+    [Tooltip("出現させるエネミー")]
+    [SerializeField] private GameObject[] _enemy = new GameObject[3];
     [Tooltip("エネミーを出すところ")]
-    [SerializeField] Transform _spawnPos;
-    [SerializeField] Sprite[] _sprite = new Sprite[3];
-    [Tooltip("SoundManager")]
-    [SerializeField] SoundManager _soundManager;
+    [SerializeField] private Transform _spawnPos;
+    [SerializeField] private Sprite[] _sprite = new Sprite[3];
+    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private SoundManager _soundManager;
     //ここから上はSerializeする必要がある
 
-    [Tooltip("HP")]
-    [SerializeField, Range(0, 100)] float _hp = 10f;
+    [Range(0, 100)]
+    [SerializeField] private float _hp = 10f;
     [Tooltip("強くなる時の残りHP")]
-    [SerializeField] int _powerUpHp = 4;
+    [SerializeField] private int _powerUpHp = 4;
     [Tooltip("止まった所から移動するまでの時間")]
-    [SerializeField, Range(1, 10)] float _moveTime = 3f;
+    [Range(1, 10)]
+    [SerializeField] private float _moveTime = 3f;
 
     /// <summary> 強くなるときにマイナスする止まる時間 </summary>
-    readonly float _reduceTime = 2f;
+    private readonly float _reduceTime = 2f;
     /// <summary> あたえるダメージ </summary>
-    readonly float _damage = 1;
+    private readonly float _damage = 1;
     /// <summary> 円移動スピード </summary>
-    readonly float _circleSpeed = 1f;
+    private readonly float _circleSpeed = 1f;
     /// <summary> 敵を出すときに止まる時間 </summary>
-    float _stopTime = 3f;
+    private float _stopTime = 3f;
     /// <summary> 円の半径 </summary>
-    float _circleRadius = 5f;
+    private readonly float _circleRadius = 5f;
     /// <summary>横移動させるためのタイマー</summary>
-    float _time = 0;
+    private float _time = 0;
     /// <summary>モード切り替えに対応する敵を出すための数字</summary>
-    int _mode = 0;
+    private int _mode = 0;
     /// <summary>出したエネミーをカウントする</summary>
-    int _enemyCount = 0;
+    private int _enemyCount = 0;
     /// <summary>攻撃したかどうか</summary>
-    bool _isAttack;
+    private bool _isAttack;
     /// <summary>最初の自分の位置を入れておく</summary>
-    Vector2 _startPos;
+    private Vector2 _startPos;
     /// <summary>スプライト</summary>
-    SpriteRenderer _sr;
+    private SpriteRenderer _sr;
 
-    //デバックするため見えるようにしておく↓
-
+    [Header("テスト用")]
     [Tooltip("何体出すか")]
-    [SerializeField] int _enemyNum;
+    [SerializeField] private int _enemyNum;
     /// <summary> 自分の行動 </summary>
-    AttackPattern _attackPattern = AttackPattern.Normal;
+    private AttackPattern _attackPattern = AttackPattern.Normal;
     /// <summary>モード切替や移動間隔はかるタイマー</summary>
-    float _timer = 0;
+    private float _timer = 0;
     /// <summary> レイヤーの番号 </summary>
-    int _layerNum = 0;
+    private int _layerNum = 0;
     /// <summary> 行動したかどうか </summary>
-    bool _isMode = false;
+    private bool _isMode = false;
     /// <summary> パワーアップしたか </summary>
-    bool _isPowerUp = false;
+    private bool _isPowerUp = false;
 
     private void Start()
     {
@@ -85,7 +83,7 @@ public class BossMove : MonoBehaviour, IDamage
         switch (_attackPattern)
         {
             /// <summary>ノーマルの時の行動</summary>
-            case AttackPattern.Normal: // == 0
+            case AttackPattern.Normal:
 
                 _sr.sprite = _sprite[_mode];
                 //自分のいるところ
@@ -105,13 +103,13 @@ public class BossMove : MonoBehaviour, IDamage
                 break;
 
             /// <summary>炎君出す時の行動</summary>
-            case AttackPattern.Flame: // == 1
+            case AttackPattern.Flame:
                 _sr.sprite = _sprite[_mode];
                 Attack();
                 break;
 
             ///<summary>雪君出す時の行動</summary>
-            case AttackPattern.Snow: // == 2
+            case AttackPattern.Snow:
                 _sr.sprite = _sprite[_mode];
                 Attack();
                 break;
@@ -122,11 +120,12 @@ public class BossMove : MonoBehaviour, IDamage
     {
         if (!_isAttack)
         {
-            _layerNum = _mode + 5;//デバックしやすいように変数に入れる
-            SetLayer(_layerNum);//レイヤーを6，7にする
+            _layerNum = _mode + 5; //デバックしやすいように変数に入れる
+            SetLayer(_layerNum); //レイヤーを6，7にする
             _isAttack = true;
             Spawn();
         }
+
         if (_timer > _moveTime + _stopTime)
         {
             _isAttack = false;
@@ -142,7 +141,7 @@ public class BossMove : MonoBehaviour, IDamage
 
     /// <summary>ボスをレイヤー変更する</summary>
     /// <param name="num">レイヤーの番号</param>
-    void SetLayer(int num)
+    private void SetLayer(int num)
     {
         gameObject.layer = num;
     }
@@ -164,7 +163,7 @@ public class BossMove : MonoBehaviour, IDamage
         Snow,
     }
 
-    void Spawn()
+    private void Spawn()
     {
         _enemyCount++;
         int y = Random.Range(0, 2) == 0 ? 0 : 180;

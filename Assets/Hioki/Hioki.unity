@@ -622,8 +622,6 @@ MonoBehaviour:
   _spawnerParent: {fileID: 529911411}
   _sceneEnemies: []
   _spawner: []
-  _attackTypeText: {fileID: 0}
-  _spawnerTag: 
 --- !u!4 &1544243733
 Transform:
   m_ObjectHideFlags: 0
