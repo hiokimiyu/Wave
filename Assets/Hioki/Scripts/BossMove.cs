@@ -62,6 +62,7 @@ public class BossMove : MonoBehaviour, IDamage
         _sr = GetComponent<SpriteRenderer>();
         //_circleRadius *= _isLeft ? 1 : -1;
     }
+
     private void Update()
     {
         _timer += Time.deltaTime;
@@ -85,31 +86,29 @@ public class BossMove : MonoBehaviour, IDamage
             /// <summary>ノーマルの時の行動</summary>
             case AttackPattern.Normal:
 
-                _sr.sprite = _sprite[_mode];
                 //自分のいるところ
                 Vector2 pos = transform.position;
                 //Θを求めてるはず
-                float rad = _circleSpeed * _time * Mathf.PI;
-                //cosΘ * 半径 でｘを求めてる,
+                float theta = _circleSpeed * _time * Mathf.PI;
+
+                _sr.sprite = _sprite[_mode];
+                //cosΘ * 半径 でｘを求めてる
                 //自分の最初の位置から動かすためプラスする、端から始めるため半径をマイナス
-                pos.x = Mathf.Cos(rad) * _circleRadius + _startPos.x - _circleRadius;
-                pos.y = Mathf.Sin(rad) * _circleRadius;
-                transform.position = pos;
+                pos.x = Mathf.Cos(theta) * _circleRadius + _startPos.x - _circleRadius;
+                pos.y = Mathf.Sin(theta) * _circleRadius;
                 _time += Time.deltaTime;
+                transform.position = pos;
+
                 if (_enemyCount <= _enemyNum)
                 {
                     Spawn();
                 }
                 break;
 
-            /// <summary>炎君出す時の行動</summary>
+            /// <summary> 炎(雪)君出す時の行動 </summary>
             case AttackPattern.Flame:
-                _sr.sprite = _sprite[_mode];
-                Attack();
-                break;
-
-            ///<summary>雪君出す時の行動</summary>
             case AttackPattern.Snow:
+
                 _sr.sprite = _sprite[_mode];
                 Attack();
                 break;
@@ -146,6 +145,15 @@ public class BossMove : MonoBehaviour, IDamage
         gameObject.layer = num;
     }
 
+    private void Spawn()
+    {
+        _enemyCount++;
+        int y = Random.Range(0, 2) == 0 ? 0 : 180;
+
+        Instantiate(_enemy[_mode], _spawnPos.position,
+            Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
+    }
+
     void IDamage.Damage()
     {
         _hp -= _damage;
@@ -161,12 +169,5 @@ public class BossMove : MonoBehaviour, IDamage
         Flame,
         /// <summary>雪を出すとき</summary>
         Snow,
-    }
-
-    private void Spawn()
-    {
-        _enemyCount++;
-        int y = Random.Range(0, 2) == 0 ? 0 : 180;
-        Instantiate(_enemy[_mode], _spawnPos.position, Quaternion.Euler(0, y, 0), _gameManager.EnemyParent.transform);
     }
 }
