@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class BossMove : MonoBehaviour, IDamage
 {
-    [Tooltip("出現させるエネミー")]
-    [SerializeField] private GameObject[] _enemy = new GameObject[3];
     [Tooltip("エネミーを出すところ")]
     [SerializeField] private Transform _spawnPos;
+    [Tooltip("出現させるエネミー")]
+    [SerializeField] private GameObject[] _enemy = new GameObject[3];
     [SerializeField] private Sprite[] _sprite = new Sprite[3];
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private SoundManager _soundManager;
@@ -36,7 +36,7 @@ public class BossMove : MonoBehaviour, IDamage
     /// <summary>出したエネミーをカウントする</summary>
     private int _enemyCount = 0;
     /// <summary>攻撃したかどうか</summary>
-    private bool _isAttack;
+    private bool _isAttack = false;
     /// <summary>最初の自分の位置を入れておく</summary>
     private Vector2 _startPos;
     /// <summary>スプライト</summary>
@@ -46,7 +46,7 @@ public class BossMove : MonoBehaviour, IDamage
     [Tooltip("何体出すか")]
     [SerializeField] private int _enemyNum;
     /// <summary> 自分の行動 </summary>
-    private AttackPattern _attackPattern = AttackPattern.Normal;
+    private AttackPattern _attackPattern = default;
     /// <summary>モード切替や移動間隔はかるタイマー</summary>
     private float _timer = 0;
     /// <summary> レイヤーの番号 </summary>
@@ -91,12 +91,12 @@ public class BossMove : MonoBehaviour, IDamage
                 //Θを求めてるはず
                 float theta = _circleSpeed * _time * Mathf.PI;
 
+                _time += Time.deltaTime;
                 _sr.sprite = _sprite[_mode];
                 //cosΘ * 半径 でｘを求めてる
                 //自分の最初の位置から動かすためプラスする、端から始めるため半径をマイナス
                 pos.x = Mathf.Cos(theta) * _circleRadius + _startPos.x - _circleRadius;
                 pos.y = Mathf.Sin(theta) * _circleRadius;
-                _time += Time.deltaTime;
                 transform.position = pos;
 
                 if (_enemyCount <= _enemyNum)
@@ -120,29 +120,22 @@ public class BossMove : MonoBehaviour, IDamage
         if (!_isAttack)
         {
             _layerNum = _mode + 5; //デバックしやすいように変数に入れる
-            SetLayer(_layerNum); //レイヤーを6，7にする
+            gameObject.layer = _layerNum; //レイヤーを6，7にする
             _isAttack = true;
             Spawn();
         }
 
         if (_timer > _moveTime + _stopTime)
         {
-            _isAttack = false;
             _attackPattern = AttackPattern.Normal;
+            _isAttack = false;
             _isMode = false;
             _mode = 0;
             _timer = 0;
             _enemyCount = 0;
             _layerNum = _mode;
-            SetLayer(_layerNum);
+            gameObject.layer = _layerNum;
         }//一定時間たったら移動させる、レイヤーを0に戻す
-    }
-
-    /// <summary>ボスをレイヤー変更する</summary>
-    /// <param name="num">レイヤーの番号</param>
-    private void SetLayer(int num)
-    {
-        gameObject.layer = num;
     }
 
     private void Spawn()
@@ -163,11 +156,11 @@ public class BossMove : MonoBehaviour, IDamage
     /// <summary>自分の行動</summary>
     enum AttackPattern
     {
-        /// <summary>移動だけ、何もしないとき</summary>
+        /// <summary> 移動する </summary>
         Normal,
-        ///<summary>炎を出すとき</summary>
+        ///<summary> 炎を出す </summary>
         Flame,
-        /// <summary>雪を出すとき</summary>
+        /// <summary> 雪を出す </summary>
         Snow,
     }
 }
