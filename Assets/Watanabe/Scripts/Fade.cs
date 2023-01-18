@@ -9,11 +9,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Fade : MonoBehaviour
 {
-    [Tooltip("フェード用のUI")]
     [SerializeField] private Image _fadePanel;
-
-    /// <summary> 遷移先のシーン名 </summary>
-    private readonly string _sceneName = "Result";
+    [SerializeField] private string _sceneName = "Result";
 
     private void Start()
     {

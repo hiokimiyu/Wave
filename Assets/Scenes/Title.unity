@@ -1263,6 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadePanel: {fileID: 2072943165}
+  _sceneName: InGame
 --- !u!1 &2072943163
 GameObject:
   m_ObjectHideFlags: 0
