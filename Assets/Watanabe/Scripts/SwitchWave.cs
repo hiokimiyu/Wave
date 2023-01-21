@@ -1,3 +1,4 @@
+using Consts;
 using UnityEngine;
 
 /// <summary>
@@ -5,7 +6,6 @@ using UnityEngine;
 /// </summary>
 public class SwitchWave : MonoBehaviour
 {
-    private readonly string _enterTag = "Player";
     private AttackStatus _status;
 
     private void Start()
@@ -30,7 +30,7 @@ public class SwitchWave : MonoBehaviour
     {
         Debug.Log("切り替えます");
         //切り替えオブジェクトに入ってきたのがPlayerだったら
-        if (col.CompareTag(_enterTag))
+        if (col.CompareTag(Constants.PLAYER_TAG))
         {
             //寒波、熱波を切り替える
             Switch();

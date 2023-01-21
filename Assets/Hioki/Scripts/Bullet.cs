@@ -1,3 +1,4 @@
+using Consts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,16 +10,14 @@ public class Bullet : MonoBehaviour,IDamage
     [Tooltip("’e‚ÌHP")]
     [SerializeField] private int _hp = 1;
 
-    private float _timer;
-    private readonly string _playerTag = "Player";
-    private readonly string _attack = "Flame";
-    private GameObject _player;
-    private SoundManager _soundManager;
+    private float _timer = default;
+    private GameObject _player = default;
+    private SoundManager _soundManager = default;
 
     void Start()
     {
         _soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
-        _player = GameObject.FindGameObjectWithTag(_playerTag);
+        _player = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG);
     }
 
     void Update()
@@ -36,8 +35,8 @@ public class Bullet : MonoBehaviour,IDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(_playerTag) || 
-            collision.gameObject.CompareTag(_attack))
+        if (collision.gameObject.CompareTag(Constants.PLAYER_TAG) || 
+            collision.gameObject.CompareTag(Constants.FLAME_TAG))
         {
             Destroy(gameObject);
         }

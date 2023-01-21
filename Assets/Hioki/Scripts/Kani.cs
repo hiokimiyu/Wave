@@ -1,3 +1,4 @@
+using Consts;
 using UnityEngine;
 
 public class Kani : MonoBehaviour, IDamage
@@ -5,24 +6,22 @@ public class Kani : MonoBehaviour, IDamage
     [Tooltip("移動スピード")]
     [SerializeField] private float _speed = 5;
     [Tooltip("かにの状態")]
-    [SerializeField] private bool _isStop;
+    [SerializeField] private bool _isStop = false;
     [Tooltip("かにが消える時間")]
     [SerializeField] private float _deleteTime = 3;
 
     /// <summary>ひっくり返るときの回転値</summary>
     private float _rotateZ = 0;
-    private readonly string _wallTag ="Wall";
-    private readonly string _bossTag = "Boss";
-    private Rigidbody2D _rb;
-    private SoundManager _soundManager;
+    private Rigidbody2D _rb = default;
+    //private SoundManager _soundManager = default;
     /// <summary>攻撃なくす</summary>
-    private Attack _attack;
+    private Attack _attack = default;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _attack = GetComponent<Attack>();
-        _soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
+        //_soundManager = GameObject.Find("Managers").GetComponent<SoundManager>();
 
         //自分がどっち向いてるか確認して、進む方向を決めてる
         _speed *= transform.eulerAngles.y == 180 ? 1 : -1;
@@ -55,18 +54,18 @@ public class Kani : MonoBehaviour, IDamage
         //かにがストップする
         _isStop = true;
         _attack.enabled = false;
-        _soundManager.AudioPlay(_soundManager.AttackAudios[4]);
+        //_soundManager.AudioPlay(_soundManager.AttackAudios[4]);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         //かべ、自分と同じタグに当たったら
-        if (col.gameObject.CompareTag(_wallTag) || col.gameObject.CompareTag(gameObject.tag))
+        if (col.gameObject.CompareTag(Constants.WALL_TAG) || col.gameObject.CompareTag(gameObject.tag))
         {
             _speed *= -1f;
         }//方向転換
 
-        if (col.gameObject.CompareTag(_bossTag))
+        if (col.gameObject.CompareTag(Constants.BOSS_TAG))
         {
             col.gameObject.GetComponent<IDamage>().Damage();
         }

@@ -1,3 +1,4 @@
+using Consts;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,19 +7,18 @@ public class SpawnController : MonoBehaviour, IDamage
     [Tooltip("スポーンさせる敵の種類")]
     [SerializeField] private List<GameObject> _enemy = new();
     [Tooltip("かにを出す位置")]
-    [SerializeField] private Transform _spawnKaniPos;
+    [SerializeField] private Transform _spawnKaniPos = default;
     [Tooltip("テレサ組を出す位置")]
-    [SerializeField] private Transform _spawnTeresaPos;
+    [SerializeField] private Transform _spawnTeresaPos = default;
     [Tooltip("敵を出す間隔")]
     [SerializeField] private float _time = 3f;
 
     /// <summary>敵を出す間隔はかるタイマー</summary>
     private float _enemytime = 0f;
     private int _hp = 20;
-    private readonly string _kaniTag = "Crab";
-    private GameObject _managers;
-    private GameManager _gameManager;
-    private SoundManager _soundManager;
+    private GameObject _managers = default;
+    private GameManager _gameManager = default;
+    private SoundManager _soundManager = default;
 
     private void Start()
     {
@@ -50,7 +50,7 @@ public class SpawnController : MonoBehaviour, IDamage
 
     private Transform SpwanPos(GameObject go)
     {
-        if (go.CompareTag(_kaniTag))
+        if (go.CompareTag(Constants.CRAB_TAG))
         {
             return _spawnKaniPos;
         }//かにのタグだったら下のスポーン位置を返す

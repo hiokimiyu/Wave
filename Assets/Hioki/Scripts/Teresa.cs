@@ -1,3 +1,4 @@
+using Consts;
 using UnityEngine;
 
 public class Teresa : MonoBehaviour, IDamage
@@ -11,8 +12,6 @@ public class Teresa : MonoBehaviour, IDamage
     [Tooltip("UŒ‚ŠÔŠu")]
     [SerializeField] private float _attackTime = 3;
 
-    private readonly string _wallTag = "Wall";
-    private readonly string _flameTag = "Flame";
     private float _attackTimer = 0f;
     private SoundManager _soundManager;
     private Rigidbody2D _rb;
@@ -60,13 +59,13 @@ public class Teresa : MonoBehaviour, IDamage
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag(_wallTag))
+        if (col.gameObject.CompareTag(Constants.WALL_TAG))
         {
             _xSpeed *= -1f;
         }//ˆÚ“®•ûŒü
 
         if (col.gameObject.CompareTag(gameObject.tag) || 
-            col.gameObject.CompareTag(_flameTag))
+            col.gameObject.CompareTag(Constants.FLAME_TAG))
         {
             Destroy(col.gameObject);
             Destroy(gameObject);

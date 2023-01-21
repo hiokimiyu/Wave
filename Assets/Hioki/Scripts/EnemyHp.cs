@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyHp : MonoBehaviour
 {
-    [Tooltip("対応したエネミーの体力")]
-    [SerializeField] int _hp;
+    [Tooltip("対応したEnemyの体力")]
+    [SerializeField] private int _hp = 0;
 
     public void Damage(int damage)
     {

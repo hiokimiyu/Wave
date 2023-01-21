@@ -1,3 +1,4 @@
+using Consts;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,6 @@ public abstract class SpawnBace : MonoBehaviour
     [Tooltip("敵を出す間隔")]
     [SerializeField] private float _time = 3f;
 
-    /// <summary> 下からスポーンさせたい敵のタグ </summary>
-    private readonly string _kaniTag = "Crab";
     /// <summary>敵を出す間隔はかるタイマー</summary>
     private float _enemytime = 0f;
     private GameManager _gameManager;
@@ -47,7 +46,7 @@ public abstract class SpawnBace : MonoBehaviour
 
     private Transform SpwanPos(GameObject go)
     {
-        if (go.CompareTag(_kaniTag))
+        if (go.CompareTag(Constants.CRAB_TAG))
         {
             return _spawnKaniPos;
         }//かにのタグだったら下のスポーン位置を返す

@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
     //オブジェクトが破壊される時、シーンから消し、Listからも削除する
     //→List.Countのズレを防ぐ
     [Header("敵のオブジェクト")]
-    [SerializeField] private GameObject _enemyParent;
-    [SerializeField] private GameObject _spawnerParent;
+    [SerializeField] private GameObject _enemyParent = default;
+    [SerializeField] private GameObject _spawnerParent = default;
     [SerializeField] private List<GameObject> _sceneEnemies = new();
     [SerializeField] private List<GameObject> _spawner = new();
 
@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour
     /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
     private static bool _isClear = false;
     /// <summary> 攻撃のレベル </summary>
-    private AttackTypes _attackRange;
+    private AttackTypes _attackRange = default;
     /// <summary> フェードイン、アウト </summary>
-    private Fade _fade;
+    private Fade _fade = default;
 
     /// <summary> 敵をまとめた親オブジェクト </summary>
-    public GameObject EnemyParent { get => _enemyParent; set => _enemyParent = value; }
+    public GameObject EnemyParent => _enemyParent;
     /// <summary> クリア判定をリザルトシーンに伝えるbool </summary>
-    public static bool IsClear { get => _isClear; set => _isClear = value; }
+    public static bool IsClear => _isClear;
 
     private void Start()
     {

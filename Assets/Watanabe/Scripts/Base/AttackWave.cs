@@ -4,7 +4,7 @@ using UnityEngine;
 public class AttackWave : MonoBehaviour
 {
     [Tooltip("衝撃波が与えるダメージ")]
-    [SerializeField] private int _damage;
+    [SerializeField] private int _damage = 1;
     [Tooltip("判定用のTag")]
     [SerializeField] private List<string> _hitTag = new();
 

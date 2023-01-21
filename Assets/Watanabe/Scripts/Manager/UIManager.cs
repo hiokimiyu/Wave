@@ -1,3 +1,4 @@
+using Consts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _player = GameObject.Find("TestPlayer");
+        _player = GameObject.FindGameObjectWithTag(Constants.PLAYER_TAG);
 
         _playerHP = _player.GetComponent<PlayerMove>().PlayerHP;
         _playerVital = _player.GetComponent<VitalCapacity>().CurrentVital;
