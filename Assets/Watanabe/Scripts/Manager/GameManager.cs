@@ -1,28 +1,28 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //ƒIƒuƒWƒFƒNƒg‚ª”j‰ó‚³‚ê‚éAƒV[ƒ“‚©‚çÁ‚µAList‚©‚ç‚àíœ‚·‚é
-    //¨List.Count‚ÌƒYƒŒ‚ğ–h‚®
-    [Header("“G‚ÌƒIƒuƒWƒFƒNƒg")]
+    //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç ´å£Šã•ã‚Œã‚‹æ™‚ã€ã‚·ãƒ¼ãƒ³ã‹ã‚‰æ¶ˆã—ã€Listã‹ã‚‰ã‚‚å‰Šé™¤ã™ã‚‹
+    //â†’List.Countã®ã‚ºãƒ¬ã‚’é˜²ã
+    [Header("æ•µã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ")]
     [SerializeField] private GameObject _enemyParent = default;
     [SerializeField] private GameObject _spawnerParent = default;
     [SerializeField] private List<GameObject> _sceneEnemies = new();
     [SerializeField] private List<GameObject> _spawner = new();
 
-    /// <summary> ƒNƒŠƒAƒEƒF[ƒu” </summary>
+    /// <summary> ã‚¯ãƒªã‚¢ã‚¦ã‚§ãƒ¼ãƒ–æ•° </summary>
     private int _waveCount = 0;
-    /// <summary> ƒNƒŠƒA”»’è‚ğƒŠƒUƒ‹ƒgƒV[ƒ“‚É“`‚¦‚ébool </summary>
+    /// <summary> ã‚¯ãƒªã‚¢åˆ¤å®šã‚’ãƒªã‚¶ãƒ«ãƒˆã‚·ãƒ¼ãƒ³ã«ä¼ãˆã‚‹bool </summary>
     private static bool _isClear = false;
-    /// <summary> UŒ‚‚ÌƒŒƒxƒ‹ </summary>
+    /// <summary> æ”»æ’ƒã®ãƒ¬ãƒ™ãƒ« </summary>
     private AttackTypes _attackRange = default;
-    /// <summary> ƒtƒF[ƒhƒCƒ“AƒAƒEƒg </summary>
+    /// <summary> ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã€ã‚¢ã‚¦ãƒˆ </summary>
     private Fade _fade = default;
 
-    /// <summary> “G‚ğ‚Ü‚Æ‚ß‚½eƒIƒuƒWƒFƒNƒg </summary>
+    /// <summary> æ•µã‚’ã¾ã¨ã‚ãŸè¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ </summary>
     public GameObject EnemyParent => _enemyParent;
-    /// <summary> ƒNƒŠƒA”»’è‚ğƒŠƒUƒ‹ƒgƒV[ƒ“‚É“`‚¦‚ébool </summary>
+    /// <summary> ã‚¯ãƒªã‚¢åˆ¤å®šã‚’ãƒªã‚¶ãƒ«ãƒˆã‚·ãƒ¼ãƒ³ã«ä¼ãˆã‚‹bool </summary>
     public static bool IsClear => _isClear;
 
     private void Start()
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         {
             _waveCount++;
             _attackRange.RangeLV++;
-            //‘S‚Ä‚ÌWave‚ğƒNƒŠƒA‚µ‚½‚çAƒŠƒUƒ‹ƒg‰æ–Ê‚Ö‘JˆÚ
+            //å…¨ã¦ã®Waveã‚’ã‚¯ãƒªã‚¢ã—ãŸã‚‰ã€ãƒªã‚¶ãƒ«ãƒˆç”»é¢ã¸é·ç§»
             if (_waveCount == 5)
             {
                 _isClear = true;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary> GameOver‚Ìˆ—(ƒV[ƒ“‘JˆÚ“™) </summary>
+    /// <summary> GameOveræ™‚ã®å‡¦ç†(ã‚·ãƒ¼ãƒ³é·ç§»ç­‰) </summary>
     public void GameOver()
     {
         _isClear = false;

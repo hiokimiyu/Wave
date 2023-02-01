@@ -1,19 +1,19 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ”½“]ˆ—‚ÌƒeƒXƒg
+/// åè»¢å‡¦ç†ã®ãƒ†ã‚¹ãƒˆ
 /// </summary>
 public class MovementTest : MonoBehaviour
 {
     private Rigidbody2D _rb2D;
-    /// <summary> ƒV[ƒ““à‚ÌŠÔ </summary>
+    /// <summary> ã‚·ãƒ¼ãƒ³å†…ã®æ™‚é–“ </summary>
     private float _time = 0f;
     
-    [Tooltip("ˆÚ“®‘¬“x")]
+    [Tooltip("ç§»å‹•é€Ÿåº¦")]
     [SerializeField] private float _moveSpeed = 1f;
-    [Tooltip("”½“]‚·‚é‚Ü‚Å‚ÌŠÔ")]
+    [Tooltip("åè»¢ã™ã‚‹ã¾ã§ã®æ™‚é–“")]
     [SerializeField, Range(1f, 5f)] private float _rotateTime = 1f;
 
     // Start is called before the first frame update
@@ -25,19 +25,19 @@ public class MovementTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ˆÚ“®
+        //ç§»å‹•
         float y = 0f;
         _rb2D.velocity = new Vector2(_moveSpeed, _rb2D.velocity.y);
         _time += Time.deltaTime;
 
-        //ˆê’èŠÔŒo‚Á‚½‚çA”½“]‚·‚é
+        //ä¸€å®šæ™‚é–“çµŒã£ãŸã‚‰ã€åè»¢ã™ã‚‹
         if (_time > _rotateTime)
         {
             _time = 0f;
             y = y == 0f ? 180.0f : 0.0f;
             _moveSpeed *= -1;
         }
-        //ƒIƒuƒWƒFƒNƒg‚Ì‰ñ“](”½“])
+        //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å›è»¢(åè»¢)
         transform.Rotate(0, y, 0);
     }
 }

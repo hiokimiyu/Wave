@@ -1,10 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Consts
 {
     public static class Constants
     {
-        //�^�O�ꗗ
+        //タグ一覧
         public const string PLAYER_TAG = "Player";
         public const string FLAME_TAG = "Flame";
 

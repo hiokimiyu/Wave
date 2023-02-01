@@ -1,18 +1,18 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackWave : MonoBehaviour
 {
-    [Tooltip("ÕŒ‚”g‚ª—^‚¦‚éƒ_ƒ[ƒW")]
+    [Tooltip("è¡æ’ƒæ³¢ãŒä¸ãˆã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸")]
     [SerializeField] private int _damage = 1;
-    [Tooltip("”»’è—p‚ÌTag")]
+    [Tooltip("åˆ¤å®šç”¨ã®Tag")]
     [SerializeField] private List<string> _hitTag = new();
 
     private float _lifeTime = 0.5f;
 
     private void Update()
     {
-        //”M”g‚ªˆê’èŠÔ‚½‚Á‚½‚çÁ‚¦‚éˆ—
+        //ç†±æ³¢ãŒä¸€å®šæ™‚é–“ãŸã£ãŸã‚‰æ¶ˆãˆã‚‹å‡¦ç†
         _lifeTime -= Time.deltaTime;
         if (_lifeTime <= 0)
         {
@@ -20,7 +20,7 @@ public class AttackWave : MonoBehaviour
         }
     }
 
-    //“–‚½‚Á‚½ƒIƒuƒWƒFƒNƒg‚Ìƒ^ƒO‚ğæ“¾‚µ‚ÄA‚»‚ê‚ª‰Š(á)‚¾‚Á‚½‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚é
+    //å½“ãŸã£ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¿ã‚°ã‚’å–å¾—ã—ã¦ã€ãã‚ŒãŒç‚(é›ª)ã ã£ãŸæ™‚ã«ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ä¸ãˆã‚‹
     private void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log($"Hit {col.tag}");

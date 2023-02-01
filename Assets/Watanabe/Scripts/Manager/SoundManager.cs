@@ -1,18 +1,18 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// w’è‚µ‚½Audio‚ğÄ¶‚·‚éƒNƒ‰ƒX
+/// æŒ‡å®šã—ãŸAudioã‚’å†ç”Ÿã™ã‚‹ã‚¯ãƒ©ã‚¹
 /// </summary>
 public class SoundManager : MonoBehaviour
 {
-    [Tooltip("UŒ‚ŠÖŒW‚Ì‰¹")]
+    [Tooltip("æ”»æ’ƒé–¢ä¿‚ã®éŸ³")]
     [SerializeField] AudioClip[] _attackAudios = new AudioClip[6];
 
     public AudioClip[] AttackAudios { get => _attackAudios; set => _attackAudios = value; }
 
-    /// <summary> Ä¶—p‚ÌAudioSource </summary>
+    /// <summary> å†ç”Ÿç”¨ã®AudioSource </summary>
     AudioSource _source;
 
     private void Start()
@@ -21,9 +21,9 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// w’è‚µ‚½‰¹‚ğÄ¶‚·‚é
+    /// æŒ‡å®šã—ãŸéŸ³ã‚’å†ç”Ÿã™ã‚‹
     /// </summary>
-    /// <param name="audio"> Ä¶‚·‚é‰¹ </param>
+    /// <param name="audio"> å†ç”Ÿã™ã‚‹éŸ³ </param>
     public void AudioPlay(AudioClip audio)
     {
         _source.clip = audio;

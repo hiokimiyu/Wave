@@ -1,17 +1,17 @@
+ï»¿using Consts;
 using UnityEngine;
 
 public class Waves : MonoBehaviour
 {
-    [Tooltip("ÕŒ‚”g‚ª—^‚¦‚éƒ_ƒ[ƒW")]
+    [Tooltip("è¡æ’ƒæ³¢ãŒä¸ãˆã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸")]
     [SerializeField] private int _damage;
 
-    private readonly string _hitTag = "Player";
     private float _lifeTime = 0.5f;
 
     // Update is called once per frame
     void Update()
     {
-        //”M”g‚ªˆê’èŠÔ‚½‚Á‚½‚çÁ‚¦‚éˆ—
+        //ç†±æ³¢ãŒä¸€å®šæ™‚é–“ãŸã£ãŸã‚‰æ¶ˆãˆã‚‹å‡¦ç†
         _lifeTime -= Time.deltaTime;
         if (_lifeTime < 0)
         {
@@ -21,7 +21,7 @@ public class Waves : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag(_hitTag))
+        if (col.CompareTag(Constants.PLAYER_TAG))
         {
             col.gameObject.GetComponent<IDamage>().Damage();
         }
